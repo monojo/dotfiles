@@ -1,0 +1,70 @@
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
+Plug 'edkolev/promptline.vim'
+"======Session Management======
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+"======Navigation======
+"buffer
+Plug 'ctrlpvim/ctrlp.vim'
+"better than grep
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
+"ctag on the go
+Plug 'majutsushi/tagbar'
+"Plug 'xolox/vim-easytags'
+"git wrapper
+Plug 'tpope/vim-fugitive'
+"Nerd Tree
+Plug 'scrooloose/nerdtree'
+"======Shortcut======
+"snippte
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+"======python ide======
+"syntax check
+Plug 'scrooloose/syntastic'
+"Plug 'klen/python-mode', {'for': 'python'}
+"vim indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nvie/vim-flake8', {'for': 'python'}
+"=======Markdown========
+"preview markdown in a browser
+"Plug 'kannokanno/previm'
+"Plug 'tyru/open-browser.vim'
+Plug 'iamcco/markdown-preview.vim'
+"local markdown memo list
+Plug 'glidenote/memolist.vim'
+"======Distraction free======
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+"======MISC======
+Plug 'chrisbra/vim-diff-enhanced'
+"display marks on left
+Plug 'kshenoy/vim-signature'
+"Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+"highlight multiple
+Plug 't9md/vim-quickhl'
+" call tree
+"Plug 'hari-rangarajan/CCTree'
+"vim color and syntax
+Plug 'monojo/vim-basic'
+"cscope mapping & setting
+Plug 'monojo/cscope-map'
+"color
+Plug 'flazz/vim-colorschemes'
+"ultimate auto complete tool
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"show register content
+Plug 'junegunn/vim-peekaboo'
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+Plug 'hdima/python-syntax'
+Plug 'scrooloose/nerdcommenter'
+
+"javascript
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+"fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
