@@ -111,6 +111,26 @@ task :install_vundle do
   Vundle::update_vundle
 end
 
+desc "Runs Vundle installer in a clean vim environment"
+task :install_vim_plug do
+  puts "======================================================"
+  puts "Installing and updating vim-plug."
+  puts "The installer will now proceed to run PluginInstall to install vundles."
+  puts "======================================================"
+
+  puts ""
+
+  vim_plug_path = File.join('vim', 'autoload', 'plug.vim')
+  unless File.exists?(vundle_path)
+    run %{
+      cd $HOME/.yadr
+      curl -fLo #{vim_plug_path} --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    }
+  end
+
+end
+
 task :default => 'install'
 
 

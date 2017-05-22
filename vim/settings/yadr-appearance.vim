@@ -22,10 +22,11 @@ else
 
   " For people using a terminal that is not Solarized
   if exists("g:yadr_using_unsolarized_terminal")
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
+    "let g:solarized_termcolors=256
+    "let g:solarized_termtrans=1
   end
 endif
 
-colorscheme solarized
-set background=dark
+"colorscheme solarized
+colorscheme seoul256
+let g:seoul256_background = 234
