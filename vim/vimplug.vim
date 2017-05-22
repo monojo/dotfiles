@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
 "  source ~/.yadr/vim/.vundles.local
 "endif
 
-call plug#end
+call plug#end()
 
 "Filetype plugin indent on is required by vundle
 filetype plugin indent on
