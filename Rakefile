@@ -124,7 +124,7 @@ task :install_vim_plug do
   puts ""
 
   vim_plug_path = File.join('vim', 'autoload', 'plug.vim')
-  unless File.exists?(vundle_path)
+  unless File.exists?(vim_plug_path)
     run %{
       cd $HOME/.yadr
       curl -fLo #{vim_plug_path} --create-dirs \
