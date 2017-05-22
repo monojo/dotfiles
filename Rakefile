@@ -1,6 +1,7 @@
 require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
+require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vimplug')
 
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
@@ -20,11 +21,13 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
-  if want_to_install?('vim configuration (highly recommended)')
-    install_files(Dir.glob('{vim,vimrc}'))
-    Rake::Task["install_vundle"].execute
-  end
+  #if want_to_install?('vim configuration (highly recommended)')
+  #  install_files(Dir.glob('{vim,vimrc}'))
+    #Rake::Task["install_vundle"].execute
+  #end
 
+  install_files(Dir.glob('{vim,vimrc}'))
+  Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
 
   install_fonts
@@ -111,7 +114,7 @@ task :install_vundle do
   Vundle::update_vundle
 end
 
-desc "Runs Vundle installer in a clean vim environment"
+desc "Runs Vimplug installer in a clean vim environment"
 task :install_vim_plug do
   puts "======================================================"
   puts "Installing and updating vim-plug."
@@ -128,7 +131,7 @@ task :install_vim_plug do
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     }
   end
-
+  Vimplug::update_plug
 end
 
 task :default => 'install'

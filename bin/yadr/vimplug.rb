@@ -25,7 +25,7 @@ module Vimplug
     vundles_from_file.select{ |line| line =~ /^Bundle .*/ }.map{ |line| line.gsub(/Bundle "(.*)"/, '\1')}
   end
 
-  def self.update_vundle
+  def self.update_plug
     system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall! +qall"
   end
 
