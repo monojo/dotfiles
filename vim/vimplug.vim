@@ -11,8 +11,12 @@
 filetype off
 
 "set rtp+=~/.vim/bundle/vundle/
-set rtp+=~/.vim/vimplugs/ "Submodules
-call plug#begin('~/.vim/plugged')
+set rtp+=~/.vim/vimplugs/
+if has('nvim')
+  call plug#begin('~/.local/share/nvim/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+endif
 " YADR's vundles are split up by category into smaller files
 " This reduces churn and makes it easier to fork. See
 " ~/.vim/vundles/ to edit them:

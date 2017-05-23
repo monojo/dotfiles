@@ -11,6 +11,7 @@ endif
 " ================ General Config ====================
 
 set number                      "Line numbers are good
+set relativenumber              "Use relative line number to navigate
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -29,20 +30,17 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vimplug starts loading all 
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-"if filereadable(expand("~/.vim/vundles.vim"))
-"  source ~/.vim/vundles.vim
-"endif
+" =============== Vimplug Initialization ===============
+" This loads all the plugins specified in ~/.vim/vimplug.vim
+" Use Vimplug plugin to manage all other plugins
 if filereadable(expand("~/.vim/vimplug.vim"))
   source ~/.vim/vimplug.vim
 endif
-au BufNewFile,BufRead *.vundle set filetype=vim
+au BufNewFile,BufRead *.plug set filetype=vim
 
 " ================ Turn Off Swap Files ==============
 
@@ -59,15 +57,33 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" ================ Indentation ======================
+" ================ Indentation & Folds======================
 
+"Default Set
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
+set fdm=syntax
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+"set cindent             "indent for c
+"set cinkeys=0{,0},:,!^F,o,O,e	" See "cinkeys"; this stops "#" from indenting
+
+autocmd FileType python set tabstop=4|
+      \ set expandtab|
+      \ set shiftwidth=4|
+      \ set softtabstop=4|
+      \ set foldmethod=indent   "fold based on indent
+
+autocmd FileType javascript set tabstop=2|
+      \ set expandtab|
+      \ set shiftwidth=2|
+      \ set softtabstop=2|
+      \ set foldmethod=indent   "fold based on indent
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -82,11 +98,6 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
@@ -110,12 +121,43 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+
+" ================ Mouse ===========================
+set mouse=n
+set mousefocus
 " ================ Search ===========================
 
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+" =============== MISC ===================
+set laststatus=2                "Make airline show at start
+" Some other configuration
+set complete-=i
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=50
+set sidescrolloff=5
+set display+=lastline
+set autoread            "auto read changed file
+set tabpagemax=50
+"set sessionoptions-=options
+set fileformat=unix	" No crazy CR/LF
+set nojoinspaces
+set showmatch
+set textwidth=80	" Maximum line width
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
+set formatoptions=tcroql "Set text and comment formatting 
+set formatoptions+=j
+syn sync fromstart " Increase the highlighting accuracy
+" Encoding
+scriptencoding utf-8
+set fenc=utf-8
+set termencoding=utf-8
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
