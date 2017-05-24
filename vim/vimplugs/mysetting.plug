@@ -69,7 +69,6 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
 "language
-Plug 'sheerun/vim-polyglot'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'Raimondi/delimitMate'

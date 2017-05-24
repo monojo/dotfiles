@@ -1,50 +1,53 @@
 require 'fileutils'
 
 module Vimplug
-  @vimplug_path = File.expand_path File.join(ENV['HOME'], '.vim', '.vundles.local')
-  def self.add_plugin_to_vundle(plugin_repo)
-    return if contains_vundle? plugin_repo
+    @vimplug_path = File.expand_path File.join(ENV['HOME'], '.vim', 'vimplugs', 'mysetting.plug')
+  def self.add_plugin_to_vimplug(plugin_repo)
+    return if contains_vimplug? plugin_repo
 
-    vundles = vundles_from_file
-    last_bundle_dir = vundles.rindex{ |line| line =~ /^Bundle / }
+    plugs = plug_from_file
+    last_bundle_dir = plugs.rindex{ |line| line =~ /^Plug / }
     last_bundle_dir = last_bundle_dir ? last_bundle_dir+1 : 0
-    vundles.insert last_bundle_dir, "Bundle \"#{plugin_repo}\""
-    write_vundles_to_file vundles
+    plugs.insert last_bundle_dir, "Plug \'#{plugin_repo}\'"
+    write_plugs_to_file plugs
   end
 
   def self.remove_plugin_from_vundle(plugin_repo)
-    vundles = vundles_from_file
-    deleted_value = vundles.reject!{ |line| line =~ /Bundle "#{plugin_repo}"/ }
+    plugs = plug_from_file
+    deleted_value = plugs.reject!{ |line| line =~ /Plug '#{plugin_repo}'/ }
 
-    write_vundles_to_file vundles
+    write_plugs_to_file plugs
 
     !deleted_value.nil?
   end
 
-  def self.vundle_list
-    vundles_from_file.select{ |line| line =~ /^Bundle .*/ }.map{ |line| line.gsub(/Bundle "(.*)"/, '\1')}
+  def self.plug_list
+    plug_from_file.select{ |line| line =~ /^Plug .*/ }.map{ |line| line.gsub(/Plug "(.*)"/, '\1')}
   end
 
   def self.update_plug
-    system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall! +qall"
+    system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall +qall"
   end
 
+  def self.update_no_clean_plug
+      system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugInstall +qall"
+  end
 
-#  private
-#  def self.contains_vundle?(vundle_name)
-#    FileUtils.touch(@vundles_path) unless File.exists? @vundles_path
-#    File.read(@vundles_path).include?(vundle_name)
-#  end
-#
-#  def self.vundles_from_file
-#    FileUtils.touch(@vundles_path) unless File.exists? @vundles_path
-#    File.read(@vundles_path).split("\n")
-#  end
-#
-#  def self.write_vundles_to_file(vundles)
-#    FileUtils.cp(@vundles_path, "#{@vundles_path}.bak")
-#    vundle_file = File.open(@vundles_path, "w")
-#    vundle_file.write(vundles.join("\n"))
-#    vundle_file.close
-#  end
+  private
+  def self.contains_vimplug?(plug_name)
+    FileUtils.touch(@vimplug_path) unless File.exists? @vimplug_path
+    File.read(@vimplug_path).include?(plug_name)
+  end
+
+  def self.plug_from_file
+    FileUtils.touch(@vimplug_path) unless File.exists? @vimplug_path
+    File.read(@vimplug_path).split("\n")
+  end
+
+  def self.write_plugs_to_file(plugs)
+    FileUtils.cp(@vimplug_path, "#{@vimplug_path}.bak")
+    vundle_file = File.open(@vimplug_path, "w")
+    vundle_file.write(plugs.join("\n"))
+    vundle_file.close
+  end
 end

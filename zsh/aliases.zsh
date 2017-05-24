@@ -13,8 +13,8 @@ elif [[ $unamestr == 'Darwin' ]]; then
 fi
 
 # YADR support
-alias yav='yadr vim-add-plugin'
-alias ydv='yadr vim-delete-plugin'
+alias yav='yadr vim-add-plugin --url'
+alias ydv='yadr vim-delete-plugin --url'
 alias ylv='yadr vim-list-plugin'
 alias yup='yadr update-plugins'
 alias yip='yadr init-plugins'
