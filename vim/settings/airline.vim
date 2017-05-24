@@ -1,10 +1,10 @@
 """"""""vim-airline""""""""
 "enable extention support
-"let g:airline#extentions#syntastic#enabled = 1
+let g:airline#extentions#syntastic#enabled = 1
 "let g:airline#extensions#whitespace#enabled = 0
 "let g:airline#extensions#whitespace#symbol = '!'
 "let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
-"let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 "short leave insert mode
 "bufferline
