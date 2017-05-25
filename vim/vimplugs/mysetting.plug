@@ -80,7 +80,7 @@ Plug  'mxw/vim-jsx', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'javascript'}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
 Plug 'othree/jspc.vim', {'for': 'javascript'}
-"Plug 'Chiel92/vim-autoformat'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
+"Code search & view
 Plug 'dyng/ctrlsf.vim'
