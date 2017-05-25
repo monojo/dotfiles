@@ -40,6 +40,9 @@ Plug 'glidenote/memolist.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "======MISC======
+"Syntax
+Plug 'sheerun/vim-polyglot'
+"Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'chrisbra/vim-diff-enhanced'
 "display marks on left
 Plug 'kshenoy/vim-signature'
@@ -63,13 +66,21 @@ Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'hdima/python-syntax'
 Plug 'scrooloose/nerdcommenter'
 
-"javascript
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
-"language
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
+"lint
 Plug 'w0rp/ale'
+
+"javascript
+Plug  'mxw/vim-jsx', {'for': 'javascript'}
+Plug 'elzr/vim-json', {'for': 'javascript'}
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
+Plug 'othree/jspc.vim', {'for': 'javascript'}
+"Plug 'Chiel92/vim-autoformat'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'dyng/ctrlsf.vim'

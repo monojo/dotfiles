@@ -8,3 +8,12 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 "search current folder file
 nnoremap <leader>c : CtrlPCurWD<CR>
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+let g:ctrlp_user_caching = 0
+let g:ctrlp_max_files = 200000
