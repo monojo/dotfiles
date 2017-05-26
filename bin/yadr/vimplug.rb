@@ -1,7 +1,7 @@
 require 'fileutils'
 
 module Vimplug
-    @vimplug_path = File.expand_path File.join(ENV['HOME'], '.vim', 'vimplugs', 'mysetting.plug')
+    @vimplug_path = File.expand_path File.join(ENV['HOME'], '.vim', 'myplug.plug')
   def self.add_plugin_to_vimplug(plugin_repo)
     return if contains_vimplug? plugin_repo
 

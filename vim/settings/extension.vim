@@ -1,7 +1,7 @@
 let s:bookmarkFile = expand('$HOME') . '/.NERDTreeBookmarks'
 
 function! g:GetWorkingDir()
-    if filereadable(s:bookmarkFile)
+    if filereadable(bookmarkFile)
         let NERDTreeBookmarks = []
         let NERDTreeInvalidBookmarks = []
         let bookmarkStrings = readfile(s:bookmarkFile)
@@ -22,15 +22,3 @@ function! g:GetWorkingDir()
     endif
     return NERDTreeBookmarks
 endfunction
-let workingfiles =  GetWorkingDir()
-let workingpath = ''
-for i in workingfiles
-        if i != ''
-            let workingpath = workingpath.i.' '
-        endif
-endfor
-echo workingfiles
-echo workingpath
-
-nmap <leader>f <Plug>CtrlSFCwordPath workingpath<CR>
-vmap <leader>f <Plug>CtrlSFVwordPath workingpath<CR>
