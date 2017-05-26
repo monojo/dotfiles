@@ -22,5 +22,5 @@
 "endif
 
 " Use seoul256 color scheme
-let g:seoul256_background = 234
 colorscheme seoul256
+"let g:seoul256_background = 234

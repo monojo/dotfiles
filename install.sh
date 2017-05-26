@@ -18,6 +18,7 @@ install_dep () {
 }
 
 check_installed () {
+    #TODO this won't work for pkg that user compiled by themself
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1| \
         grep "install ok installed")
     if [ "" == "$PKG_OK" ]; then
