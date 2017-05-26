@@ -29,7 +29,7 @@ check_installed () {
 	fi
 }
 
-declare -a DEPS=("vim" "git" "exuberant-ctags" "silversearcher-ag" "nodejs" "npm")
+declare -a DEPS=("vim" "git" "exuberant-ctags" "silversearcher-ag" "nodejs" "npm" "tmux")
 for dep in ${DEPS[@]}
 do
     check_installed $dep
