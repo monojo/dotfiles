@@ -84,3 +84,4 @@ Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
 "Code search & view
 Plug 'dyng/ctrlsf.vim'
+Plug 'christoomey/vim-tmux-navigator'
