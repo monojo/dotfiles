@@ -11,7 +11,7 @@
 filetype off
 
 "set rtp+=~/.vim/bundle/vundle/
-set rtp+=~/.vim/vimplugs/
+set rtp+=~/.vim/
 if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
 else
@@ -28,7 +28,7 @@ endif
 "runtime search.vundle
 "runtime project.vundle
 "runtime vim-improvements.vundle
-runtime mysetting.plug
+runtime myplug.plug
 
 " The plugins listed in ~/.vim/.vundles.local will be added here to
 " allow the user to add vim plugins to yadr without the need for a fork.

@@ -33,7 +33,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 "preview markdown in a browser
 "Plug 'kannokanno/previm'
 "Plug 'tyru/open-browser.vim'
-Plug 'iamcco/markdown-preview.vim'
+"Plug 'iamcco/markdown-preview.vim'
 "local markdown memo list
 Plug 'glidenote/memolist.vim'
 "======Distraction free======
@@ -43,6 +43,7 @@ Plug 'junegunn/limelight.vim'
 "Syntax
 Plug 'sheerun/vim-polyglot'
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+"========Make life better
 Plug 'chrisbra/vim-diff-enhanced'
 "display marks on left
 Plug 'kshenoy/vim-signature'
@@ -53,26 +54,28 @@ Plug 't9md/vim-quickhl'
 " call tree
 "Plug 'hari-rangarajan/CCTree'
 "vim color and syntax
-Plug 'monojo/vim-basic'
+"Plug 'monojo/vim-basic'
 "cscope mapping & setting
 Plug 'monojo/cscope-map'
-"color
+"ultimate color
 Plug 'flazz/vim-colorschemes'
 "ultimate auto complete tool
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 "show register content
 Plug 'junegunn/vim-peekaboo'
+"generate YCM config file
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-Plug 'hdima/python-syntax'
+"Plug 'hdima/python-syntax'
+"Better comment
 Plug 'scrooloose/nerdcommenter'
-
-"fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
+"auto pair
 Plug 'Raimondi/delimitMate'
+"Better end
 Plug 'tpope/vim-endwise'
-"lint
+"async Lint
 Plug 'w0rp/ale'
 
 "javascript
@@ -84,4 +87,5 @@ Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
 "Code search & view
 Plug 'dyng/ctrlsf.vim'
+"Tmux navigation
 Plug 'christoomey/vim-tmux-navigator'
