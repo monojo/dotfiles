@@ -30,12 +30,34 @@ check_installed () {
 	fi
 }
 
-declare -a DEPS=("vim" "git" "exuberant-ctags" "silversearcher-ag" "nodejs" "npm" "tmux" "cmake" "build-essential")
+install_vim () {
+    cd "$HOME"
+    git clone https://github.com/vim/vim.git
+    cd vim
+    #only use python3 since use both py2&3 will let YCM generate problem
+    ./configure --with-features=huge \
+        --enable-multibyte \
+        --enable-rubyinterp=yes \
+        --enable-python3interp=yes \
+        --with-python3-config-dir=/usr/lib/python3.5/config \
+        --enable-perlinterp=yes \
+        --enable-luainterp=yes \
+        --enable-gui=gtk2 --enable-cscope --prefix=/usr
+
+    sudo make install
+}
+
+declare -a DEPS=("git" "exuberant-ctags" "silversearcher-ag" "nodejs" "npm" \
+    "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" "libgnomeui-dev" \
+    "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
+    "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
+    "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" )
+
 for dep in ${DEPS[@]}
 do
     check_installed $dep
 done
-
+install_vim()
 if [ ! -d "$HOME/.yadr" ]; then
     echo "Installing YADR for the first time"
     git clone --depth=1 https://github.com/monojo/dotfiles.git "$HOME/.yadr"

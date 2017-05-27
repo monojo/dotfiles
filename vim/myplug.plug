@@ -59,6 +59,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Raimondi/delimitMate'
 "Better end
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 "async Lint
 Plug 'w0rp/ale'
 "=============javascript==========
@@ -67,7 +69,6 @@ Plug 'elzr/vim-json', {'for': 'javascript'}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
 Plug 'othree/jspc.vim', {'for': 'javascript'}
 Plug 'terryma/vim-expand-region'
-Plug 'terryma/vim-smooth-scroll'
 
 "Code search & view
 Plug 'dyng/ctrlsf.vim'
