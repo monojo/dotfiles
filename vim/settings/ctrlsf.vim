@@ -1,6 +1,8 @@
 let s:bookmarkFile = expand('$HOME') . '/.NERDTreeBookmarks'
 
-function! g:GetWorkingDir()
+"Get working dir by read the bookmark file
+function! s:GetWorkingDir()
+    let workingpath = ' '
     if filereadable(s:bookmarkFile)
         let NERDTreeBookmarks = []
         let NERDTreeInvalidBookmarks = []
@@ -20,17 +22,29 @@ function! g:GetWorkingDir()
     else 
         echoerr 'not exist'
     endif
-    return NERDTreeBookmarks
-endfunction
-let workingfiles =  GetWorkingDir()
-let workingpath = ''
-for i in workingfiles
+    for i in NERDTreeBookmarks
         if i != ''
             let workingpath = workingpath.i.' '
         endif
-endfor
-echo workingfiles
-echo workingpath
+    endfor
+    "echo workingpath
+    "let cmd = ':CtrlSF '
+    "let cmd = cmd.workingpath
+    "echo cmd
+    return workingpath
+endfunction
 
-nmap <leader>f <Plug>CtrlSFCwordPath workingpath<CR>
-vmap <leader>f <Plug>CtrlSFVwordPath workingpath<CR>
+func! s:SearchCwordCmd(type)
+    let cmd = ":\<C-U>" . a:type
+    let cmd .= " " . expand('<cword>')
+    let cmd .= s:GetWorkingDir()
+    return cmd
+endf
+
+"remap the CtrlSF command to use NerdTree Bookmark to indicate working directory
+"so CtrlSF will search through working dir for word
+nnoremap          <expr> <Plug>CtrlSFWorking    <SID>SearchCwordCmd('CtrlSF')
+nmap <leader>w <Plug>CtrlSFWorking <CR>
+"default
+nmap <leader>f <Plug>CtrlSFCwordPath <CR>
+vmap <leader>f <Plug>CtrlSFVwordPath <CR>
