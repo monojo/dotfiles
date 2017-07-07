@@ -47,7 +47,7 @@ Plug 'monojo/cscope-map'
 "ultimate color
 Plug 'flazz/vim-colorschemes'
 "ultimate auto complete tool
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
 "show register content
 Plug 'junegunn/vim-peekaboo'
 "generate YCM config file
