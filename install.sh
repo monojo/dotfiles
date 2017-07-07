@@ -57,7 +57,7 @@ for dep in ${DEPS[@]}
 do
     check_installed $dep
 done
-install_vim()
+install_vim
 if [ ! -d "$HOME/.yadr" ]; then
     echo "Installing YADR for the first time"
     git clone --depth=1 https://github.com/monojo/dotfiles.git "$HOME/.yadr"
