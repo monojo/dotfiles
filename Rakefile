@@ -141,7 +141,7 @@ task :install_vim do
         --enable-multibyte \
         --enable-rubyinterp=yes \
         --enable-python3interp=yes \
-        --with-python3-config-dir=/usr/lib/python3.5/config \
+        --with-python2-config-dir=/usr/lib/python2.7/config \
         --enable-perlinterp=yes \
         --enable-luainterp=yes \
         --enable-gui=gtk2 --enable-cscope --prefix=/usr
