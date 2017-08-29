@@ -136,8 +136,7 @@ end
 
 task :default => 'install'
 
-desc "Install ag"
-task :install_ag do
+def install_ag
     puts "======================================================"
     puts "build ag"
     puts "======================================================"
