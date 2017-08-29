@@ -140,8 +140,8 @@ task :install_vim do
       ./configure --with-features=huge \
         --enable-multibyte \
         --enable-rubyinterp=yes \
-        --enable-python3interp=yes \
-        --with-python2-config-dir=/usr/lib/python2.7/config \
+        --enable-pythoninterp=yes \
+        --with-python-config-dir=/usr/lib/python2.7/config \
         --enable-perlinterp=yes \
         --enable-luainterp=yes \
         --enable-gui=gtk2 --enable-cscope --prefix=/usr
