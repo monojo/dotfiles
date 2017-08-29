@@ -137,7 +137,6 @@ task :install_vim do
 
     run %{
       cd $HOME/.yadr/bin/vim
-      ./install
       ./configure --with-features=huge \
         --enable-multibyte \
         --enable-rubyinterp=yes \
