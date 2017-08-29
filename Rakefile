@@ -30,11 +30,11 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
 
+  install_ag
+
   install_fonts
 
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
-
-  run_bundle_config
 
   success_msg("installed")
 end
@@ -118,7 +118,7 @@ desc "Runs Vimplug installer in a clean vim environment"
 task :install_vim_plug do
   puts "======================================================"
   puts "Installing and updating vim-plug."
-  puts "The installer will now proceed to run PluginInstall to install vundles."
+  puts "The installer will now proceed to run PlugInstall to install vim-plug."
   puts "======================================================"
 
   puts ""
@@ -136,6 +136,23 @@ end
 
 task :default => 'install'
 
+desc "Install ag"
+task :install_ag do
+    puts "======================================================"
+    puts "build ag"
+    puts "======================================================"
+
+    puts ""
+
+    #ag_path = File.join('bin', 'ag')
+    run %{
+      cd $HOME/.yadr/bin/ag
+      ./build.sh
+      sudo make install
+    }
+end
+
+task :default => 'install'
 
 private
 def run(cmd)
@@ -151,17 +168,6 @@ def number_of_cores
   end
   puts
   cores.to_i
-end
-
-def run_bundle_config
-  return unless system("which bundle")
-
-  bundler_jobs = number_of_cores - 1
-  puts "======================================================"
-  puts "Configuring Bundlers for parallel gem installation"
-  puts "======================================================"
-  run %{ bundle config --global jobs #{bundler_jobs} }
-  puts
 end
 
 def install_rvm_binstubs
