@@ -8,5 +8,3 @@ PATH=~/Android/Sdk/platform-tools:$PATH
 PATH=~/android-studio/bin:$PATH
 PATH=~/Android/Sdk/ndk-bundle:$PATH
 PATH=~/depot_tools:$PATH
-
-alias android_studio='/home/moslab/android-studio/bin/studio.sh'

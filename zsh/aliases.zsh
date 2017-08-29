@@ -212,5 +212,8 @@ alias dbmu='spring rake db:migrate:up'
 # Homebrew
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
-#tmux - solve weired color in vim
+# tmux - solve weired color in vim
 alias tmux='tmux -2'
+
+# Android Studio
+alias android_studio='/home/moslab/android-studio/bin/studio.sh'
