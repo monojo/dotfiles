@@ -76,7 +76,8 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'justinmk/vim-sneak'
 "Plug 'klen/python-mode', {'for': 'python'}
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install -all' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'hari-rangarajan/CCTree'
 "Plug 'monojo/vim-basic'
