@@ -8,3 +8,6 @@
 [submodule "bin/fzf"]
 	path = bin/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "bin/vim"]
+	path = bin/vim
+	url = https://github.com/vim/vim.git
