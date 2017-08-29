@@ -30,36 +30,6 @@ check_installed () {
 	fi
 }
 
-install_vim () {
-    if [ ! -d "$HOME/bin/vim"]; then
-        echo "Start building VIM"
-        cd "$HOME/bin"
-        git clone https://github.com/vim/vim.git
-        cd vim
-        #only use python3 since use both py2&3 will let YCM generate problem
-        ./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp=yes \
-            --enable-python3interp=yes \
-            --with-python3-config-dir=/usr/lib/python3.5/config \
-            --enable-perlinterp=yes \
-            --enable-luainterp=yes \
-            --enable-gui=gtk2 --enable-cscope --prefix=/usr
-
-        sudo make install
-    fi
-}
-
-#install_ag () {
-    #if [ ! -d "$HOME/bin/ag"]; then
-        #echo "Start building ag"
-        #cd "$HOME/bin"
-        #git clone https://github.com/ggreer/the_silver_searcher.git
-        #cd the_silver_searcher
-        #./build.sh
-        #sudo make install
-    #fi
-#}
 
 declare -a DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" "libgnomeui-dev" \
@@ -72,9 +42,6 @@ for dep in ${DEPS[@]}
 do
     check_installed $dep
 done
-
-mkdir -p "$HOME/bin"
-install_vim
 
 if [ ! -d "$HOME/.yadr" ]; then
     echo "Installing YADR for the first time"

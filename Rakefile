@@ -29,6 +29,7 @@ task :install => [:submodule_init, :submodules] do
 
   install_files(Dir.glob('{vim,vimrc}'))
 
+  Rake::Task["install_vim"].execute
   Rake::Task["install_fzf"].execute
   Rake::Task["install_ag"].execute
   Rake::Task["install_vim_plug"].execute
@@ -49,7 +50,6 @@ end
 
 desc 'Updates the installation'
 task :update do
-  Rake::Task["vundle_migration"].execute if needs_migration_to_vundle?
   Rake::Task["install"].execute
   #TODO: for now, we do the same as install. But it would be nice
   #not to clobber zsh files
@@ -75,25 +75,6 @@ task :submodules do
     }
     puts
   end
-end
-
-desc "Performs migration from pathogen to vundle"
-task :vundle_migration do
-  puts "======================================================"
-  puts "Migrating from pathogen to vundle vim plugin manager. "
-  puts "This will move the old .vim/bundle directory to"
-  puts ".vim/bundle.old and replacing all your vim plugins with"
-  puts "the standard set of plugins. You will then be able to "
-  puts "manage your vim's plugin configuration by editing the "
-  puts "file .vim/vundles.vim"
-  puts "======================================================"
-
-  Dir.glob(File.join('vim', 'bundle','**')) do |sub_path|
-    run %{git config -f #{File.join('.git', 'config')} --remove-section submodule.#{sub_path}}
-    # `git rm --cached #{sub_path}`
-    FileUtils.rm_rf(File.join('.git', 'modules', sub_path))
-  end
-  FileUtils.mv(File.join('vim','bundle'), File.join('vim', 'bundle.old'))
 end
 
 desc "Runs Vimplug installer in a clean vim environment"
@@ -145,6 +126,29 @@ task :install_fzf do
     }
 end
 
+
+desc "Install vim"
+task :install_vim do
+    puts "======================================================"
+    puts "build vim"
+    puts "======================================================"
+
+    puts ""
+
+    run %{
+      cd $HOME/.yadr/bin/vim
+      ./install
+      ./configure --with-features=huge \
+        --enable-multibyte \
+        --enable-rubyinterp=yes \
+        --enable-python3interp=yes \
+        --with-python3-config-dir=/usr/lib/python3.5/config \
+        --enable-perlinterp=yes \
+        --enable-luainterp=yes \
+        --enable-gui=gtk2 --enable-cscope --prefix=/usr
+    sudo make install
+    }
+end
 
 task :default => 'install'
 
