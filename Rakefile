@@ -29,8 +29,7 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('{vim,vimrc}'))
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
-
-  install_ag
+  Rake::Task["install_ag"].execute
 
   install_fonts
 
@@ -136,7 +135,8 @@ end
 
 task :default => 'install'
 
-def install_ag
+desc "Install ag"
+task :install_ag do
     puts "======================================================"
     puts "build ag"
     puts "======================================================"
