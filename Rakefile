@@ -28,10 +28,11 @@ task :install => [:submodule_init, :submodules] do
   #end
 
   install_files(Dir.glob('{vim,vimrc}'))
+
+  Rake::Task["install_fzf"].execute
+  Rake::Task["install_ag"].execute
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
-  Rake::Task["install_ag"].execute
-  Rake::Task["install_fzf"].execute
 
   install_fonts
 
