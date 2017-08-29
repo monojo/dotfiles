@@ -21,6 +21,7 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+  install_files(Dir.glob('bin/fzf')) if want_to_install?('fzf install')
   #if want_to_install?('vim configuration (highly recommended)')
   #  install_files(Dir.glob('{vim,vimrc}'))
     #Rake::Task["install_vundle"].execute
@@ -30,6 +31,7 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
   Rake::Task["install_ag"].execute
+  Rake::Task["install_fzf"].execute
 
   install_fonts
 
@@ -93,26 +95,6 @@ task :vundle_migration do
   FileUtils.mv(File.join('vim','bundle'), File.join('vim', 'bundle.old'))
 end
 
-desc "Runs Vundle installer in a clean vim environment"
-task :install_vundle do
-  puts "======================================================"
-  puts "Installing and updating vundles."
-  puts "The installer will now proceed to run PluginInstall to install vundles."
-  puts "======================================================"
-
-  puts ""
-
-  vundle_path = File.join('vim','bundle', 'vundle')
-  unless File.exists?(vundle_path)
-    run %{
-      cd $HOME/.yadr
-      git clone https://github.com/gmarik/vundle.git #{vundle_path}
-    }
-  end
-
-  Vundle::update_vundle
-end
-
 desc "Runs Vimplug installer in a clean vim environment"
 task :install_vim_plug do
   puts "======================================================"
@@ -133,8 +115,6 @@ task :install_vim_plug do
   Vimplug::update_plug
 end
 
-task :default => 'install'
-
 desc "Install ag"
 task :install_ag do
     puts "======================================================"
@@ -143,13 +123,27 @@ task :install_ag do
 
     puts ""
 
-    #ag_path = File.join('bin', 'ag')
     run %{
       cd $HOME/.yadr/bin/ag
       ./build.sh
       sudo make install
     }
 end
+
+desc "Install fzf"
+task :install_fzf do
+    puts "======================================================"
+    puts "build fzf"
+    puts "======================================================"
+
+    puts ""
+
+    run %{
+      cd $HOME/.yadr/bin/fzf
+      ./install
+    }
+end
+
 
 task :default => 'install'
 
