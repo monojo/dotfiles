@@ -47,7 +47,7 @@ Plug 'monojo/cscope-map'
 "ultimate color
 Plug 'flazz/vim-colorschemes'
 "ultimate auto complete tool
-"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
 "show register content
 Plug 'junegunn/vim-peekaboo'
 "generate YCM config file
@@ -59,7 +59,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Raimondi/delimitMate'
 "Better end
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 "async Lint
 Plug 'w0rp/ale'
@@ -78,6 +78,7 @@ Plug 'justinmk/vim-sneak'
 "Plug 'klen/python-mode', {'for': 'python'}
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'hari-rangarajan/CCTree'
 "Plug 'monojo/vim-basic'
