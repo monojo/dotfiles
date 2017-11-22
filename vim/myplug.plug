@@ -1,13 +1,18 @@
+"======Looking=====
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'edkolev/promptline.vim'
+"ultimate color
+Plug 'flazz/vim-colorschemes'
 "======Session Management======
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 "======Navigation======
-"buffer
-Plug 'ctrlpvim/ctrlp.vim'
+"Finder
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
 "better than grep
 Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
@@ -26,59 +31,59 @@ Plug 'honza/vim-snippets'
 "syntax check
 "vim indent guide
 Plug 'nathanaelkane/vim-indent-guides'
-"local markdown memo list
-Plug 'glidenote/memolist.vim'
 "======Distraction free======
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "======MISC======
 "Syntax
 Plug 'sheerun/vim-polyglot'
-"========Make life better
+"======Make life better======
 Plug 'chrisbra/vim-diff-enhanced'
-"display marks on left
+"Display marks on left
 Plug 'kshenoy/vim-signature'
 "Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
-"highlight multiple
+"Highlight multiple
 Plug 't9md/vim-quickhl'
-"cscope mapping & setting
+"Cscope mapping & setting
 Plug 'monojo/cscope-map'
-"ultimate color
-Plug 'flazz/vim-colorschemes'
-"ultimate auto complete tool
+"Ultimate auto complete tool
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
-"show register content
+"Show register content
 Plug 'junegunn/vim-peekaboo'
-"generate YCM config file
+"Generate YCM config file
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 "Better comment
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/vim-easy-align'
-"auto pair
+"Auto pair
 Plug 'Raimondi/delimitMate'
 "Better end
 Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-"async Lint
+"Async Lint
 Plug 'w0rp/ale'
-"=============javascript==========
+"Local markdown memo list
+Plug 'glidenote/memolist.vim'
+"=======Javascript========
 Plug  'mxw/vim-jsx', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'javascript'}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
 Plug 'othree/jspc.vim', {'for': 'javascript'}
 Plug 'terryma/vim-expand-region'
 
+"=======Newly added======
 "Code search & view
 Plug 'dyng/ctrlsf.vim'
 "Tmux navigation
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'justinmk/vim-sneak'
 "Plug 'klen/python-mode', {'for': 'python'}
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
+"plantuml plugin
+"Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'hari-rangarajan/CCTree'
 "Plug 'monojo/vim-basic'
@@ -87,6 +92,7 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'kannokanno/previm'
 "Plug 'tyru/open-browser.vim'
 "Plug 'iamcco/markdown-preview.vim'
+
 "Plug 'nvie/vim-flake8', {'for': 'python'}
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "Plug 'hdima/python-syntax'
