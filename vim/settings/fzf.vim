@@ -1,5 +1,5 @@
 "nmap <leader><tab> <Plug>(fzf-maps-n)
-nmap <leader>c :Files<CR>
+nmap <leader>f :Files<CR>
 "search buffers
 nmap <leader>b :Buffers<CR>
 "search tag

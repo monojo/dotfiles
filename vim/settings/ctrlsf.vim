@@ -41,10 +41,11 @@ func! s:SearchCwordCmd(type)
     return cmd
 endf
 
-"remap the CtrlSF command to use NerdTree Bookmark to indicate working directory
+"Default
+nmap <leader>w <Plug>CtrlSFCwordPath <CR>
+vmap <leader>w <Plug>CtrlSFVwordPath <CR>
+
+"Remap the CtrlSF command to use NerdTree Bookmark to indicate working directory
 "so CtrlSF will search through working dir for word
-nnoremap          <expr> <Plug>CtrlSFWorking    <SID>SearchCwordCmd('CtrlSF')
-nmap <leader>w <Plug>CtrlSFWorking <CR>
-"default
-nmap <leader>f <Plug>CtrlSFCwordPath <CR>
-vmap <leader>f <Plug>CtrlSFVwordPath <CR>
+nnoremap       <expr> <Plug>CtrlSFWorking    <SID>SearchCwordCmd('CtrlSF')
+nmap <leader>s <Plug>CtrlSFWorking <CR>
