@@ -11,6 +11,7 @@ execute () {
 	eval "$1"
 }
 
+#TODO add MacOS support
 install_dep () {
 	install_cmd="sudo apt-get install $1"
 	echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
@@ -36,7 +37,8 @@ declare -a DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
     "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
-    "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev")
+    "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx"
+    "fcitx-rime")
 
 for dep in ${DEPS[@]}
 do
