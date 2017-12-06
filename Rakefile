@@ -29,7 +29,7 @@ task :install => [:submodule_init, :submodules] do
 
   install_files(Dir.glob('{vim,vimrc}'))
 
-  Rake::Task["install_vim"].execute
+  Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_fzf"].execute
   Rake::Task["install_ag"].execute
   Rake::Task["install_vim_plug"].execute
@@ -127,7 +127,7 @@ task :install_fzf do
 end
 
 
-desc "Install vim: Python support config need to be modified"
+desc "Install vim: Python support config may need to be modified"
 task :install_vim do
     puts "======================================================"
     puts "build vim"
