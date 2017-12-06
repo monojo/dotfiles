@@ -26,11 +26,15 @@ module Vimplug
   end
 
   def self.update_plug
-    system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall +qall"
+      #TODO In my case, vim seems to lack some binary to work on my Mac OSX
+      #Use mvim to solve this. But if mvim is not installed, this won't work
+      system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall +qall" if RUBY_PLATFORM.downcase.include?("linux")
+      system "mvim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean! +PlugInstall +qall" if RUBY_PLATFORM.downcase.include?("darwin")
   end
 
   def self.update_no_clean_plug
-      system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugInstall +qall"
+      system "vim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugInstall +qall" if RUBY_PLATFORM.downcase.include?("linux")
+      system "mvim --noplugin -u #{ENV['HOME']}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugInstall +qall" if RUBY_PLATFORM.downcase.include?("darwin")
   end
 
   private

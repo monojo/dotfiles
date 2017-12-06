@@ -31,7 +31,7 @@ task :install => [:submodule_init, :submodules] do
 
   Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_fzf"].execute
-  Rake::Task["install_ag"].execute
+  Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
 
