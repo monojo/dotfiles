@@ -80,11 +80,11 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'justinmk/vim-sneak'
 "Plug 'klen/python-mode', {'for': 'python'}
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 "plantuml plugin
 "Plug 'scrooloose/vim-slumlord'
-Plug 'aklt/plantuml-syntax'
-"Plug 'easymotion/vim-easymotion'
+"Plug 'aklt/plantuml-syntax'
+Plug 'easymotion/vim-easymotion'
 "Plug 'hari-rangarajan/CCTree'
 "Plug 'monojo/vim-basic'
 "=======Markdown========
