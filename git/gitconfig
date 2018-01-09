@@ -128,3 +128,5 @@
 [user]
 	email = monojoker@gmail.com
 	name = Xin
+[http]
+	cookiefile = /home/moslab/.gitcookies

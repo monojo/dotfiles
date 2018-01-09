@@ -22,6 +22,7 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
   install_files(Dir.glob('bin/fzf')) if want_to_install?('fzf install')
+#  install_files(Dir.glob('bin/fzf')) if want_to_install?('ideavim configfile')
   #if want_to_install?('vim configuration (highly recommended)')
   #  install_files(Dir.glob('{vim,vimrc}'))
     #Rake::Task["install_vundle"].execute
@@ -36,6 +37,7 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_prezto"].execute
 
   install_fonts
+  install_ideavim
 
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
@@ -279,6 +281,10 @@ def ask(message, values)
   end
   selection = selection.to_i-1
   values[selection]
+end
+
+def install_ideavim
+    run %{ ln -nfs "$HOME/.yadr/idea/ideavimrc" "${ZDOTDIR:-$HOME}/.ideavimrc" }
 end
 
 def install_prezto

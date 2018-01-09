@@ -1,0 +1,21 @@
+let mapleader=','
+
+
+"********************
+"use :actionlist to show the complete support actions
+"********************
+"
+nnoremap / :action Find<CR>
+
+nnoremap <Leader>ga :action GotoAction<CR>
+nnoremap <Leader>gc :action GotoClass<CR>
+nnoremap <Leader>gf :action GotoFile<CR>
+
+nnoremap <Leader>fu :action FindUsages<CR>
+
+nnoremap <Leader>fp :action FindInPath<CR>
+vnoremap <Leader>fp :action FindInPath<CR>
+
+nnoremap <Leader>sp :action ShowFilePath<CR>
+nnoremap <Leader>tc  :action CloseActiveTab<CR>
+nnoremap Q :action CloseContent<CR>
