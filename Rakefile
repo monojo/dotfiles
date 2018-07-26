@@ -151,6 +151,21 @@ task :install_vim do
     }
 end
 
+desc "Install imgur-screenshot"
+task :install_imgur_screenshot do
+  puts "======================================================"
+  puts "build imgur_screenshot"
+  puts "======================================================"
+
+  puts ""
+
+  run %{
+      cp $HOME/.yadr/bin/imgur_screenshot/imgur_screenshot.desktop $HOME/.local/share/applications
+      cp -rf $HOME/.yadr/bin/imgur_screenshot/imgur-screenshot $HOME/.config/
+      sudo update-desktop-database
+  }
+end
+
 task :default => 'install'
 
 private

@@ -8,3 +8,4 @@ PATH=~/Android/Sdk/platform-tools:$PATH
 PATH=~/android-studio/bin:$PATH
 PATH=~/Android/Sdk/ndk-bundle:$PATH
 PATH=~/depot_tools:$PATH
+PATH=~/bin/imgur-screenshot:$PATH
