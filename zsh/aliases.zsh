@@ -217,3 +217,7 @@ alias tmux='tmux -2'
 
 # Android Studio
 alias android_studio='/home/moslab/android-studio/bin/studio.sh'
+
+alias adbd='adb devices'
+alias adbc='adb logcat -c'
+alias adbr='adb reboot'
