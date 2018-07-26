@@ -11,3 +11,6 @@
 [submodule "bin/vim"]
 	path = bin/vim
 	url = https://github.com/vim/vim.git
+[submodule "bin/imgur_screenshot"]
+	path = bin/imgur_screenshot
+	url = https://github.com/monojo/imgur_screenshot.git
