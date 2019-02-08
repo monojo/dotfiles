@@ -22,6 +22,6 @@
 "endif
 
 " Use seoul256 color scheme
-"let g:seoul256_background = 234
+let g:seoul256_background = 236
 colorscheme seoul256
 "colorscheme darcula

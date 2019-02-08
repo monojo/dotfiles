@@ -17,7 +17,8 @@ Plug 'junegunn/fzf.vim'
 "better than grep
 Plug 'mileszs/ack.vim'
 Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
+"Plug 'Chun-Yang/vim-action-ag'
+Plug 'monojo/vim-action-ag'
 "ctag on the go
 Plug 'majutsushi/tagbar'
 "git wrapper
