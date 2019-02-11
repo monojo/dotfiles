@@ -4,23 +4,8 @@ let g:airline#extentions#syntastic#enabled = 1
 "let g:airline#extensions#whitespace#enabled = 0
 "let g:airline#extensions#whitespace#symbol = '!'
 "let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
-let g:airline#extensions#tagbar#enabled = 1
 
-"short leave insert mode
-"bufferline
-"let g:airline#extensions#bufferline#enabled = 0
-"let g:airline#extensions#bufferline#overwrite_variables = 1
-"make buferline on status line
-"let g:bufferline_echo = 0
-"autocmd VimEnter *
-"\ let &statusline='%{bufferline#refresh_status()}'
-"\ .bufferline#get_status_string()
-
-"use powerline style fonts
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'molokai'
-"let g:airline#extensions#tmuxline#enabled = 1
-"let g:tmuxline_theme = 'zenburn'
+" enable Tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1 "display buffers in a tab
 let g:airline#extensions#tabline#show_tabs =1
@@ -38,5 +23,4 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 ""tagbar support
-"let g:airline#extensions#tagbar#enabled = 1
-"let g:airline#extensions#tagbar#flags = 's' "show signature(parms)
+let g:airline#extensions#tagbar#enabled = 1

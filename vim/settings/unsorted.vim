@@ -33,6 +33,8 @@ endif
 nnoremap <silent> <plug>MStrong :<C-U>normal! yiwciw**<CR>:<C-U>normal! pa**<CR>
 "nmap <leader>s <Plug>MStrong
 
+" vim update time (for gitgutter)
+set updatetime=100
 """"""python-mode""""""""
 "let g:pymode = 1
 "let g:pymode_folding = 1
