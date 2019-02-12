@@ -104,3 +104,5 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'nvie/vim-flake8', {'for': 'python'}
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "Plug 'hdima/python-syntax'
+" Preview on quick-fix window
+Plug 'ronakg/quickr-preview'
