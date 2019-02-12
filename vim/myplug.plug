@@ -105,4 +105,4 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "Plug 'hdima/python-syntax'
 " Preview on quick-fix window
-Plug 'ronakg/quickr-preview'
+Plug 'monojo/quickr-preview.vim'
