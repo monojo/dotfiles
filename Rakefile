@@ -137,8 +137,9 @@ task :install_vim do
 
     puts ""
 
-    run %{
+    sh %{
       cd $HOME/.yadr/bin/vim
+      make distclean
       ./configure --with-features=huge \
         --enable-multibyte \
         --enable-rubyinterp=yes \
@@ -146,8 +147,11 @@ task :install_vim do
         --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
         --enable-perlinterp=yes \
         --enable-luainterp=yes \
-        --enable-gui=gtk2 --enable-cscope --prefix=/usr
-    sudo make install
+        --enable-gui=gtk2 \
+        --enable-cscope \
+        --prefix=/usr/local
+      make VIMRUNTIMEDIR=/usr/local/share/vim/vim81 -j16
+      sudo make install
     }
 end
 
