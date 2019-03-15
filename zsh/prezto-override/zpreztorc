@@ -40,7 +40,9 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'ssh' \
-  'prompt'
+  'prompt' \
+  'command-not-found' \
+  'node'
 
 #
 # Editor
