@@ -339,6 +339,7 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+  run %{ git submodule update --init --recursive}
 end
 
 def want_to_install? (section)
