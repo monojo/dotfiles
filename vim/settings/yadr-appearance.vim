@@ -25,3 +25,5 @@
 let g:seoul256_background = 236
 colorscheme seoul256
 "colorscheme darcula
+" Make VIM transparent
+hi Normal ctermbg=NONE
