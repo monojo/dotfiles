@@ -35,6 +35,7 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
+  Rake::Task["install_imgur_screenshot"].execute
 
   install_fonts
   install_ideavim
@@ -166,6 +167,7 @@ task :install_imgur_screenshot do
   run %{
       cp $HOME/.yadr/bin/imgur_screenshot/imgur_screenshot.desktop $HOME/.local/share/applications
       cp -rf $HOME/.yadr/bin/imgur_screenshot/imgur-screenshot $HOME/.config/
+      cp -rf $HOME/.yadr/bin/imgur_screenshot/  $HOME/bin/imgur-screenshot
       sudo update-desktop-database
   }
 end
