@@ -111,3 +111,4 @@ Plug 'airblade/vim-gitgutter'
 " Preview on quick-fix window
 Plug 'monojo/quickr-preview.vim'
 Plug 'monojo/vim-ctf'
+Plug 'monojo/vim-call-graph'
