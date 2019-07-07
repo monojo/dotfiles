@@ -130,3 +130,5 @@
 	name = Xin
 [http]
 	cookiefile = /home/moslab/.gitcookies
+[credential]
+	helper = cache
