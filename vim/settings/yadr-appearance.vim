@@ -21,9 +21,29 @@
   "let g:CSApprox_loaded = 1
 "endif
 
+"set t_Co=256
 " Use seoul256 color scheme
-let g:seoul256_background = 236
-colorscheme seoul256
-"colorscheme darcula
-" Make VIM transparent
-hi Normal ctermbg=NONE
+"let g:seoul256_background = 234
+"set background=dark
+"colorscheme seoul256
+let g:dracula_colorterm=0
+let g:dracula_italic = 0
+colorscheme dracula
+"hi Normal ctermbg=NONE cterm=NONE term=NONE
+hi SpecialKey ctermbg=none ctermfg=none
+"colorscheme Monokain
+"colorscheme Zenburn with `:hi Normal ctermbg=333333`
+"colorscheme Tender
+"colorscheme apprentice
+"colorscheme dracula
+"colorscheme inkpot
+"colorscheme kolor
+"colorscheme jellybeans
+"colorscheme badwolf
+"colorscheme Tomorrow
+"colorscheme vividchalk
+"colorscheme gruvbox
+"colorscheme spacegray
+"colorscheme PaperColor
+  " Make VIM transparent
+"hi Normal ctermbg=NONE
