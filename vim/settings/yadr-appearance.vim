@@ -26,8 +26,8 @@
 "let g:seoul256_background = 234
 "set background=dark
 "colorscheme seoul256
-let g:dracula_colorterm=0
-let g:dracula_italic = 0
+"let g:dracula_colorterm=0
+"let g:dracula_italic = 0
 colorscheme dracula
 "hi Normal ctermbg=NONE cterm=NONE term=NONE
 hi SpecialKey ctermbg=none ctermfg=none
