@@ -50,5 +50,7 @@ nnoremap <esc> :noh<CR><esc>
 "use jk to exit insert
 inoremap jk <esc>
 "tag shortcut map
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+"map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-[> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <space> :w<CR>
