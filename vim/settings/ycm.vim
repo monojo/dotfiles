@@ -11,12 +11,17 @@ endif
 "only work for javascript & python
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+
 "solve the ycm Value Error problem
-if has('nvim') 
-  let g:ycm_global_ycm_extra_conf = '~/.local/share/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
-else
-  let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
-endif
+"if has('nvim') 
+  "let g:ycm_global_ycm_extra_conf = '~/.local/share/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
+"else
+  ""let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
+"endif
+
+
+"disalbe ycm
+"let g:loaded_youcompleteme = 1
 
 "let g:ycm_filetype_blacklist = {
 "	\ 'python' : 1,
