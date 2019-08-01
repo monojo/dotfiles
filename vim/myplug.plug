@@ -1,104 +1,68 @@
-"======Looking=====
+"======Appearance=====
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/promptline.vim'
-"ultimate color
+"ultimate color collection
 Plug 'flazz/vim-colorschemes'
-Plug 'blueshirts/darcula'
 "======Session Management======
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
-"======Navigation======
-"Finder
-"Plug 'ctrlpvim/ctrlp.vim'
+"======Finder======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-"better than grep
-Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
-"Plug 'Chun-Yang/vim-action-ag'
-Plug 'monojo/vim-action-ag'
-"ctag on the go
+"======Navigation======
+"ctags on the go
 Plug 'majutsushi/tagbar'
-"git wrapper
-Plug 'tpope/vim-fugitive'
 "Nerd Tree
 Plug 'scrooloose/nerdtree'
-"======Shortcut======
-"snippte
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-"======python ide======
-"syntax check
-"vim indent guide
-Plug 'nathanaelkane/vim-indent-guides'
-"======Distraction free======
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-"======MISC======
-"Syntax
-Plug 'sheerun/vim-polyglot'
 "better looking for parentheses
 Plug 'junegunn/rainbow_parentheses.vim'
 "git browser
+"gv dependency
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 "easy align code
 Plug 'junegunn/vim-easy-align'
-"Show register content
+"Show register content, press "
 Plug 'junegunn/vim-peekaboo'
 "======Make life better======
-""Never used
-"Plug 'chrisbra/vim-diff-enhanced'
 "Display marks on left
 Plug 'kshenoy/vim-signature'
-"Multiple cursors
+"Multiple cursors, c-n
 Plug 'terryma/vim-multiple-cursors'
 "Highlight multiple
 Plug 't9md/vim-quickhl'
-"Cscope mapping & setting
-Plug 'monojo/cscope-map'
-"Ultimate auto complete tool
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
-"Generate YCM config file
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 "Better comment
 Plug 'scrooloose/nerdcommenter'
-"Auto pair
+"Auto closing pair
 Plug 'Raimondi/delimitMate'
-"Better end
+"Auto end for certain structure
 Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-"Async Lint
-Plug 'w0rp/ale'
-"Local markdown memo list
-Plug 'glidenote/memolist.vim'
-"=======Javascript========
-Plug  'mxw/vim-jsx', {'for': 'javascript'}
-Plug 'elzr/vim-json', {'for': 'javascript'}
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
-Plug 'othree/jspc.vim', {'for': 'javascript'}
-Plug 'terryma/vim-expand-region'
-
-"=======Newly added======
-"Code search & view
-Plug 'dyng/ctrlsf.vim'
-"Tmux navigation
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'justinmk/vim-sneak'
-"Plug 'klen/python-mode', {'for': 'python'}
-"Plug 'jiangmiao/auto-pairs'
-"plantuml plugin
-"Plug 'scrooloose/vim-slumlord'
-"Plug 'aklt/plantuml-syntax'
-"=======Easy motion and fuzzy search======
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'easymotion/vim-easymotion'
+" Show current file git diff int sign column
 Plug 'airblade/vim-gitgutter'
-"Plug 'hari-rangarajan/CCTree'
-"Plug 'monojo/vim-basic'
+"======Moving around======
+"move between tmux pane and vim window
+Plug 'christoomey/vim-tmux-navigator'
+"2 char jump, press s
+Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
+"======Language Server Protocol Client======
+"Used for code completion and navigation
+"Communicate with LSP server
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+
+"****************Plugin Tomb*******************
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"
+" A new extension framework
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
 "=======Markdown========
 "preview markdown in a browser
 "Plug 'kannokanno/previm'
@@ -108,7 +72,65 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'nvie/vim-flake8', {'for': 'python'}
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "Plug 'hdima/python-syntax'
+"Plug 'hari-rangarajan/CCTree'
+"Plug 'monojo/vim-basic'
+"Plug 'monojo/vim-ctf'
+"Plug 'monojo/vim-call-graph'
 " Preview on quick-fix window
-Plug 'monojo/quickr-preview.vim'
-Plug 'monojo/vim-ctf'
-Plug 'monojo/vim-call-graph'
+"Plug 'monojo/quickr-preview.vim'
+"Code search & view
+"Plug 'dyng/ctrlsf.vim'
+"Tmux navigation
+"
+"Async Lint
+"Plug 'w0rp/ale', {'on': 'ALEToggle'}
+
+""=======Javascript========
+"Plug  'mxw/vim-jsx', {'for': 'javascript'}
+"Plug 'elzr/vim-json', {'for': 'javascript'}
+"Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
+"Plug 'othree/jspc.vim', {'for': 'javascript'}
+"Plug 'terryma/vim-expand-region'
+"Plug 'klen/python-mode', {'for': 'python'}
+"Plug 'jiangmiao/auto-pairs'
+"plantuml plugin
+"Plug 'scrooloose/vim-slumlord'
+"Plug 'aklt/plantuml-syntax'
+" Another finder tool like FZF
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+"Plug 'ctrlpvim/ctrlp.vim'
+"better than grep
+"Plug 'mileszs/ack.vim'
+"Plug 'rking/ag.vim'
+"Plug 'Chun-Yang/vim-action-ag'
+"Plug 'monojo/vim-action-ag'
+"git wrapper
+"======Shortcut======
+"snippte
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+"======python ide======
+"syntax check
+"vim indent guide
+"Plug 'nathanaelkane/vim-indent-guides'
+"======MISC======
+"Syntax
+"Plug 'sheerun/vim-polyglot'
+""Never used
+"Plug 'chrisbra/vim-diff-enhanced'
+"Cscope mapping & setting
+"Plug 'monojo/cscope-map'
+"Ultimate auto complete tool
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
+"Generate YCM config file
+"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+"Plug 'edkolev/promptline.vim'
+
+"======Distraction free======
+"Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/limelight.vim'
+"
+"Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch-fuzzy.vim'
+"Plug 'haya14busa/incsearch-easymotion.vim'
+"Plug 'Shougo/echodoc.vim'
