@@ -1,5 +1,4 @@
 " Make it beautiful - colors and fonts
-
 "if has("gui_running")
   ""tell the term has 256 colors
   "set t_Co=256
@@ -28,8 +27,8 @@
 "colorscheme seoul256
 "let g:dracula_colorterm=0
 "let g:dracula_italic = 0
-colorscheme dracula
 "hi Normal ctermbg=NONE cterm=NONE term=NONE
+colorscheme dracula
 hi SpecialKey ctermbg=none ctermfg=none
 "colorscheme Monokain
 "colorscheme Zenburn with `:hi Normal ctermbg=333333`
