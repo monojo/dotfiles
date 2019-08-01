@@ -26,9 +26,9 @@ let g:LanguageClient_serverCommands = {
             "\ 'objc': ['clangd', '--log-file=/tmp/cc.log'],
             "\ }
 
-nn <silent> <leader>d :call LanguageClient#textDocument_definition()<cr>
-nn <silent> <leader>r :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+"nn <silent> <leader>d :call LanguageClient#textDocument_definition()<cr>
+"nn <silent> <leader>r :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
+"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 "" bases
 nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
 " bases of up to 3 levels
@@ -51,6 +51,17 @@ nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind
 nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
 
 nn xx x
+
+"not working for vim
+"augroup LanguageClient_config
+  "au!
+  "au BufEnter * let b:Plugin_LanguageClient_started = 0
+  "au User LanguageClientStarted setl signcolumn=yes
+  "au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+  "au User LanguageClientStopped setl signcolumn=auto
+  "au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+  "au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+"augroup END
 
 "======VIM-LSP======
 "if executable('clangd')
@@ -98,9 +109,9 @@ nn xx x
 "nn <silent> xD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
 
 "" caller
-"nn <silent> xc :call CocLocations('ccls','$ccls/call')<cr>
-"" callee
-"nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
+nn <silent> xc :call CocLocations('ccls','$ccls/call')<cr>
+" callee
+nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
 
 "" $ccls/member
 "" member variables / variables in a namespace
@@ -115,3 +126,9 @@ nn xx x
 "nn <silent> xV :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
 
 "nn xx x
+nn <silent> <leader>d <Plug>(coc-definition)
+nn <silent> <leader>r <Plug>(coc-references)
+nn <silent> K :call CocActionAsync('doHover')<cr>
+set updatetime=300
+au CursorHold * sil call CocActionAsync('highlight')
+au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
