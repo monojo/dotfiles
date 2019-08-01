@@ -61,7 +61,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 "Plug 'prabirshrestha/vim-lsp'
 "
 " A new extension framework
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 "=======Markdown========
 "preview markdown in a browser
@@ -84,6 +84,14 @@ Plug 'autozimu/LanguageClient-neovim', {
 "
 "Async Lint
 "Plug 'w0rp/ale', {'on': 'ALEToggle'}
+"Plug 'w0rp/ale'
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 
 ""=======Javascript========
 "Plug  'mxw/vim-jsx', {'for': 'javascript'}
