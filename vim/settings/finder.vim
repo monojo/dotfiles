@@ -25,8 +25,12 @@ nmap <leader>f :Files<CR>
 "search buffers
 nmap <leader>b :Buffers<CR>
 "search tag
-nmap <leader>t :Tags<CR>
+"nmap <leader>t :Tags<CR>
+nmap <leader>t :BTags<CR>
 nmap <leader>m :Marks<CR>
+nmap <leader>u :History<CR>
+nmap <leader>l :BLines<CR>
+nmap <leader>cmd :History:<CR>
 imap <c-x><c-k> <Plug>(fzf-complete-word)
 "search current word with Rg
 nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
