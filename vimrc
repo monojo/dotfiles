@@ -46,7 +46,7 @@ au BufNewFile,BufRead *.plug set filetype=vim
 
 set noswapfile
 set nobackup
-set nowb
+set nowritebackup
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -158,6 +158,14 @@ syn sync fromstart " Increase the highlighting accuracy
 scriptencoding utf-8
 set fenc=utf-8
 set termencoding=utf-8
+
+set cmdheight=2
+
+set updatetime=300
+
+set shortmess+=c
+set signcolumn=yes
+
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
