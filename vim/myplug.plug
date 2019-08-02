@@ -48,20 +48,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
-"Used for code completion and navigation
-"Communicate with LSP server
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
+" A new extension framework including LSP client support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "****************Plugin Tomb*******************
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
 "
-" A new extension framework
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 "=======Markdown========
 "preview markdown in a browser
@@ -142,3 +135,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'haya14busa/incsearch-fuzzy.vim'
 "Plug 'haya14busa/incsearch-easymotion.vim'
 "Plug 'Shougo/echodoc.vim'
+"Used for code completion and navigation
+"Communicate with LSP server
+"Plug 'autozimu/LanguageClient-neovim', {
+            "\ 'branch': 'next',
+            "\ 'do': 'bash install.sh',
+            "\ }
