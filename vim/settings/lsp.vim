@@ -7,12 +7,12 @@
 "let g:LanguageClient_hoverPreview = 'Never'
 "let g:LanguageClient_serverCommands = {}
 
-let g:LanguageClient_serverCommands = {
-            \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-            \ }
+"let g:LanguageClient_serverCommands = {
+            "\ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ }
 "let g:LanguageClient_serverCommands = {
             "\ 'c': ['cquery', '--log-file=/tmp/cc.log'],
             "\ 'cpp': ['cquery', '--log-file=/tmp/cc.log'],
@@ -30,27 +30,27 @@ let g:LanguageClient_serverCommands = {
 "nn <silent> <leader>r :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
 "nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 "" bases
-nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
-" bases of up to 3 levels
-nn <silent> xB :call LanguageClient#findLocations({'method':'$ccls/inheritance','levels':3})<cr>
-" derived
-nn <silent> xd :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true})<cr>
-" derived of up to 3 levels
-nn <silent> xD :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true,'levels':3})<cr>
+"nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
+"" bases of up to 3 levels
+"nn <silent> xB :call LanguageClient#findLocations({'method':'$ccls/inheritance','levels':3})<cr>
+"" derived
+"nn <silent> xd :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true})<cr>
+"" derived of up to 3 levels
+"nn <silent> xD :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true,'levels':3})<cr>
 
-" caller
-nn <silent> xc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
-" callee
-nn <silent> xC :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<cr>
-" $ccls/member
-" nested classes / types in a namespace
-nn <silent> xs :call LanguageClient#findLocations({'method':'$ccls/member','kind':2})<cr>
-" member functions / functions in a namespace
-nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
-" member variables / variables in a namespace
-nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
+"" caller
+"nn <silent> xc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
+"" callee
+"nn <silent> xC :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<cr>
+"" $ccls/member
+"" nested classes / types in a namespace
+"nn <silent> xs :call LanguageClient#findLocations({'method':'$ccls/member','kind':2})<cr>
+"" member functions / functions in a namespace
+"nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
+"" member variables / variables in a namespace
+"nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
 
-nn xx x
+"nn xx x
 
 "not working for vim
 "augroup LanguageClient_config
@@ -102,7 +102,7 @@ nn xx x
 "" bases
 "nn <silent> xb :call CocLocations('ccls','$ccls/inheritance')<cr>
 "" bases of up to 3 levels
-"nn <silent> xb :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
+"nn <silent> xB :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
 "" derived
 "nn <silent> xd :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
 "" derived of up to 3 levels
@@ -125,10 +125,43 @@ nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
 "nn <silent> xv :call CocLocations('ccls','$ccls/vars')<cr>
 "nn <silent> xV :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
 
-"nn xx x
-nn <silent> <leader>d <Plug>(coc-definition)
-nn <silent> <leader>r <Plug>(coc-references)
-nn <silent> K :call CocActionAsync('doHover')<cr>
-set updatetime=300
+nn xx x
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>r <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 au CursorHold * sil call CocActionAsync('highlight')
 au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+
+" Remap for rename current word
+"nmap <leader>rn <Plug>(coc-rename)
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
