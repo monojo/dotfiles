@@ -36,9 +36,6 @@ Plug 'scrooloose/nerdcommenter'
 "Auto closing pair
 Plug 'Raimondi/delimitMate'
 "Auto end for certain structure
-Plug 'tpope/vim-endwise'
-"Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 " Show current file git diff int sign column
 Plug 'airblade/vim-gitgutter'
 "======Moving around======
@@ -141,3 +138,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
             "\ 'branch': 'next',
             "\ 'do': 'bash install.sh',
             "\ }
+"endwise will let <cr> mapping in completion error
+"Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-repeat'
