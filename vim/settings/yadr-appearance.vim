@@ -25,13 +25,19 @@
 "let g:seoul256_background = 234
 "set background=dark
 "colorscheme seoul256
-"let g:dracula_colorterm=0
-"let g:dracula_italic = 0
+"hi CocHighlightText ctermbg=237
+
 "hi Normal ctermbg=NONE cterm=NONE term=NONE
+"
 colorscheme dracula
 hi SpecialKey ctermbg=none ctermfg=none
+hi CocHighlightText ctermbg=239
+"let g:dracula_colorterm=0
+"let g:dracula_italic = 0
+"
 "colorscheme Monokain
-"colorscheme Zenburn with `:hi Normal ctermbg=333333`
+"colorscheme zenburn
+"hi Normal ctermbg=333333
 "colorscheme Tender
 "colorscheme apprentice
 "colorscheme dracula
@@ -44,5 +50,7 @@ hi SpecialKey ctermbg=none ctermfg=none
 "colorscheme gruvbox
 "colorscheme spacegray
 "colorscheme PaperColor
+"hi CocHighlightText ctermbg=Green
+"colorscheme space-vim-dark
   " Make VIM transparent
 "hi Normal ctermbg=NONE
