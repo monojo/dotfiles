@@ -129,7 +129,6 @@ nn xx x
 nmap <silent> <leader>d <Plug>(coc-definition)
 nmap <silent> <leader>r <Plug>(coc-references)
 
-set completeopt=longest,menuone
 "inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
