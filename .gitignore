@@ -16,4 +16,4 @@ vim/plugged
 bin/subl
 tags
 vim/vimplugs/mysetting.plug.bak
-vim/autoload/plug.vim.old
+vim/autoload
