@@ -13,12 +13,8 @@ task :install => [:submodule_init, :submodules] do
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
   install_rvm_binstubs
 
-  # this has all the runcoms from this directory.
-  # These will configure git, ctags, tmux behavior
-  # install_files will symbol link these files to $HOME dir
+  # Symbolink config files to $HOME dir
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
-  #install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
-  #install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
