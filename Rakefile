@@ -1,6 +1,5 @@
 require 'rake'
 require 'fileutils'
-require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vimplug')
 
 desc "Hook our dotfiles into system-standard positions."
@@ -15,19 +14,18 @@ task :install => [:submodule_init, :submodules] do
   install_rvm_binstubs
 
   # this has all the runcoms from this directory.
+  # These will configure git, ctags, tmux behavior
+  # install_files will symbol link these files to $HOME dir
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
-  install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
-  install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
+  #install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
+  #install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
-  #if want_to_install?('vim configuration (highly recommended)')
-  #  install_files(Dir.glob('{vim,vimrc}'))
-    #Rake::Task["install_vundle"].execute
-  #end
+  install_files(Dir.glob('{vim,vimrc}')) if want_to_install?('vim configuration')
 
-  install_files(Dir.glob('{vim,vimrc}'))
-
+  # Install important binaries
+  # Also can be installed seperately by calling `rake install_***`
   Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
@@ -36,12 +34,11 @@ task :install => [:submodule_init, :submodules] do
 
   install_fonts
   install_ideavim
-
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
-
   success_msg("installed")
 end
 
+desc "Install Prezto Zsh configuration framework"
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
@@ -373,11 +370,6 @@ def install_files(files, method = :symlink)
     puts
   end
 end
-
-def needs_migration_to_vundle?
-  File.exists? File.join('vim', 'bundle', 'tpope-vim-pathogen')
-end
-
 
 def list_vim_submodules
   result=`git submodule -q foreach 'echo $name"||"\`git remote -v | awk "END{print \\\\\$2}"\`'`.select{ |line| line =~ /^vim.bundle/ }.map{ |line| line.split('||') }
