@@ -21,8 +21,6 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
-  install_files(Dir.glob('bin/fzf')) if want_to_install?('fzf install')
-#  install_files(Dir.glob('bin/fzf')) if want_to_install?('ideavim configfile')
   #if want_to_install?('vim configuration (highly recommended)')
   #  install_files(Dir.glob('{vim,vimrc}'))
     #Rake::Task["install_vundle"].execute
@@ -31,7 +29,6 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('{vim,vimrc}'))
 
   Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
-  Rake::Task["install_fzf"].execute
   Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
@@ -112,20 +109,6 @@ task :install_ag do
       cd $HOME/.yadr/bin/ag
       ./build.sh
       sudo make install
-    }
-end
-
-desc "Install fzf"
-task :install_fzf do
-    puts "======================================================"
-    puts "build fzf"
-    puts "======================================================"
-
-    puts ""
-
-    run %{
-      cd $HOME/.yadr/bin/fzf
-      ./install
     }
 end
 
