@@ -14,11 +14,11 @@ task :install => [:submodule_init, :submodules] do
   install_rvm_binstubs
 
   # Symbolink config files to $HOME dir
-  install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
-  install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
-  install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
-  install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
-  install_files(Dir.glob('{vim,vimrc}')) if want_to_install?('vim configuration')
+  install_files(Dir.glob('git/*'))
+  install_files(Dir.glob('ctags/*'))
+  install_files(Dir.glob('tmux/*'))
+  install_files(Dir.glob('vimify/*'))
+  install_files(Dir.glob('{vim,vimrc}'))
 
   # Install important binaries
   # Also can be installed seperately by calling `rake install_***`
