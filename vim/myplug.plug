@@ -141,4 +141,5 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "endwise will let <cr> mapping in completion error
 "Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
+Plug 'dylanaraps/wal.vim'
