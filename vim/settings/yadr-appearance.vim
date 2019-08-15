@@ -29,10 +29,10 @@
 
 "hi Normal ctermbg=NONE cterm=NONE term=NONE
 "
-"colorscheme dracula
-"hi SpecialKey ctermbg=none ctermfg=none
-colorscheme wal
+colorscheme dracula
+"colorscheme wal
 hi CocHighlightText ctermbg=239
+hi SpecialKey ctermbg=none ctermfg=none
 "let g:dracula_colorterm=0
 "let g:dracula_italic = 0
 "
