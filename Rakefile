@@ -27,6 +27,7 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
   Rake::Task["install_imgur_screenshot"].execute
+  Rake::Task["install_tpm"].execute
 
   install_fonts
   install_ideavim
@@ -148,6 +149,19 @@ task :install_imgur_screenshot do
   }
 end
 
+desc "Install tmux plugin manager"
+task :install_tpm do
+  puts "======================================================"
+  puts "Install TPM"
+  puts "======================================================"
+
+  puts ""
+
+  run %{
+      mkdir -p $HOME/.tmux/plugins
+      ln -s $HOME/.yadr/bin/tpm $HOME/.tmux/plugins/tpm
+  }
+end
 task :default => 'install'
 
 private
