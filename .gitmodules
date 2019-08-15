@@ -11,3 +11,6 @@
 [submodule "bin/imgur_screenshot"]
 	path = bin/imgur_screenshot
 	url = https://github.com/monojo/imgur_screenshot.git
+[submodule "bin/tpm"]
+	path = bin/tpm
+	url = https://github.com/tmux-plugins/tpm.git
