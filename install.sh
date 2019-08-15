@@ -48,7 +48,8 @@ declare -a LINUX_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
     "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
-    "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx"
+    "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
+    "volumeicon-alsa" \
 "fcitx-rime" "xclip" "scrot")
 
 check_platform
