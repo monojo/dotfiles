@@ -71,6 +71,18 @@ task :submodules do
   end
 end
 
+desc "Update submodules with remote upstreams"
+task :update_submodules do
+  puts "======================================================"
+  puts "Updating YADR submodules...please wait"
+  puts "======================================================"
+  run %{
+      cd $HOME/.yadr
+      git submodule foreach git pull origin master
+  }
+  puts
+end
+
 desc "Runs Vimplug installer in a clean vim environment"
 task :install_vim_plug do
   puts "======================================================"
