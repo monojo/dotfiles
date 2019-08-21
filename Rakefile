@@ -28,8 +28,9 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_prezto"].execute
   Rake::Task["install_imgur_screenshot"].execute
   Rake::Task["install_tpm"].execute
+  Rake::Task["install_fonts"].execute
 
-  install_fonts
+  #install_fonts
   install_ideavim
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
   success_msg("installed")
@@ -229,7 +230,9 @@ def install_homebrew
   puts
 end
 
-def install_fonts
+desc "install fonts"
+task :install_fonts do
+#def install_fonts
   puts "======================================================"
   puts "Installing patched fonts for Powerline/Lightline."
   puts "======================================================"
