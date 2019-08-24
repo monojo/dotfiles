@@ -49,7 +49,7 @@ declare -a LINUX_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
     "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
     "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
-    "volumeicon-alsa" \
+    "volumeicon-alsa" "python3-pip"\
 "fcitx-rime" "xclip" "scrot")
 
 check_platform
