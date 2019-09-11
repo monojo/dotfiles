@@ -25,8 +25,8 @@ nmap <leader>f :Files<CR>
 "search buffers
 nmap <leader>b :Buffers<CR>
 "search tag
-"nmap <leader>t :Tags<CR>
 nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
 nmap <leader>m :Marks<CR>
 nmap <leader>u :History<CR>
 nmap <leader>l :BLines<CR>
