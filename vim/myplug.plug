@@ -3,55 +3,59 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "ultimate color collection
 Plug 'flazz/vim-colorschemes'
-"======Session Management======
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
 "======Finder======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 "======Navigation======
-"ctags on the go
+"ctags overview on the go
 Plug 'majutsushi/tagbar'
 "Nerd Tree
 Plug 'scrooloose/nerdtree'
-"better looking for parentheses
-Plug 'junegunn/rainbow_parentheses.vim'
-"git browser
+"======Version Control======
 "gv dependency
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-"easy align code
-Plug 'junegunn/vim-easy-align'
+"======Extra Info======
 "Show register content, press "
 Plug 'junegunn/vim-peekaboo'
-"======Make life better======
 "Display marks on left
 Plug 'kshenoy/vim-signature'
-"Multiple cursors, c-n
-Plug 'terryma/vim-multiple-cursors'
-"Highlight multiple
-Plug 't9md/vim-quickhl'
-"Better comment
-Plug 'scrooloose/nerdcommenter'
-"Auto closing pair
-Plug 'Raimondi/delimitMate'
-"Auto end for certain structure
-" Show current file git diff int sign column
+" Show current file git diff in sign column
 Plug 'airblade/vim-gitgutter'
-"======Moving around======
-"move between tmux pane and vim window
-Plug 'christoomey/vim-tmux-navigator'
+"Highlight multiple words
+Plug 't9md/vim-quickhl'
+"======Alignment======
+"easy align code
+Plug 'junegunn/vim-easy-align'
+"======Motion======
 "2 char jump, press s
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"======MISC======
+"Multiple cursors, c-n
+Plug 'terryma/vim-multiple-cursors'
+"Better comment
+Plug 'scrooloose/nerdcommenter'
+"Auto closing pair
+"Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+"Move between tmux pane and vim window
+Plug 'christoomey/vim-tmux-navigator'
+"Use . to repeat complex sequence
+Plug 'tpope/vim-repeat'
+"Fancy startscreen, also help manage sessions
+Plug 'mhinz/vim-startify'
 
 "****************Plugin Tomb*******************
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
 "
+"======Session Management======
+"Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc'
 "
 "=======Markdown========
 "preview markdown in a browser
@@ -141,5 +145,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "endwise will let <cr> mapping in completion error
 "Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'dylanaraps/wal.vim'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+"better looking for parentheses
+"Plug 'junegunn/rainbow_parentheses.vim'
