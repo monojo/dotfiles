@@ -13,13 +13,11 @@ Plug 'majutsushi/tagbar'
 "gv dependency
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+" Show current file git diff in sign column
+Plug 'airblade/vim-gitgutter'
 "======Extra Info======
 "Show register content, press "
 Plug 'junegunn/vim-peekaboo'
-"Display marks on left
-Plug 'kshenoy/vim-signature'
-" Show current file git diff in sign column
-Plug 'airblade/vim-gitgutter'
 "Highlight multiple words
 Plug 't9md/vim-quickhl'
 "======Motion======
@@ -34,7 +32,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 "Move between tmux pane and vim window
 Plug 'christoomey/vim-tmux-navigator'
-
+"Use . to repeat plugin map
+Plug 'tpope/vim-repeat'
 "****************Plugin Tomb*******************
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
@@ -148,5 +147,5 @@ Plug 'christoomey/vim-tmux-navigator'
 "Plug 'Raimondi/delimitMate'
 "Nerd Tree
 "Plug 'scrooloose/nerdtree'
-"Use . to repeat plugin map
-"Plug 'tpope/vim-repeat'
+"Display marks on left
+"Plug 'kshenoy/vim-signature'
