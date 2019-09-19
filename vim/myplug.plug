@@ -9,8 +9,6 @@ Plug 'junegunn/fzf.vim'
 "======Navigation======
 "ctags overview on the go
 Plug 'majutsushi/tagbar'
-"Nerd Tree
-Plug 'scrooloose/nerdtree'
 "======Version Control======
 "gv dependency
 Plug 'tpope/vim-fugitive'
@@ -24,30 +22,18 @@ Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 "Highlight multiple words
 Plug 't9md/vim-quickhl'
-"======Alignment======
-"easy align code
-Plug 'junegunn/vim-easy-align'
 "======Motion======
-"2 char jump, press s
-Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "======MISC======
-"Multiple cursors, c-n
-Plug 'terryma/vim-multiple-cursors'
 "Better comment
 Plug 'scrooloose/nerdcommenter'
 "Auto closing pair
-"Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 "Move between tmux pane and vim window
 Plug 'christoomey/vim-tmux-navigator'
-"Use . to repeat complex sequence
-Plug 'tpope/vim-repeat'
-"Fancy startscreen, also help manage sessions
-Plug 'mhinz/vim-startify'
 
 "****************Plugin Tomb*******************
 "Plug 'prabirshrestha/async.vim'
@@ -149,3 +135,18 @@ Plug 'mhinz/vim-startify'
 "Plug 'honza/vim-snippets'
 "better looking for parentheses
 "Plug 'junegunn/rainbow_parentheses.vim'
+"Fancy startscreen, also help manage sessions
+"Plug 'mhinz/vim-startify'
+"======Alignment======
+"easy align code
+"Plug 'junegunn/vim-easy-align'
+"motion
+"2 char jump, press s
+"Plug 'justinmk/vim-sneak'
+"Multiple cursors, c-n
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'Raimondi/delimitMate'
+"Nerd Tree
+"Plug 'scrooloose/nerdtree'
+"Use . to repeat plugin map
+"Plug 'tpope/vim-repeat'
