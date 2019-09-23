@@ -15,6 +15,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 " Show current file git diff in sign column
 Plug 'airblade/vim-gitgutter'
+"======Snippets======
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 "======Extra Info======
 "Show register content, press "
 Plug 'junegunn/vim-peekaboo'
@@ -92,10 +95,6 @@ Plug 'tpope/vim-repeat'
 "Plug 'Chun-Yang/vim-action-ag'
 "Plug 'monojo/vim-action-ag'
 "git wrapper
-"======Shortcut======
-"snippte
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
 "======python ide======
 "syntax check
 "vim indent guide
@@ -130,8 +129,6 @@ Plug 'tpope/vim-repeat'
 "endwise will let <cr> mapping in completion error
 "Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
 "better looking for parentheses
 "Plug 'junegunn/rainbow_parentheses.vim'
 "Fancy startscreen, also help manage sessions

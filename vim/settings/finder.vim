@@ -23,6 +23,7 @@ let g:fzf_colors =
 nmap <leader><tab> <Plug>(fzf-maps-n)
 nmap <leader>f :Files<CR>
 nmap <leader>F :GFiles<CR>
+nmap <leader>s :Snippets<CR>
 "search buffers
 nmap <leader>b :Buffers<CR>
 "search tag
