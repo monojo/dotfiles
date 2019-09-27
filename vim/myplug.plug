@@ -37,6 +37,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 "Use . to repeat plugin map
 Plug 'tpope/vim-repeat'
+"Display marks on left
+Plug 'kshenoy/vim-signature'
 "****************Plugin Tomb*******************
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
@@ -144,5 +146,3 @@ Plug 'tpope/vim-repeat'
 "Plug 'Raimondi/delimitMate'
 "Nerd Tree
 "Plug 'scrooloose/nerdtree'
-"Display marks on left
-"Plug 'kshenoy/vim-signature'
