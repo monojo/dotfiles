@@ -27,7 +27,14 @@ Plug 't9md/vim-quickhl'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'autozimu/LanguageClient-neovim', {
+            "\ 'branch': 'next',
+            "\ 'do': 'bash install.sh',
+            "\ }
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+Plug 'dense-analysis/ale'
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
@@ -39,9 +46,16 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-repeat'
 "Display marks on left
 Plug 'kshenoy/vim-signature'
+
+"======Completion======
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 "****************Plugin Tomb*******************
-"Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
 "
 "======Session Management======
 "Plug 'xolox/vim-session'
@@ -69,13 +83,6 @@ Plug 'kshenoy/vim-signature'
 "Async Lint
 "Plug 'w0rp/ale', {'on': 'ALEToggle'}
 "Plug 'w0rp/ale'
-"if has('nvim')
-  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-  "Plug 'Shougo/deoplete.nvim'
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
-"endif
 
 ""=======Javascript========
 "Plug  'mxw/vim-jsx', {'for': 'javascript'}
@@ -124,10 +131,6 @@ Plug 'kshenoy/vim-signature'
 "Plug 'Shougo/echodoc.vim'
 "Used for code completion and navigation
 "Communicate with LSP server
-"Plug 'autozimu/LanguageClient-neovim', {
-            "\ 'branch': 'next',
-            "\ 'do': 'bash install.sh',
-            "\ }
 "endwise will let <cr> mapping in completion error
 "Plug 'tpope/vim-endwise'
 "Plug 'tpope/vim-surround'
