@@ -26,8 +26,6 @@ Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Helpful coc extensions
-" coc-git: gitgutter
 " lsp based c/cxx syntax hightlight
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 "======MISC======
