@@ -14,7 +14,8 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 " Show current file git diff in sign column
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
+"coc seems has such support
 "======Snippets======
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -27,14 +28,17 @@ Plug 't9md/vim-quickhl'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" lsp based c/cxx syntax hightlight
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 "Plug 'autozimu/LanguageClient-neovim', {
             "\ 'branch': 'next',
             "\ 'do': 'bash install.sh',
             "\ }
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
@@ -48,13 +52,13 @@ Plug 'tpope/vim-repeat'
 Plug 'kshenoy/vim-signature'
 
 "======Completion======
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+  "Plug 'Shougo/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 "****************Plugin Tomb*******************
 "
 "======Session Management======
