@@ -86,8 +86,10 @@ autocmd FileType javascript set tabstop=2|
       \ set foldmethod=indent   "fold based on indent
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+if has('vim')
+    nnoremap p p=`]<C-o>
+    nnoremap P P=`]<C-o>
+endif
 
 filetype plugin on
 filetype indent on
