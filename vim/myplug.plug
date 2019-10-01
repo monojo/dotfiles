@@ -13,9 +13,6 @@ Plug 'majutsushi/tagbar'
 "gv dependency
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-" Show current file git diff in sign column
-"Plug 'airblade/vim-gitgutter'
-"coc seems has such support
 "======Snippets======
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -31,14 +28,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " lsp based c/cxx syntax hightlight
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-
-"Plug 'autozimu/LanguageClient-neovim', {
-            "\ 'branch': 'next',
-            "\ 'do': 'bash install.sh',
-            "\ }
-"Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'dense-analysis/ale'
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
@@ -153,3 +142,13 @@ Plug 'kshenoy/vim-signature'
 "Plug 'Raimondi/delimitMate'
 "Nerd Tree
 "Plug 'scrooloose/nerdtree'
+"Plug 'autozimu/LanguageClient-neovim', {
+            "\ 'branch': 'next',
+            "\ 'do': 'bash install.sh',
+            "\ }
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'dense-analysis/ale'
+" Show current file git diff in sign column
+"coc seems has such support coc-extension
+"Plug 'airblade/vim-gitgutter'

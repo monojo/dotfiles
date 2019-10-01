@@ -137,6 +137,9 @@ endfunction
 au CursorHold * sil call CocActionAsync('highlight')
 au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+nmap <F5> :CocRestart<CR>
 " Remap for rename current word
 "nmap <leader>rn <Plug>(coc-rename)
 " Use tab for trigger completion with characters ahead and navigate.
@@ -151,7 +154,6 @@ au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 "endfunction
 
 "Close the preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-nmap <F5> :CocRestart<CR>
-"========
+"=======LSP server======
+"======C/CPP======
+"ccls
