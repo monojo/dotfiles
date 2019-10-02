@@ -31,8 +31,6 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
-"Auto closing pair
-Plug 'jiangmiao/auto-pairs'
 "Move between tmux pane and vim window
 Plug 'christoomey/vim-tmux-navigator'
 "Use . to repeat plugin map
@@ -152,3 +150,5 @@ Plug 'kshenoy/vim-signature'
 " Show current file git diff in sign column
 "coc seems has such support coc-extension
 "Plug 'airblade/vim-gitgutter'
+"Auto closing pair
+"Plug 'jiangmiao/auto-pairs'
