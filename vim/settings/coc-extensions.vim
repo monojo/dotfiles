@@ -26,4 +26,4 @@ let g:coc_snippet_prev = '<c-p>'
 " Use <C-j> for select text for visual placeholder of snippet.
 "vmap <C-j> <Plug>(coc-snippets-select)
 
-" coc-list: extra source  
+" coc-list: extra source
