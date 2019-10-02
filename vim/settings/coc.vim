@@ -16,20 +16,10 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
 au CursorHold * sil call CocActionAsync('highlight')
 au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 nmap <F5> :CocRestart<CR>
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" Remap for rename current word
+" Remap for rename current word in all related files
 "nmap <leader>rn <Plug>(coc-rename)
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-"inoremap <silent><expr> <TAB>
-            "\ pumvisible() ? "\<C-n>" :
-            "\ <SID>check_back_space() ? "\<TAB>" :
-            "\ coc#refresh()
-"function! s:check_back_space() abort
-    "let col = col('.') - 1
-    "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+" Need virtual text support
+nmap <leader>e <Plug>(coc-codelens-action)

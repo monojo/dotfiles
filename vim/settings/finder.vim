@@ -1,4 +1,4 @@
-" Finder functionalities
+" Vim Finder Provider: Fzf, CocList
 " Here some functionalities are overlapped with FZF:
 " Coc  vs   FZF
 " ----------------
@@ -23,55 +23,8 @@
 " maps      Maps
 " helptags  Helptags
 " filetypes Filetypes
-
-"======fzf======
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'down': '~40%' }
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-" This part could be replaced by coc-list
-"nmap <leader><tab> <Plug>(fzf-maps-n)
-"nmap <leader>f :Files<CR>
-"nmap <leader>F :GFiles<CR>
-"nmap <leader>s :Snippets<CR>
-"imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
-""search buffers
-"nmap <leader>b :Buffers<CR>
-""search tag
-"nmap <leader>t :BTags<CR>
-"nmap <leader>T :Tags<CR>
-"nmap <leader>m :Marks<CR>
-"nmap <leader>M :GFiles?<CR>
-"nmap <leader>H :History<CR>
-"nmap <leader>l :BLines<CR>
-"nmap <leader>cmd :History:<CR>
-"nmap <leader>gc :Commits<CR>
-"nmap <leader>GC :BCommits<CR>
-"imap <c-x><c-k> <Plug>(fzf-complete-word)
-""search current word with Rg
-"nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
-
-"======CocList======
-" Using CocList
-
-"=== Fzf speical commands ===
+"
+" === Fzf speical commands ===
 " Lines: search all loaded buffers lines
 " Locate: find a file path according to its name
 
@@ -101,7 +54,55 @@ let g:fzf_colors =
 " commands: registered commands of coc
 " extensions: manage coc extensions
 " marketplace:  coc extensions marketplace
+" symbols: search symbols for current project
+" On larget project, some functionalities could be really slow
+" Like tags...
 
+" ======fzf======
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~40%' }
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" This part could be replaced by coc-list
+nmap <leader><tab> <Plug>(fzf-maps-n)
+nmap <leader>f :Files<CR>
+nmap <leader>F :GFiles<CR>
+nmap <leader>s :Snippets<CR>
+imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
+"search buffers
+nmap <leader>b :Buffers<CR>
+"search tag
+nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
+nmap <leader>m :Marks<CR>
+nmap <leader>M :GFiles?<CR>
+nmap <leader>H :History<CR>
+nmap <leader>l :BLines<CR>
+nmap <leader>cmd :History:<CR>
+nmap <leader>gc :Commits<CR>
+nmap <leader>GC :BCommits<CR>
+imap <c-x><c-k> <Plug>(fzf-complete-word)
+"search current word with Rg
+nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
+
+" ======CocList======
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
@@ -110,54 +111,29 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Show CocList
 nnoremap <silent> <space>l  :<C-u>CocList<cr>
 
 " This part can be replaced by fzf
-nmap <leader><tab> :<C-u>CocList maps<cr>
-nmap <leader>f :<C-u>CocList files<CR>
-nmap <leader>F :CocList gfiles<CR>
-nmap <leader>s :CocList snippets<CR>
-"imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
-"search buffers
-nmap <leader>b :CocList buffers<CR>
-"search tag
-"nmap <leader>t :CocList BTags<CR>
-nmap <leader>T :CocList tags<CR>
-nmap <leader>m :CocList marks<CR>
-nmap <leader>M :CocList gstatus<CR>
-nmap <leader>H :CocList mru<CR>
-nmap <leader>l :CocList lines<CR>
-nmap <leader>cmd :CocList cmdhistory<CR>
-nmap <leader>gc :CocList commits<CR>
-nmap <leader>GC :CocList bcommits<CR>
-"imap <c-x><c-k> <Plug>(fzf-complete-word)
-"search current word with Rg
-nnoremap <silent> <leader>w :CocList grep <C-R><C-W><CR>
-
-"======CtrlSF======
-"Default
-"nmap <leader>w <Plug>CtrlSFCwordPath <CR>
-"vmap <leader>w <Plug>CtrlSFVwordPath <CR>
-"let g:ctrlsf_ackprg='rg'
-"press p for preview
-
-"======Leaderf======
-"nmap <leader><tab> <Plug>(fzf-maps-n)
-"nmap <leader>f :Leaderf file<CR>
-"search buffers
-"nmap <leader>b :Leaderf buffer<CR>
-"search tag
-"nmap <leader>t :Leaderf tag<CR>
-"nmap <leader>cd :Leaderf cmdHistory<CR>
-"nmap <leader>mru :Leaderf mru<CR>
-"nmap <leader>l :Leaderf line<CR>
-"set cmdheight=2
+"nmap <leader><tab> :<C-u>CocList maps<cr>
+"nmap <leader>f :<C-u>CocList files<CR>
+"nmap <leader>F :CocList gfiles<CR>
+""nmap <leader>s :CocList snippets<CR>
+""imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
+""search buffers
+"nmap <leader>b :CocList buffers<CR>
+"" Search workspace symbols
+"nnoremap <silent> <leader>t  :<C-u>CocList -I symbols<cr>
+""search tag
+"nmap <leader>T :CocList tags<CR>
+"nmap <leader>m :CocList marks<CR>
+"nmap <leader>M :CocList gstatus<CR>
+"nmap <leader>H :CocList mru<CR>
+"nmap <leader>l :CocList lines<CR>
+"nmap <leader>cmd :CocList cmdhistory<CR>
+"nmap <leader>gc :CocList commits<CR>
+"nmap <leader>GC :CocList bcommits<CR>
+""search current word with Rg
+"nnoremap <silent> <leader>w :CocList grep <C-R><C-W><CR>
