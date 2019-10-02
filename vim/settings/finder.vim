@@ -1,3 +1,29 @@
+" Finder functionalities
+" Here some functionalities are overlapped with FZF:
+" Coc  vs   FZF
+" ----------------
+" files     Files
+" gfiles    GFiles
+" gstatus   GFiles?
+" buffers   Buffers
+" colors    Colors
+" grep      Ag, Rg
+" lines     BLines
+" tags      Tags
+" outline   BTags
+" marks     Marks
+" windows   Windows
+" mru       History
+" cmdhistory History:
+" searchhistory History/
+" snippet   Snippet
+" commits   Commits
+" bcommits  BCommits
+" vimcommands Commands
+" maps      Maps
+" helptags  Helptags
+" filetypes Filetypes
+
 "======fzf======
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -20,58 +46,103 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-nmap <leader><tab> <Plug>(fzf-maps-n)
-nmap <leader>f :Files<CR>
-nmap <leader>F :GFiles<CR>
-nmap <leader>s :Snippets<CR>
-imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
+" This part could be replaced by coc-list
+"nmap <leader><tab> <Plug>(fzf-maps-n)
+"nmap <leader>f :Files<CR>
+"nmap <leader>F :GFiles<CR>
+"nmap <leader>s :Snippets<CR>
+"imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
+""search buffers
+"nmap <leader>b :Buffers<CR>
+""search tag
+"nmap <leader>t :BTags<CR>
+"nmap <leader>T :Tags<CR>
+"nmap <leader>m :Marks<CR>
+"nmap <leader>M :GFiles?<CR>
+"nmap <leader>H :History<CR>
+"nmap <leader>l :BLines<CR>
+"nmap <leader>cmd :History:<CR>
+"nmap <leader>gc :Commits<CR>
+"nmap <leader>GC :BCommits<CR>
+"imap <c-x><c-k> <Plug>(fzf-complete-word)
+""search current word with Rg
+"nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
+
+"======CocList======
+" Using CocList
+
+"=== Fzf speical commands ===
+" Lines: search all loaded buffers lines
+" Locate: find a file path according to its name
+
+" === coc speical commands(after install coc-list) ===
+" ---donno when is Useful
+" location: show location saved in g:coc_jump_locations
+" locationlist: locationlist of current buffer
+" quickfix: quickfix list
+" actions: code actions of selected range
+"
+" ---Not that Useful
+" output: show output of coc.nvim
+" folders: current working folder
+" links: links of current buffer(show include file list)
+" services: show registered services of coc
+" sources: show registered completion sources
+"
+" ---Relatively Useful
+" yank:     yank history
+" issues:   issues on github/gitlab
+" sessions: session list
+" words:    word matches of current buffer(search word in current buf)
+" diagnostics: current workspace diagnostics
+" branches: git branches
+"
+" ---Really Useful
+" commands: registered commands of coc
+" extensions: manage coc extensions
+" marketplace:  coc extensions marketplace
+
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Show CocList
+nnoremap <silent> <space>l  :<C-u>CocList<cr>
+
+" This part can be replaced by fzf
+nmap <leader><tab> :<C-u>CocList maps<cr>
+nmap <leader>f :<C-u>CocList files<CR>
+nmap <leader>F :CocList gfiles<CR>
+nmap <leader>s :CocList snippets<CR>
+"imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>
 "search buffers
-nmap <leader>b :Buffers<CR>
+nmap <leader>b :CocList buffers<CR>
 "search tag
-nmap <leader>t :BTags<CR>
-nmap <leader>T :Tags<CR>
-nmap <leader>m :Marks<CR>
-nmap <leader>M :GFiles?<CR>
-nmap <leader>H :History<CR>
-nmap <leader>l :BLines<CR>
-nmap <leader>cmd :History:<CR>
-nmap <leader>gc :Commits<CR>
-nmap <leader>GC :BCommits<CR>
-imap <c-x><c-k> <Plug>(fzf-complete-word)
+"nmap <leader>t :CocList BTags<CR>
+nmap <leader>T :CocList tags<CR>
+nmap <leader>m :CocList marks<CR>
+nmap <leader>M :CocList gstatus<CR>
+nmap <leader>H :CocList mru<CR>
+nmap <leader>l :CocList lines<CR>
+nmap <leader>cmd :CocList cmdhistory<CR>
+nmap <leader>gc :CocList commits<CR>
+nmap <leader>GC :CocList bcommits<CR>
+"imap <c-x><c-k> <Plug>(fzf-complete-word)
 "search current word with Rg
-nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
+nnoremap <silent> <leader>w :CocList grep <C-R><C-W><CR>
 
-" TODO: use rg search current word, with preview on the side
-"nnoremap <silent> <leader>rp :call Rg_Preview()<CR>
-"function! Rg_Preview()
-
-    "function! s:files()
-        "let l:cur_word = expand("<cword>")
-        ""let s:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {} | rg '.l:cur_word. ' --context 3"'
-        ""let s:fzf_files_options = '--preview "echo {} | sed "s/:.*//g" | rg '.l:cur_word. ' --context 3"'
-        "let s:fzf_files_options = '--preview "echo {}'
-        ""let s:fzf_files_options = '--preview "cat {}"'
-        "let s:command = "rg -i -n --column --hidden --no-heading " . l:cur_word
-        "let l:test = system(s:command)
-        "let l:files = split(l:test, '\n')
-        "return l:files
-    "endfunction
-
-    "function! s:edit_file(item)
-        "let l:list = split(a:item, ':')
-        "let l:file_path = l:list[0]
-        "let l:line = l:list[1]
-        "let l:col = l:list[2]
-        "execute 'silent e' l:file_path
-        "call cursor(l:line, l:col)
-    "endfunction
-
-    "call fzf#run({
-                "\ 'source': <sid>files(),
-                "\ 'sink':   function('s:edit_file'),
-                "\ 'options': '-m ' . s:fzf_files_options,
-                "\ 'left':    '40%' })
-"endfunction
 "======CtrlSF======
 "Default
 "nmap <leader>w <Plug>CtrlSFCwordPath <CR>
