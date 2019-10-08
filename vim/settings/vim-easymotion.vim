@@ -9,7 +9,7 @@ nmap <leader>j <Plug>(easymotion-overwin-f)
 " Move to word
 "map  <Leader>w <Plug>(easymotion-bd-w)
 "nmap <Leader>w <Plug>(easymotion-overwin-w)
-map  s <Plug>(easymotion-s)
+map  f <Plug>(easymotion-s)
 "map  s <Plug>(easymotion-bd-w)
 "nmap s <Plug>(easymotion-overwin-w)
 map  / <Plug>(easymotion-sn)
