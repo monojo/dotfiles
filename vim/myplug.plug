@@ -37,6 +37,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-repeat'
 "Display marks on left
 Plug 'kshenoy/vim-signature'
+"======Text Object======
+" Dependent
+Plug 'kana/vim-textobj-user'
+" Commnet
+Plug 'glts/vim-textobj-comment'
+" Underscore
+Plug 'lucapette/vim-textobj-underscore'
+" parameter by ,
+Plug 'sgur/vim-textobj-parameter'
 
 "======Completion======
 "if has('nvim')
