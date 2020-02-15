@@ -2,13 +2,14 @@
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "ultimate color collection
-Plug 'flazz/vim-colorschemes'
+"Plug 'flazz/vim-colorschemes'
+Plug 'dracula/vim'
 "======Finder======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 "======Navigation======
 "ctags overview on the go
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 "======Version Control======
 "gv dependency
 Plug 'tpope/vim-fugitive'
@@ -25,7 +26,9 @@ Plug 't9md/vim-quickhl'
 Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release',
+            \'do': ':CocInstall coc-git coc-list coc-marketplace coc-word 
+            \ coc-pairs coc-yank coc-python coc-json coc-highlight'}
 " lsp based c/cxx syntax hightlight
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Enhanced ccls experience with call hierachy, class hierachy...
@@ -37,7 +40,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 "Use . to repeat plugin map
 Plug 'tpope/vim-repeat'
-"Display marks on left
+"Display marks on column
 Plug 'kshenoy/vim-signature'
 "======Text Object======
 " Dependent
