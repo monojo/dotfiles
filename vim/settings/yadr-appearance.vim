@@ -33,6 +33,7 @@ colorscheme dracula
 "colorscheme wal
 hi CocHighlightText ctermbg=239
 hi SpecialKey ctermbg=none ctermfg=none
+
 "let g:dracula_colorterm=0
 "let g:dracula_italic = 0
 "
@@ -55,3 +56,9 @@ hi SpecialKey ctermbg=none ctermfg=none
 "colorscheme space-vim-dark
   " Make VIM transparent
 "hi Normal ctermbg=NONE
+
+"set termguicolors
+"let ayucolor="light"
+"let ayucolor="mirage"
+"let ayucolor="dark"
+"colorscheme ayu

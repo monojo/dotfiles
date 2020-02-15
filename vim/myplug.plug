@@ -28,6 +28,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " lsp based c/cxx syntax hightlight
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Enhanced ccls experience with call hierachy, class hierachy...
+Plug 'm-pilia/vim-ccls'
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
