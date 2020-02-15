@@ -48,6 +48,8 @@ Plug 'glts/vim-textobj-comment'
 Plug 'lucapette/vim-textobj-underscore'
 " parameter by ,
 Plug 'sgur/vim-textobj-parameter'
+"Multiple cursors, c-n
+Plug 'terryma/vim-multiple-cursors'
 
 "======Completion======
 "if has('nvim')
@@ -91,7 +93,6 @@ Plug 'sgur/vim-textobj-parameter'
 "Plug 'elzr/vim-json', {'for': 'javascript'}
 "Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
 "Plug 'othree/jspc.vim', {'for': 'javascript'}
-"Plug 'terryma/vim-expand-region'
 "Plug 'klen/python-mode', {'for': 'python'}
 "Plug 'jiangmiao/auto-pairs'
 "plantuml plugin
@@ -146,8 +147,6 @@ Plug 'sgur/vim-textobj-parameter'
 "motion
 "2 char jump, press s
 "Plug 'justinmk/vim-sneak'
-"Multiple cursors, c-n
-"Plug 'terryma/vim-multiple-cursors'
 "Plug 'Raimondi/delimitMate'
 "Nerd Tree
 "Plug 'scrooloose/nerdtree'
