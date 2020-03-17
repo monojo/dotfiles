@@ -20,6 +20,13 @@ nn <silent> xm :call CocLocations('ccls','$ccls/member')<cr>
 nn <silent> xf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
 "" nested classes / types in a namespace
 nn <silent> xs :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
+"" Get from ccls emacs' setting
+"" reference read
+nn <silent> xr :call CocLocations('ccls','textDocument/references',{'role':8})<cr>
+"" reference write
+nn <silent> xw :call CocLocations('ccls','textDocument/references',{'role':16})<cr>
+"" reference macro 
+nn <silent> xM :call CocLocations('ccls','textDocument/references',{'role':64})<cr>
 
 nmap <silent> xt <Plug>(coc-type-definition)<cr>
 nn <silent> xv :call CocLocations('ccls','$ccls/vars')<cr>
