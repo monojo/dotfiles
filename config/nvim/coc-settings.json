@@ -26,5 +26,7 @@
             }
         }
     },
-    "diagnostic.virtualText": true
+    "diagnostic.virtualText": true,
+    "coc.preferences.jumpCommand": "edit",
+    /*"codeLens.enable": true */
 }
