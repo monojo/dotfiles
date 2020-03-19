@@ -2,12 +2,6 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
-
 " ================ General Config ====================
 
 set number                      "Line numbers are good
@@ -30,7 +24,7 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vimplug starts loading all 
+" The mapleader has to be set before vimplug starts loading all
 " the plugins.
 let mapleader=","
 
@@ -38,7 +32,7 @@ let mapleader=","
 " This loads all the plugins specified in ~/.vim/vimplug.vim
 " Use Vimplug plugin to manage all other plugins
 if filereadable(expand("~/.vim/vimplug.vim"))
-  source ~/.vim/vimplug.vim
+    source ~/.vim/vimplug.vim
 endif
 au BufNewFile,BufRead *.plug set filetype=vim
 
@@ -52,9 +46,9 @@ set nowritebackup
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
 endif
 
 " ================ Indentation & Folds======================
@@ -63,10 +57,10 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=4        "indent spaces
+set softtabstop=4       "insert mode tab spaces
 set tabstop=4
-set expandtab
+set expandtab           "insert spaces
 set fdm=syntax
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
@@ -74,16 +68,16 @@ set nofoldenable        "dont fold by default
 "set cinkeys=0{,0},:,!^F,o,O,e	" See "cinkeys"; this stops "#" from indenting
 
 autocmd FileType python set tabstop=4|
-      \ set expandtab|
-      \ set shiftwidth=4|
-      \ set softtabstop=4|
-      \ set foldmethod=indent   "fold based on indent
+            \ set expandtab|
+            \ set shiftwidth=4|
+            \ set softtabstop=4|
+            \ set foldmethod=indent   "fold based on indent
 
 autocmd FileType javascript set tabstop=2|
-      \ set expandtab|
-      \ set shiftwidth=2|
-      \ set softtabstop=2|
-      \ set foldmethod=indent   "fold based on indent
+            \ set expandtab|
+            \ set shiftwidth=2|
+            \ set softtabstop=2|
+            \ set foldmethod=indent   "fold based on indent
 
 " Auto indent pasted text
 if has('vim')
@@ -119,13 +113,14 @@ set wildignore+=*.png,*.jpg,*.gif
 "
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=4         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
 
 " ================ Mouse ===========================
-set mouse=n
+silent! set ttymouse=xterm2
+set mouse=a
 set mousefocus
 " ================ Search ===========================
 
@@ -146,28 +141,49 @@ set autoread            "auto read changed file
 set tabpagemax=50
 "set sessionoptions-=options
 set fileformat=unix	" No crazy CR/LF
-set nojoinspaces
+set nojoinspaces    " No join command extra space
 set showmatch
 set textwidth=80	" Maximum line width
-if !empty(&viminfo)
-  set viminfo^=!
+if exists('&colorcolumn')
+    set colorcolumn=80
 endif
-set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
-set formatoptions=tcroql "Set text and comment formatting 
-set formatoptions+=j
+
+if !empty(&viminfo)
+    set viminfo^=!
+endif
+"set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
+set whichwrap=b,s
+set formatoptions+=1 "Set text and comment formatting
 syn sync fromstart " Increase the highlighting accuracy
 " Encoding
+set encoding=utf-8
 scriptencoding utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
-set cmdheight=2
-
+set cmdheight=1     " one screen line cmd
 set updatetime=300
-
-set shortmess+=c
+set shortmess=aIT   " short message
 set signcolumn=yes
+set lazyredraw
+set virtualedit=block
+set diffopt=filler,vertical " Diff mode filler line and vertical splits
+set clipboard+=unnamedplus
+set foldlevelstart=99 " Edit new buffer without closed fold
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+set completeopt=menuone,preview
+set cursorline      " Highlight the current line under cursor"
+set nrformats=hex   " Use Hex format for c-a, c-x
+let &showbreak='↳ '
+set breakindent
+set breakindentopt=sbr
+set synmaxcol=1000 " Helpful for long one line XML file
 
-
+set nostartofline " c-d c-u c-b c-f won't start at the line beginning
+set isfname-==
+if exists('&fixeol') 
+    set nofixeol "endofline
+endif
 " ================ Custom Settings ========================
-so ~/.yadr/vim/settings.vim
+" Load all plugin settings
+so ~/.vim/settings.vim
