@@ -19,7 +19,7 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('tmux/*'))
   install_files(Dir.glob('vimify/*'))
   install_files(Dir.glob('{vim,vimrc}'))
-  install_files(Dir.glob('config'))
+  #install_files(Dir.glob('config'))
   install_files(Dir.glob('i3'))
 
   # Install important binaries
@@ -161,6 +161,22 @@ task :install_imgur_screenshot do
       cp -rf $HOME/.yadr/bin/imgur_screenshot/imgur-screenshot $HOME/.config/
       cp -rf $HOME/.yadr/bin/imgur_screenshot/  $HOME/bin/imgur-screenshot
       sudo update-desktop-database
+  }
+end
+
+desc "Install .config files"
+task :install_config do
+  puts "======================================================"
+  puts "Install .config files"
+  puts "======================================================"
+
+  puts ""
+
+  # Not using a symbolic link for config folder,
+  # since other app configs are also here. Just link sub-folder
+  run %{
+      mkdir -p $HOME/.config
+      ln -s $HOME/.yadr/config/* $HOME/.config/
   }
 end
 
