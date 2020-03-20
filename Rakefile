@@ -19,10 +19,11 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('tmux/*'))
   install_files(Dir.glob('vimify/*'))
   install_files(Dir.glob('{vim,vimrc}'))
+  install_files(Dir.glob('config'))
 
   # Install important binaries
   # Also can be installed seperately by calling `rake install_***`
-  Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
+  #Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
