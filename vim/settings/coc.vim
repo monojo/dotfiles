@@ -23,3 +23,20 @@ nmap <F5> :CocRestart<CR>
 "nmap <leader>rn <Plug>(coc-rename)
 " Need virtual text support
 nmap <leader>e <Plug>(coc-codelens-action)
+nmap <leader>S <Plug>(coc-action-workspaceSymbols)
+
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:show_documentation()
+if (index(['vim', 'help'], &filetype) >= 0)
+  execute 'h' expand('<cword>')
+else
+  call CocAction('doHover')
+endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>

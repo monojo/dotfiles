@@ -1,6 +1,5 @@
 " Make it beautiful - colors and fonts
 
-colorscheme dracula
 " Enable true color
 if exists('+termguicolors')
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -8,6 +7,22 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
+
+" statusline
+function! s:statusline_expr()
+  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
+  let ro  = "%{&readonly ? '[RO] ' : ''}"
+  let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
+  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
+  let sep = ' %= '
+  let pos = ' %-12(%l : %c%V%) '
+  let pct = ' %P'
+
+  return '[%n] %F %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
+endfunction
+let &statusline = s:statusline_expr()
+
+colorscheme dracula
 "hi CocHighlightText ctermbg=239
 hi CocHighlightText guibg=#444444 ctermbg=239
 let g:dracula_bold = 1
@@ -17,6 +32,36 @@ let g:dracula_undercurl = 1
 let g:dracula_inverse = 1
 let g:dracula_colorterm = 1
 let g:airline_theme='dracula'
+
+if has('nvim')
+  " https://github.com/neovim/neovim/issues/2897#issuecomment-115464516
+  let g:terminal_color_0 = '#4e4e4e'
+  let g:terminal_color_1 = '#d68787'
+  let g:terminal_color_2 = '#5f865f'
+  let g:terminal_color_3 = '#d8af5f'
+  let g:terminal_color_4 = '#85add4'
+  let g:terminal_color_5 = '#d7afaf'
+  let g:terminal_color_6 = '#87afaf'
+  let g:terminal_color_7 = '#d0d0d0'
+  let g:terminal_color_8 = '#626262'
+  let g:terminal_color_9 = '#d75f87'
+  let g:terminal_color_10 = '#87af87'
+  let g:terminal_color_11 = '#ffd787'
+  let g:terminal_color_12 = '#add4fb'
+  let g:terminal_color_13 = '#ffafaf'
+  let g:terminal_color_14 = '#87d7d7'
+  let g:terminal_color_15 = '#e4e4e4'
+
+  set fillchars=vert:\|,fold:-
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+
+if has('gui_running')
+  set guifont=Menlo:h14 columns=80 lines=40
+endif
 
 "======seoul256======
 "set t_Co=256

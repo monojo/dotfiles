@@ -1,8 +1,5 @@
 "======Appearance=====
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"ultimate color collection
-"Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
 "======Finder======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -10,13 +7,14 @@ Plug 'junegunn/fzf.vim'
 "======Navigation======
 "ctags overview on the go
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+" Browsing directory
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Open file directory: gof, got
+Plug 'justinmk/vim-gtfo'
 "======Version Control======
-"gv dependency
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
 "======Snippets======
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "======Extra Info======
 "Show register content, press "
 Plug 'junegunn/vim-peekaboo'
@@ -27,12 +25,21 @@ Plug 'easymotion/vim-easymotion'
 "======Language Server Protocol Client======
 " A new extension framework including LSP client support
 Plug 'neoclide/coc.nvim', {'branch': 'release',
-            \'do': ':CocInstall coc-git coc-list coc-marketplace coc-word 
+            \ 'do': ':CocInstall coc-git coc-list coc-marketplace coc-word 
             \ coc-pairs coc-yank coc-python coc-json coc-highlight'}
 " lsp based c/cxx syntax hightlight
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'jackguo380/vim-lsp-cxx-highlight', 
+            \ {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
 " Enhanced ccls experience with call hierachy, class hierachy...
-Plug 'm-pilia/vim-ccls'
+Plug 'm-pilia/vim-ccls', {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
+"======Text Object======
+" Dependent, Commnet, Underscore, parameter by, 
+Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
+            \ | Plug 'lucapette/vim-textobj-underscore' 
+            \ | Plug 'sgur/vim-textobj-parameter'
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
+            \ 'for': 'markdown', 'on': 'MarkdownPreview' }
 "======MISC======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
@@ -42,25 +49,27 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-repeat'
 "Display marks on column
 Plug 'kshenoy/vim-signature'
-"======Text Object======
-" Dependent
-Plug 'kana/vim-textobj-user'
-" Commnet
-Plug 'glts/vim-textobj-comment'
-" Underscore
-Plug 'lucapette/vim-textobj-underscore'
-" parameter by ,
-Plug 'sgur/vim-textobj-parameter'
 "Multiple cursors, c-n
 Plug 'terryma/vim-multiple-cursors'
+"======Distraction free======
+Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-emoji'
+"====== Undo ======
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+" modern cpp highlight
+Plug 'octol/vim-cpp-enhanced-highlight'
+" python support
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
+
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 "======Completion======
 "if has('nvim')
-  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "else
-  "Plug 'Shougo/deoplete.nvim'
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
 "endif
 "****************Plugin Tomb*******************
 "
@@ -127,9 +136,6 @@ Plug 'terryma/vim-multiple-cursors'
 "Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 "Plug 'edkolev/promptline.vim'
 
-"======Distraction free======
-"Plug 'junegunn/goyo.vim'
-"Plug 'junegunn/limelight.vim'
 "
 "Plug 'haya14busa/incsearch.vim'
 "Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -165,3 +171,38 @@ Plug 'terryma/vim-multiple-cursors'
 "Plug 'airblade/vim-gitgutter'
 "Auto closing pair
 "Plug 'jiangmiao/auto-pairs'
+"
+"Plug 'AndrewRadev/splitjoin.vim'
+"let g:splitjoin_split_mapping = ''
+"let g:splitjoin_join_mapping = ''
+"nnoremap gss :SplitjoinSplit<cr>
+"nnoremap gsj :SplitjoinJoin<cr>
+"Plug 'AndrewRadev/switch.vim'
+"let g:switch_mapping = '-'
+"let g:switch_custom_definitions = [
+            "\   ['MON', 'TUE', 'WED', 'THU', 'FRI']
+            "\ ]
+"if exists('##TextYankPost')
+    "Plug 'machakann/vim-highlightedyank'
+    "let g:highlightedyank_highlight_duration = 100
+"endif
+"Plug 'sgur/vim-editorconfig'
+"" git sign
+"Plug 'mhinz/vim-signify'
+"let g:signify_vcs_list = ['git']
+"let g:signify_skip_filetype = { 'journal': 1 }
+"let g:signify_sign_add          = '│'
+"let g:signify_sign_change       = '│'
+"let g:signify_sign_changedelete = '│'
+
+""replace with register's value, [count]["x]gr{motion}
+"Plug 'vim-scripts/ReplaceWithRegister' 
+"" Visible line indent
+"Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
+"autocmd! User indentLine doautocmd indentLine Syntax
+"let g:indentLine_color_term = 239
+"let g:indentLine_color_gui = '#616161'
+
+"Plug 'flazz/vim-colorschemes'
+"Plug 'junegunn/vim-journal'
+"Plug 'chrisbra/unicode.vim', { 'for': 'journal' }

@@ -97,12 +97,14 @@ nmap <leader>H :History<CR>
 nmap <leader>l :BLines<CR>
 nmap <leader>cmd :History:<CR>
 nmap <leader>gc :Commits<CR>
-nmap <leader>GC :BCommits<CR>
+nmap <leader>gC :BCommits<CR>
 imap <c-x><c-k> <Plug>(fzf-complete-word)
+"FZF complete path
+imap <c-x><c-f> <plug>(fzf-complete-path)
 "search current word with Rg
 nnoremap <silent> <leader>w :Rg <C-R><C-W><CR>
 
-" ======CocList======
+" ====== CocList ======
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
