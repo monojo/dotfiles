@@ -14,3 +14,6 @@
 [submodule "bin/tpm"]
 	path = bin/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "i3"]
+	path = i3
+	url = https://github.com/monojo/i3.git
