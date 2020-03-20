@@ -23,6 +23,9 @@
                 "highlight": {
                     "lsRanges": true
                 }
+            },
+            "client": {
+                "snippetSupport": true
             }
         }
     },
