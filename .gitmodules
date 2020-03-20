@@ -14,6 +14,3 @@
 [submodule "bin/tpm"]
 	path = bin/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "bin/i3"]
-	path = bin/i3
-	url = https://github.com/i3/i3
