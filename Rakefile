@@ -24,7 +24,7 @@ task :install => [:submodule_init, :submodules] do
   # Install important binaries
   # Also can be installed seperately by calling `rake install_***`
   #Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
-  Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
+  #Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
   Rake::Task["install_imgur_screenshot"].execute
