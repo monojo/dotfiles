@@ -2,9 +2,6 @@
 	path = zsh/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
   ignore = dirty
-[submodule "bin/ag"]
-	path = bin/ag
-	url = https://github.com/ggreer/the_silver_searcher.git
 [submodule "bin/vim"]
 	path = bin/vim
 	url = https://github.com/vim/vim.git
