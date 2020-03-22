@@ -1,0 +1,145 @@
+!xterm*faceName:				Terminus:style=bold:size=12
+!xterm*faceName: Bitstream Vera Serif Mono:bold
+!xterm*faceName: Meslo LG L for Powerline:bold
+!xterm*faceName: Source Code Pro for Powerline
+!xterm*faceName: DejaVu Sans Mono for Powerline:bold
+xterm*faceName: Droid Sans Mono for Powerline
+!xterm*faceName: Ubuntu Mono Derivative Powerline:bold
+
+xterm*faceSize: 12
+!xterm*boldMode: true
+xterm*vt100*geometry: 80x25
+xterm*saveLines: 500000
+xterm*loginShell: true
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
+
+!Xft.dpi: 180
+!Xft.autohint: 0
+!Xft.lcdfilter:  lcddefault
+!Xft.hintstyle:  hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.rgba: rgb
+
+!*foreground: #ecdac9
+*foreground:        #ecdac9
+*background:        #12192a
+*.foreground:       #ecdac9
+*.background:       #12192a
+emacs*foreground:   #ecdac9
+emacs*background:   #12192a
+URxvt*foreground:   #ecdac9
+XTerm*foreground:   #ecdac9
+UXTerm*foreground:  #ecdac9
+URxvt*background:   [100]#12192a
+XTerm*background:   #12192a
+UXTerm*background:  #12192a
+URxvt*cursorColor:  #ecdac9
+XTerm*cursorColor:  #ecdac9
+UXTerm*cursorColor: #ecdac9
+URxvt*borderColor:  [100]#12192a
+
+! Colors 0-15.
+*.color0: #12192a
+*color0:  #12192a
+*.color1: #555884
+*color1:  #555884
+*.color2: #B07A83
+*color2:  #B07A83
+*.color3: #AAB3AD
+*color3:  #AAB3AD
+*.color4: #DFB596
+*color4:  #DFB596
+*.color5: #B6C4BC
+*color5:  #B6C4BC
+*.color6: #D2C6B6
+*color6:  #D2C6B6
+*.color7: #ecdac9
+*color7:  #ecdac9
+*.color8: #a5988c
+*color8:  #a5988c
+*.color9: #555884
+*color9:  #555884
+*.color10: #B07A83
+*color10:  #B07A83
+*.color11: #AAB3AD
+*color11:  #AAB3AD
+*.color12: #DFB596
+*color12:  #DFB596
+*.color13: #B6C4BC
+*color13:  #B6C4BC
+*.color14: #D2C6B6
+*color14:  #D2C6B6
+*.color15: #ecdac9
+*color15:  #ecdac9
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #12192a
+*color66:  #12192a
+
+! Xclock colors.
+XClock*foreground: #ecdac9
+XClock*background: #12192a
+XClock*majorColor:  rgba:ec/da/c9/ff
+XClock*minorColor:  rgba:ec/da/c9/ff
+XClock*hourColor:   rgba:ec/da/c9/ff
+XClock*minuteColor: rgba:ec/da/c9/ff
+XClock*secondColor: rgba:ec/da/c9/ff
+
+
+!!BLK Cursor
+!#define _color0        #000000
+!#define _color8        #000000
+!!RED Tag
+!#define _color1        #f2433d
+!#define _color9        #f2433d
+!!GRN SpecialKey
+!#define _color2        #9be14f
+!#define _color10       #9be14f
+!!YEL Keyword
+!#define _color3        #fce96b
+!#define _color11       #fce96b
+!!BLU Number
+!#define _color4        #85b0d7
+!#define _color12       #85b0d7
+!!MAG Precondit
+!#define _color5        #bb95b6
+!#define _color13       #bb95b6
+!!CYN Float
+!#define _color6        #44e5e7
+!#define _color14       #44e5e7
+!!WHT Search
+!#define _color7        #f6f6f6
+!#define _color15       #f6f6f6
+!!FMT Include, StatusLine, ErrorMsg
+!#define _colorBD       #ffcfaf
+!#define _colorUL       #ccdc90
+!#define _colorIT       #80d4aa
+!!TXT Normal, Normal, Cursor
+!#define _foreground    #c0c0c0
+!#define _background    #000000
+!#define _cursorColor   #ffffff
+!xterm*color0         : _color0
+!xterm*color1         : _color1
+!xterm*color2         : _color2
+!xterm*color3         : _color3
+!xterm*color4         : _color4
+!xterm*color5         : _color5
+!xterm*color6         : _color6
+!xterm*color7         : _color7
+!xterm*color8         : _color8
+!xterm*color9         : _color9
+!xterm*color10        : _color10
+!xterm*color11        : _color11
+!xterm*color12        : _color12
+!xterm*color13        : _color13
+!xterm*color14        : _color14
+!xterm*color15        : _color15
+!xterm*colorBD        : _colorBD
+!xterm*colorIT        : _colorIT
+!xterm*colorUL        : _colorUL
+!xterm*foreground     : _foreground
+!xterm*background     : _background
+!xterm*cursorColor    : _cursorColor
