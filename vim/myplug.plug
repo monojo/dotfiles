@@ -52,8 +52,6 @@ Plug 'terryma/vim-multiple-cursors'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
             \ 'for': 'markdown', 'on': 'MarkdownPreview' }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 "Distraction free
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-emoji'
@@ -66,6 +64,11 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 "================================================================================
+"Plug 'vimwiki/vimwiki'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 "======Completion======
 "if has('nvim')
