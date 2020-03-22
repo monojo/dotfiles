@@ -1,28 +1,28 @@
-"======Appearance=====
+"====== Appearance =====
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
-"======Finder======
+"====== Finder ======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-"======Navigation======
+"====== Navigation ======
 "ctags overview on the go
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 " Browsing directory
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Open file directory: gof, got
 Plug 'justinmk/vim-gtfo'
-"======Version Control======
+"====== Version Control ======
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
 "======Snippets======
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"======Extra Info======
+"====== Extra Info ======
 "Show register content, press "
 Plug 'junegunn/vim-peekaboo'
 "Highlight multiple words
 Plug 't9md/vim-quickhl'
-"======Motion======
+"====== Motion ======
 Plug 'easymotion/vim-easymotion'
-"======Language Server Protocol Client======
+"====== Language Server Protocol Client ======
 " A new extension framework including LSP client support
 Plug 'neoclide/coc.nvim', {'branch': 'release',
             \ 'do': ':CocInstall coc-git coc-lists coc-marketplace coc-word 
@@ -32,15 +32,12 @@ Plug 'jackguo380/vim-lsp-cxx-highlight',
             \ {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
 " Enhanced ccls experience with call hierachy, class hierachy...
 Plug 'm-pilia/vim-ccls', {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
-"======Text Object======
+"====== Text Object ======
 " Dependent, Commnet, Underscore, parameter by, 
 Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
             \ | Plug 'lucapette/vim-textobj-underscore' 
             \ | Plug 'sgur/vim-textobj-parameter'
-" Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
-            \ 'for': 'markdown', 'on': 'MarkdownPreview' }
-"======MISC======
+"====== MISC ======
 "Better comment
 Plug 'scrooloose/nerdcommenter'
 "Move between tmux pane and vim window
@@ -51,17 +48,24 @@ Plug 'tpope/vim-repeat'
 Plug 'kshenoy/vim-signature'
 "Multiple cursors, c-n
 Plug 'terryma/vim-multiple-cursors'
-"======Distraction free======
+"====== Markdown ======
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
+            \ 'for': 'markdown', 'on': 'MarkdownPreview' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"Distraction free
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-emoji'
-"====== Undo ======
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+"====== Language ======
 " modern cpp highlight
 Plug 'octol/vim-cpp-enhanced-highlight'
 " python support
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+"====== Undo ======
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
-
+"================================================================================
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 "======Completion======
 "if has('nvim')
