@@ -19,20 +19,17 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('tmux/*'))
   install_files(Dir.glob('vimify/*'))
   install_files(Dir.glob('{vim,vimrc}'))
-  #install_files(Dir.glob('config'))
   install_files(Dir.glob('i3'))
 
   # Install important binaries
   # Also can be installed seperately by calling `rake install_***`
-  #Rake::Task["install_vim"].execute if RUBY_PLATFORM.downcase.include?("linux")
-  #Rake::Task["install_ag"].execute if RUBY_PLATFORM.downcase.include?("linux")
   Rake::Task["install_vim_plug"].execute
   Rake::Task["install_prezto"].execute
   Rake::Task["install_imgur_screenshot"].execute
   Rake::Task["install_tpm"].execute
   Rake::Task["install_fonts"].execute
+  Rake::Task["install_config"].execute
 
-  #install_fonts
   install_ideavim
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
   success_msg("installed")
@@ -106,52 +103,10 @@ task :install_vim_plug do
   Vimplug::update_plug
 end
 
-desc "Install ag"
-task :install_ag do
-    puts "======================================================"
-    puts "build ag"
-    puts "======================================================"
-
-    puts ""
-
-    run %{
-      cd $HOME/.yadr/bin/ag
-      ./build.sh
-      sudo make install
-    }
-end
-
-
-desc "Install vim: Python support config may need to be modified"
-task :install_vim do
-    puts "======================================================"
-    puts "build vim"
-    puts "======================================================"
-
-    puts ""
-
-    sh %{
-      cd $HOME/.yadr/bin/vim
-      make distclean
-      ./configure --with-features=huge \
-        --enable-multibyte \
-        --enable-rubyinterp=yes \
-        --enable-python3interp=yes \
-        --with-python-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
-        --enable-perlinterp=yes \
-        --enable-luainterp=yes \
-        --enable-gui=gtk2 \
-        --enable-cscope \
-        --prefix=/usr/local
-      make VIMRUNTIMEDIR=/usr/local/share/vim/vim81 -j16
-      sudo make install
-    }
-end
-
 desc "Install imgur-screenshot"
 task :install_imgur_screenshot do
   puts "======================================================"
-  puts "build imgur_screenshot"
+  puts "Install imgur_screenshot"
   puts "======================================================"
 
   puts ""
@@ -194,6 +149,17 @@ task :install_tpm do
   }
 end
 task :default => 'install'
+
+desc "Install fonts"
+task :install_fonts do
+#def install_fonts
+  puts "======================================================"
+  puts "Installing patched fonts for Powerline/Lightline."
+  puts "======================================================"
+  run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
+  run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
+  puts
+end
 
 private
 def run(cmd)
@@ -245,17 +211,6 @@ def install_homebrew
   run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi hub}
   run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   puts
-  puts
-end
-
-desc "install fonts"
-task :install_fonts do
-#def install_fonts
-  puts "======================================================"
-  puts "Installing patched fonts for Powerline/Lightline."
-  puts "======================================================"
-  run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
-  run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
   puts
 end
 
