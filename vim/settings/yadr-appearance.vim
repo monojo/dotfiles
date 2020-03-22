@@ -23,8 +23,6 @@ endfunction
 let &statusline = s:statusline_expr()
 
 colorscheme dracula
-"hi CocHighlightText ctermbg=239
-hi CocHighlightText guibg=#444444 ctermbg=239
 let g:dracula_bold = 1
 let g:dracula_italic = 1
 let g:dracula_underline = 1
@@ -32,6 +30,15 @@ let g:dracula_undercurl = 1
 let g:dracula_inverse = 1
 let g:dracula_colorterm = 1
 let g:airline_theme='dracula'
+
+"hi CocHighlightText ctermbg=239
+hi CocHighlightText guibg=#444444 ctermbg=239
+"====== LspCxxHl ======
+"preprocessor
+hi LspCxxHlSkippedRegion ctermfg=239 guifg=#4e4e4e
+hi LspCxxHlSymParameter guifg=#ffd787
+hi LspCxxHlSymStructField  gui=italic
+" LspCxxHlSym... highlight groups
 
 if has('nvim')
   " https://github.com/neovim/neovim/issues/2897#issuecomment-115464516
