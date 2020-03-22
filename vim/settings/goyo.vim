@@ -3,7 +3,8 @@
 " ----------------------------------------------------------------------------
 let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
-
+let g:limelight_default_coefficeint = 0.7
+let g:goyo_width = 85
 function! s:goyo_enter()
   if has('gui_running')
     set fullscreen
