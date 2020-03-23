@@ -71,6 +71,7 @@ bindsym $mod+Shift+L move right
 
 # lock screen
 bindsym control+$mod+l exec i3lock -n -t -i ~/.i3/screen.png
+#bindsym control+$mod+l exec ~/.i3/blurlock
 #bindsym Alt+$mod+l exec i3lock -n -t -i ~/.i3/screen.png
 # split in horizontal orientation
 bindsym $mod+s split h
