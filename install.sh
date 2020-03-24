@@ -6,6 +6,7 @@ BLUE="$(tput setaf 4)"
 BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
 PLATFORM="unknown"
+DIST="unknown"
 
 execute () {
     echo "$1"
@@ -16,6 +17,9 @@ check_platform () {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         #Linux OS 
         PLATFORM="Linux"
+
+        $DIST=$(tr -s ' \011' '\012' < /etc/issue | head -n 1)
+        echo $DIST
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
         PLATFORM="OSX"
