@@ -7,24 +7,7 @@ BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
 PLATFORM="unknown"
 DIST="unknown"
-
-execute () {
-    echo "$1"
-    eval "$1"
-}
-
-check_platform () {
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        #Linux OS 
-        PLATFORM="Linux"
-
-        $DIST=$(tr -s ' \011' '\012' < /etc/issue | head -n 1)
-        echo $DIST
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        # Mac OSX
-        PLATFORM="OSX"
-    fi
-}
+USER="unknown"
 
 #TODO add MacOS support
 install_dep () {
@@ -33,7 +16,7 @@ install_dep () {
     execute "$install_cmd"
 }
 
-check_installed () {
+check_ubuntu_installed () {
     #TODO this won't work for pkg that user compiled by themself
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1| \
         grep "install ok installed")
@@ -47,22 +30,103 @@ check_installed () {
 }
 
 # The Linux dependencies needed
-declare -a LINUX_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
+declare -a UBUNTU_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" "libgnomeui-dev" \
     "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
     "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
     "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
     "volumeicon-alsa" "python3-pip" "rofi" "i3" "i3-wm" "i3-status"\
-"fcitx-rime" "xclip" "scrot")
+    "fcitx-rime" "xclip" "scrot")
+
+declare -a ARCH_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
+    "tmux" "cmake"\
+    # gui, display manager, window manager
+    "xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
+    "python3" "rake" "zsh" \
+    "fcitx" \
+    "volumeicon" "rofi"\
+    "xclip" "scrot"\
+    # network manager and applet
+    "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
+    "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" "pamix")
+
+execute () {
+    echo "$1"
+    eval "$1"
+}
+
+install_ubuntu_deps () {
+    for dep in ${UBUNTU_DEPS[@]}
+    do
+        check_ubuntu_installed $dep
+    done
+}
+
+install_arch_dep () {
+    install_cmd="pacman -S $1"
+    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    execute "$install_cmd"
+    echo "Y\n"
+}
+
+install_arch_deps () {
+    for dep in ${ARCH_DEPS[@]}
+    do
+        install_arch_dep $dep
+    done
+}
+
+#setup_network_service () {
+    #systemctl enable NetworkManager.service
+#}
+
+#setup_arch_service () {
+    #setup_network_service()
+    ##setup_service()
+    ##setup_network_service()
+#}
+
+check_platform () {
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        #Linux OS 
+        PLATFORM="Linux"
+        DIST=$(tr -s ' \011' '\012' < /etc/issue | head -n 1)
+        echo $DIST
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+        PLATFORM="OSX"
+    fi
+}
+
+## if support efi, then use efi with gpt
+## else use bios with mbr
+#EFIVARS_DIR="/sys/firmware/efi/efivars"
+#auto_partition () {
+    #if [ -d "$EFIVARS_DIR" ]; then
+        #boot_mode="efi";
+    #else
+        #boot_mode="bios";
+    #fi
+    #echo "Boot mode $boot_mode"
+#}
+
+#setup_arch () {
+    #auto_partition()
+
+#}
 
 check_platform
 
 if [ "$PLATFORM" == "Linux" ]; then
-    for dep in ${LINUX_DEPS[@]}
-    do
-        check_installed $dep
-    done
+    if [ "$DIST" == "Ubuntu" ]; then
+        install_ubuntu_deps
+    elif ["$DIST" == "Arch" ]; then
+        #setup_arch
+        install_arch_deps
+        # setup arch services
+        #setup_arch_service
+    fi
 fi
 
 #git clone the dotfiles and start installation
