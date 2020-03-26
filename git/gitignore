@@ -45,3 +45,8 @@ Session.vim
 # SASS
 # ----------------------------------------------------------------------------------------------
 .sass-cache
+
+# Compilation database
+compile_commands.json
+# LSP
+.ccls*
