@@ -20,6 +20,7 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('vimify/*'))
   install_files(Dir.glob('{vim,vimrc}'))
   install_files(Dir.glob('i3'))
+  install_files(Dir.glob('doom.d'))
 
   # Install important binaries
   # Also can be installed seperately by calling `rake install_***`
