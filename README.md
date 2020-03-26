@@ -1,17 +1,23 @@
-     _     _           _
-    | |   | |         | |
-    | |___| |_____  __| | ____
-    |_____  (____ |/ _  |/ ___)
-     _____| / ___ ( (_| | |
-    (_______\_____|\____|_|
+# Dotfiles
 
-    # Yet Another Dotfile Repo v1.1
-    # Now with Prezto and Vim-Plug!
+Forked from [yadr](https://github.com/skwp/dotfiles)
 
-[![Join the chat at https://gitter.im/skwp/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/skwp/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+```bash
+  bash -c "\`curl -fsSL https://raw.githubusercontent.com/monojo/dotfiles/master/install.sh \`"
+```
 
-# Use my own version to install
+* `install.sh` script install necessary Ubuntu pacakges and dotfiles.
+* Vundle changed to Vim-Plug
 
-    ```bash
-        bash -c "\`curl -fsSL https://raw.githubusercontent.com/monojo/dotfiles/master/install.sh \`"
-    ```
+## Config List
+
+* zsh
+* tmux
+* vim/nvim
+* fonts
+* i3-wm
+* ctags
+* git
+* .config
+* doom emacs
+* fcitx-rime
