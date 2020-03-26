@@ -18,7 +18,8 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('ctags/*'))
   install_files(Dir.glob('tmux/*'))
   install_files(Dir.glob('vimify/*'))
-  install_files(Dir.glob('{vim,vimrc}'))
+  install_files(Dir.glob('vim/vimrc'))
+  install_files(Dir.glob('vim'))
   install_files(Dir.glob('i3'))
   install_files(Dir.glob('doom.d'))
 
