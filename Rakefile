@@ -28,7 +28,9 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_imgur_screenshot"].execute
   Rake::Task["install_tpm"].execute
   Rake::Task["install_fonts"].execute
-  Rake::Task["install_config"].execute
+  # install .config 
+  Rake::Task["install_nvim_config"].execute
+  Rake::Task["install_rime_config"].execute
 
   install_ideavim
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
@@ -120,19 +122,31 @@ task :install_imgur_screenshot do
 end
 
 desc "Install .config files"
-task :install_config do
+task :install_nvim_config do
   puts "======================================================"
-  puts "Install .config files"
+  puts "Install nvim files"
   puts "======================================================"
 
   puts ""
 
   # Not using a symbolic link for config folder,
   # since other app configs are also here. Just link sub-folder
-  run %{
-      mkdir -p $HOME/.config
-      ln -s $HOME/.yadr/config/* $HOME/.config/
-  }
+  #run %{
+      #mkdir -p $HOME/.config
+      #ln -s $HOME/.yadr/config/* $HOME/.config/
+  #}
+  install_files(Dir.glob('config/nvim/*'), :symlink, :config)
+end
+
+desc "Install rime files"
+task :install_rime_config do
+  puts "======================================================"
+  puts "Install rime files"
+  puts "======================================================"
+
+  puts ""
+
+  install_files(Dir.glob('config/fcitx/rime/*'), :symlink, :config)
 end
 
 desc "Install tmux plugin manager"
@@ -331,11 +345,23 @@ def want_to_install? (section)
   end
 end
 
-def install_files(files, method = :symlink)
+def install_files(files, method = :symlink, dest = :home)
   files.each do |f|
     file = f.split('/').last
     source = "#{ENV["PWD"]}/#{f}"
-    target = "#{ENV["HOME"]}/.#{file}"
+    # install at $HOME
+    if dest == :home
+      target = "#{ENV["HOME"]}/.#{file}"
+    # install at $HOME/.path
+    else
+      # get path
+      # check path, empty then create
+      target = "#{ENV["HOME"]}/.#{f}"
+      path = File.dirname(target)
+      if !File.exist?(path)
+        system 'mkdir', '-p', path
+      end
+    end
 
     puts "======================#{file}=============================="
     puts "Source: #{source}"
