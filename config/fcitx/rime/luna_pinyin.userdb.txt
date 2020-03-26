@@ -1,0 +1,139 @@
+# Rime user dictionary
+#@/db_name	luna_pinyin.userdb
+#@/db_type	userdb
+#@/rime_version	1.2.9
+#@/tick	219
+#@/user_id	Ubuntu_Desktop
+a 	啊	c=5 d=3.95176 t=219
+a di fang 	啊地方	c=3 d=2.416 t=219
+a di san fang 	啊第三方	c=1 d=0.873716 t=219
+a fei 	阿飛	c=2 d=1.67056 t=219
+a si dun 	阿斯頓	c=1 d=0.865022 t=219
+a yi 	阿姨	c=1 d=0.843664 t=219
+an zhuang 	安裝	c=1 d=0.856415 t=219
+bie 	別	c=1 d=0.856415 t=219
+bu mo 	補磨	c=1 d=0.904837 t=219
+bu mo 	補魔	c=2 d=1.8097 t=219
+bu ying xiang 	不影響	c=1 d=0.955997 t=219
+bu zhi dao 	不知道	c=1 d=0.856689 t=219
+can ku 	殘酷	c=1 d=0.865022 t=219
+ce shi 	測試	c=1 d=0.941765 t=219
+chang you 	常有	c=1 d=0.847894 t=219
+chuan yue 	穿越	c=1 d=0.878095 t=219
+cong 	從	c=1 d=0.873716 t=219
+cun zai 	存在	c=1 d=0.873716 t=219
+da fa 	打法	c=1 d=0.856415 t=219
+dan shi 	但是	c=2 d=1.71738 t=219
+dang dang wang 	噹噹網	c=1 d=0.937067 t=219
+de 	的	c=5 d=4.03774 t=219
+deng dai 	等待	c=1 d=0.932394 t=219
+di fang 	地方	c=4 d=3.21486 t=219
+di fang di fang 	地方地方	c=1 d=0.852144 t=219
+di san fang 	第三方	c=0 d=0.0869358 t=219
+duo fo er 	多佛爾	c=3 d=2.40673 t=219
+e 	額	c=6 d=4.71876 t=219
+er 	而	c=1 d=0.847894 t=219
+er fei 	而非	c=1 d=0.852144 t=219
+er hao 	二號	c=1 d=0.873716 t=219
+fa 	發	c=1 d=0.873716 t=219
+fan er 	反而	c=6 d=4.60745 t=219
+ha ha 	哈哈	c=1 d=0.822835 t=219
+han zi 	漢字	c=1 d=0.980199 t=219
+hou 	後	c=3 d=2.37221 t=219
+hui 	會	c=0 d=0.0865022 t=219
+hui ying xiang 	會影響	c=1 d=0.869358 t=219
+jie fang 	解放	c=2 d=1.67944 t=219
+jin e 	金額	c=0 d=0.0852144 t=219
+jiu 	就	c=0 d=0.168401 t=219
+jiu song dao feng jin e 	就松島楓金額	c=1 d=0.856415 t=219
+kai fa 	開發	c=0 d=0.0869358 t=219
+kan 	看	c=3 d=2.48627 t=219
+kong jian 	空間	c=1 d=0.860708 t=219
+lao shi 	老師	c=1 d=0.985112 t=219
+le 	了	c=1 d=0.860708 t=219
+liu cheng 	流程	c=1 d=0.970446 t=219
+ma 	嗎	c=1 d=0.822835 t=219
+mao bing 	毛病	c=1 d=0.856415 t=219
+me 	麼	c=2 d=1.73013 t=219
+mei shen me 	沒什麼	c=1 d=0.869358 t=219
+na li 	哪裏	c=0 d=0.0847894 t=219
+ne 	呢	c=2 d=1.6198 t=219
+ni zai 	你在	c=1 d=0.847894 t=219
+ou jia 	偶家	c=0 d=0.0860708 t=219
+ou tu 	嘔吐	c=1 d=0.873716 t=219
+ou wen 	歐文	c=1 d=0.865022 t=219
+pa 	怕	c=1 d=0.856415 t=219
+pei zhi 	配置	c=1 d=0.865022 t=219
+qing kuang 	情況	c=1 d=0.873716 t=219
+se 	色	c=3 d=2.75269 t=219
+shan e 	善惡	c=0 d=0.081873 t=219
+she me 	什麼	c=1 d=0.852144 t=219
+shen me 	什麼	c=1 d=0.860708 t=219
+shi 	使	c=1 d=0.839457 t=219
+shi 	是	c=17 d=13.0232 t=219
+shi da fu 	士大夫	c=17 d=11.7195 t=219
+shi da fu wo 	士大夫我	c=-1 d=0 t=219
+shi duo fo er 	是多佛爾	c=4 d=3.26438 t=219
+shi fou 	是否	c=3 d=2.26057 t=219
+shi jian 	時間	c=1 d=0.913931 t=219
+shi jian shang 	時間上	c=1 d=0.97531 t=219
+shi ma 	是嗎	c=2 d=1.71712 t=219
+shi shan e 	是善惡	c=1 d=0.822835 t=219
+shi xing 	室性	c=1 d=0.869358 t=219
+shi zhe 	逝者	c=1 d=0.843664 t=219
+shu ru 	輸入	c=4 d=3.55089 t=219
+shu ru fa 	輸入法	c=2 d=1.68742 t=219
+shuang fang 	雙方	c=1 d=0.839457 t=219
+shun feng er 	順風耳	c=4 d=3.08057 t=219
+song dao feng 	松島楓	c=0 d=0.0852144 t=219
+su du 	速度	c=1 d=0.955426 t=219
+su du kai fa 	速度開發	c=1 d=0.873716 t=219
+sun 	損	c=0 d=0.176059 t=219
+sun xing zhe 	孫行者	c=1 d=0.891366 t=219
+tai yang 	太陽	c=1 d=0.865022 t=219
+te 	特	c=4 d=3.04466 t=219
+te shi tuan 	特使團	c=2 d=1.66429 t=219
+te shu 	特殊	c=1 d=0.823514 t=219
+te shu de 	特殊的	c=2 d=1.67056 t=219
+tong 	同	c=1 d=0.852144 t=219
+tong bu 	同步	c=2 d=1.99501 t=219
+wan wan mei xiang dao 	萬萬沒想到	c=1 d=0.895834 t=219
+wei shen me 	爲什麼	c=2 d=1.68325 t=219
+wen ti 	問題	c=4 d=3.1888 t=219
+wo 	我	c=3 d=2.58063 t=219
+wo bu zhi dao 	我不知道	c=1 d=0.860708 t=219
+wo cao 	我曹	c=1 d=0.856415 t=219
+wo de 	我的	c=2 d=1.7357 t=219
+wo men 	我們	c=0 d=0.0918512 t=219
+wo men zai na li 	我們在哪裏	c=1 d=0.923116 t=219
+wu fa 	無法	c=2 d=1.66641 t=219
+xing zhe 	行者	c=0 d=0.0878095 t=219
+xing zhe sun 	行者損	c=1 d=0.882497 t=219
+xiu 	修	c=1 d=0.856415 t=219
+xiu gai 	修改	c=1 d=0.860708 t=219
+yan jiu 	研究	c=1 d=0.856415 t=219
+yang 	樣	c=1 d=0.865022 t=219
+yi hao 	一號	c=1 d=0.865022 t=219
+ying xiang 	影響	c=0 d=0.0865022 t=219
+zai 	在	c=1 d=0.843664 t=219
+zai na li 	在哪裏	c=1 d=0.943992 t=219
+zao bo 	早搏	c=1 d=0.873716 t=219
+ze hui 	則會	c=1 d=0.786628 t=219
+zha hui 	炸毀	c=1 d=0.869358 t=219
+zhe shi 	這是	c=1 d=0.865022 t=219
+zhe xing 	這行	c=0 d=0.0882497 t=219
+zhe xing sun 	這行損	c=1 d=0.88692 t=219
+zhe yang 	這樣	c=0 d=0.0847894 t=219
+zhe yang de 	這樣的	c=1 d=0.852144 t=219
+zhe zhong 	這種	c=1 d=0.918512 t=219
+zhi 	之	c=6 d=4.26673 t=219
+zhi chi 	支持	c=1 d=0.873716 t=219
+zhi hong 	滯洪	c=1 d=0.794534 t=219
+zhi hou 	之後	c=1 d=0.897516 t=219
+zhi hou jiu 	之後就	c=1 d=0.873716 t=219
+zhi hu 	支護	c=1 d=0.826959 t=219
+zhi hu 	知乎	c=2 d=1.73438 t=219
+zhong 	中	c=1 d=0.852144 t=219
+zhong wen 	中文	c=2 d=1.58728 t=219
+zi 	子	c=0 d=0.0860708 t=219
+zi ou jia 	子偶家	c=1 d=0.865022 t=219
