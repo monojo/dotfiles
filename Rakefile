@@ -106,7 +106,7 @@ task :install_vim_plug do
   Vimplug::update_plug
 end
 
-desc "Install imgur-screenshot"
+desc "Install imgur_screenshot"
 task :install_imgur_screenshot do
   puts "======================================================"
   puts "Install imgur_screenshot"
@@ -117,12 +117,12 @@ task :install_imgur_screenshot do
   run %{
       cp $HOME/.yadr/bin/imgur_screenshot/imgur_screenshot.desktop $HOME/.local/share/applications
       cp -rf $HOME/.yadr/bin/imgur_screenshot/imgur-screenshot $HOME/.config/
-      cp -rf $HOME/.yadr/bin/imgur_screenshot/  $HOME/bin/imgur-screenshot
+      cp -rf $HOME/.yadr/bin/imgur_screenshot/imgur-screenshot.sh  $HOME/bin/
       sudo update-desktop-database
   }
 end
 
-desc "Install .config files"
+desc "Install nvim config files"
 task :install_nvim_config do
   puts "======================================================"
   puts "Install nvim files"
