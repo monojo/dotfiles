@@ -2,34 +2,32 @@
     "languageserver": {
         "ccls": {
             "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "cuda",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
             "initializationOptions": {
                 "cache": {
-                    "directory": "/tmp/ccls-cache"
+                    "directory": "/tmp/ccls"
                 },
-                "highlight": {
-                    "lsRanges": true
-                }
+                "highlight": { "lsRanges" : true }
             },
-            "client": {
-                "snippetSupport": true
-            }
+            "enable": true
         }
     },
     "diagnostic.virtualText": true,
     "coc.preferences.jumpCommand": "edit",
-    /*"codeLens.enable": true */
+    "clangd.semanticHighlighting": true,
+    "clangd.enabled": false,
+    "python.jediEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [],
+    "python.linting.pylintEnabled": true,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "yapf",
+    "python.autoUpdateLanguageServer": true,
+    "python.workspaceSymbols.enabled": true,
+    "python.workspaceSymbols.rebuildOnStart": true,
+    /*"codeLens.enable": true,
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    */
 }
