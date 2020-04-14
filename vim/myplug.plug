@@ -41,7 +41,7 @@ Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
 "Better comment
 Plug 'scrooloose/nerdcommenter'
 "Move between tmux pane and vim window
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 "Use . to repeat plugin map
 Plug 'tpope/vim-repeat'
 "Display marks on column
@@ -57,19 +57,26 @@ Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-emoji'
 "====== Language ======
 " modern cpp highlight
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 " python support
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Python syntax highlight, only support nvim
+if has("nvim")
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+endif
 "====== Undo ======
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 "================================================================================
+" Use lsp for symbol, replace tagbar
+" May only work with c, cpp lsp???
+"Plug 'liuchengxu/vista.vim'
 "Plug 'vimwiki/vimwiki'
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 "======Completion======
 "if has('nvim')
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -88,7 +95,6 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 "preview markdown in a browser
 "Plug 'kannokanno/previm'
 "Plug 'tyru/open-browser.vim'
-"Plug 'iamcco/markdown-preview.vim'
 
 "Plug 'nvie/vim-flake8', {'for': 'python'}
 "Plug 'pangloss/vim-javascript', {'for': 'javascript'}
