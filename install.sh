@@ -135,7 +135,8 @@ if [ ! -d "$HOME/.yadr" ]; then
     git clone --depth=1 https://github.com/monojo/dotfiles.git "$HOME/.yadr"
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
-    rake install
+    #rake install
+    python3 install.py
 else
     echo "YADR is already installed"
 fi
