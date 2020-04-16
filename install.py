@@ -66,7 +66,7 @@ def install_prezto():
     print()
     print("Installing Prezto (ZSH Enhancements)...")
 
-    zsh_dir = Path().cwd / "zsh"
+    zsh_dir = Path.cwd() / "zsh"
     prezto_dir = zsh_dir / "prezto/"
     # install prezto dir and files
     # install_files(prezto_dir)
