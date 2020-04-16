@@ -77,6 +77,8 @@ def install_imgur_screenshot():
     print("Install imgur_screenshot")
     print("====================")
     print(imgur_desk_src, imgur_desk_dest, home_bin)
+    if not home_bin.exists():
+        home_bin.mkdir()
     try:
         shutil.copy(imgur_desk_src, imgur_desk_dest)
     except Exception as e:
