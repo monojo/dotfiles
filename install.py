@@ -68,13 +68,19 @@ def install_prezto():
 
     zsh_dir = Path.cwd() / "zsh"
     prezto_dir = zsh_dir / "prezto/"
+    zshrc = Path.home() / ".zshrc"
     # install prezto dir and files
     # install_files(prezto_dir)
-    subprocess.call(["ln", "-nfs", "$HOME/.yadr/zsh/prezto", "$HOME/.zprezto"])
-    install_files(prezto_dir.glob('z*'))
+    try:
+        prezto_dir.symlink_to("~/.zprezto")
+    except Exception:
+        print(".zprezto exists")
+    #subprocess.call(["ln", "-nfs", "$HOME/.yadr/zsh/prezto", "$HOME/.zprezto"])
+    install_files(prezto_dir.glob('runcoms/z*'))
+    print(prezto_dir)
     # Append this line to zshrc to load our customize zsh config
     config_code = "for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file"
-    with open("~/.zshrc", "a") as f:
+    with open(zshrc, "a") as f:
         f.write(config_code)
 
     print()
