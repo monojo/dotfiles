@@ -93,6 +93,9 @@ def install_prezto():
     with open(zshrc, "a") as f:
         f.write(config_code)
 
+    zsh = subprocess.call(["which", "zsh"])
+    if zsh:
+        subprocess.call(["chsh", "-s", str(zsh)])
     os.system("git submodule update --init --recursive")
 
 
