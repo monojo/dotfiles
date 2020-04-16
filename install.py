@@ -114,21 +114,31 @@ def success_msg():
     print("Dotfile has been installed. Please restart your terminal and vim.")
 
 
-if __name__ == "__main__":
-    """Dot files is the set contains dot file pattern as the key,
-        and config list as value
-    """
+def pre_install():
     setup_submodules()
 
+
+def install():
     with open("./dotfiles.json") as file_list:
         dot_files = json.load(file_list)
         # install dot files
         for key, config in dot_files.items():
             install_files(CWD.glob(key), *config)
 
+
+def post_install():
     post_jobs = {
             install_imgur_screenshot, install_fonts, install_prezto,
             install_vim_plug, success_msg
             }
     for job in post_jobs:
         job()
+
+
+if __name__ == "__main__":
+    """Dot files is the set contains dot file pattern as the key,
+        and config list as value
+    """
+    pre_install()
+    install()
+    post_install()
