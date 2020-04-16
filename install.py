@@ -50,7 +50,19 @@ def install_files(files, method="symlink", dest="home"):
                     except FileExistsError as e:
                         print(e)
         else:
-            shutil.copy(source, target)
+            try:
+                shutil.copy(source, target)
+            except FileExistsError:
+                print(f"{target} file existed")
+            except FileNotFoundError:
+                path = target.parent
+                if not path.exists():
+                    try:
+                        path.mkdir(parents=True)
+                    except FileNotFoundError as e:
+                        print(e)
+                    except FileExistsError as e:
+                        print(e)
 
 
 def install_vim_plug():
