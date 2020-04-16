@@ -26,7 +26,7 @@ def install_files(files, method="symlink", dest="home"):
         elif dest == "bin":
             target = HOME / f"bin/{f.name}"
         else:
-            target = Path(dest)
+            target = Path(dest).expanduser()
 
         print(f"=========={f}==========")
         print(f"Source: {source}")
