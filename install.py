@@ -107,7 +107,7 @@ def setup_submodules():
     print("Downloading dotfile submodules...please wait")
     print("======================================================")
 
-    os.chdir("$HOME/.yadr")
+    #os.chdir("$HOME/.yadr")
     subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
     subprocess.call(["git", "submodule", "update", "--recursive"])
     subprocess.call(["git", "clean", "-df"])
