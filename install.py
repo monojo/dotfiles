@@ -58,7 +58,7 @@ def install_vim_plug():
     subprocess.call([
             "vim", "--noplugin", "-u",
             str(Path.home())+"/.vim/vimplug.vim", "-N", "\"+set hidden\"",
-            "\"+syntax on\"", "+PlugClean!", "+PlugInstall", "+"
+            "\"+syntax on\"", "+PlugClean!", "+PlugInstall", "+qall"
             ])
 
 
