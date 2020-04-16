@@ -35,7 +35,7 @@ declare -a UBUNTU_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" "libgnomeui-dev" \
     "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
-    "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
+    "python3-dev" "ruby-dev" "lua5.1-0" "lua5.1-0-dev" "libperl-dev" "rake" "zsh" \
     "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
     "volumeicon-alsa" "python3-pip" "rofi" "i3" "i3-wm" "i3status"\
     "fcitx-rime" "xclip" "scrot" "vim" "dconf-cli")

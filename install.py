@@ -78,16 +78,7 @@ def install_vim_plug():
          "curl", "-fLo", str(vim_plug_path), "--create-dirs",
          "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
           ])
-    install_command = f"""
-                        vim --noplugin -u {HOME}/.vim/vimplug.vim -N
-                         \"+set hidden\" \"+syntax on\"
-                         +PlugInstall +qall
-                      """
-    # subprocess.call([
-        # "vim", "--noplugin", "-u", ""$HOME/.vim/vimplug.vim -N
-                         # \"+set hidden\" \"+syntax on\"
-                         # +PlugInstall +qall
-        # ])
+    install_command = f"vim --noplugin -u {HOME}/.vim/vimplug.vim -N \"+set hidden\" \"+syntax on\" +PlugInstall +qall"
     os.system(install_command)
 
 
