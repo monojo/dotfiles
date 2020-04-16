@@ -133,7 +133,7 @@ def install():
         dot_files = json.load(file_list)
         # install dot files
         for key, config in dot_files.items():
-            install_files(CWD.glob(key), *config)
+            install_files(Path(".").glob(key), *config)
 
 
 def post_install():
