@@ -1,0 +1,21 @@
+{
+    "git/*": [],
+    "ctags/*": [],
+    "tmux/*": [],
+    "vimfy/*": [],
+    "vim/vimrc": [],
+    "vim": [],
+    "i3": [],
+    "doom.d": [],
+    "idea/ideavimrc": [],
+    "config/nvim/*": ["symlink", "config"],
+    "config/fcitx/rime/*": ["symlink", "config"],
+    "fonts/*": ["symlink", "config"],
+    "zsh/prezto": ["symlink", "~/.zprezto"],
+    "zsh/prezto-override/zpreztorc": [],
+    "zsh/prezto/runcoms/z*": [],
+    "bin/tpm": ["symlink", "~/.tmux/plugins/tpm"],
+    "bin/imgur_screenshot/imgur_screenshot.desktop": ["copy", ".local/share/applications/"],
+    "bin/imgur_screenshot/imgur-screenshot.sh": ["copy", "bin"]
+}
+

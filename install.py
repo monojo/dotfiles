@@ -2,27 +2,31 @@ from pathlib import Path
 import shutil
 import subprocess
 import os
+import json
+
+
+HOME = Path.home()
+CWD = Path.cwd()
+BIN = HOME / "bin/"
 
 
 def install_files(files, method="symlink", dest="home"):
-    home = Path.home()
-    cwd = Path.cwd()
+    """Install dot files to a destination, by default install at $HOME dir
+        dest: home, config, jbin and other places with full absolute path
+    """
+    global HOME, CWD
     for f in files:
         dot_file = f".{f.name}"
-        dot_folder = f".{str(f)}"
-        source = cwd / f
+        config_folder = f".{str(f)}"
+        source = CWD / f
         if dest == "home":
-            target = home / dot_file
+            target = HOME / dot_file
         elif dest == "config":
-            target = home / dot_folder
-            path = target.parent
-            if not path.exists():
-                try:
-                    path.mkdir(parents=True)
-                except FileNotFoundError as e:
-                    print(e)
-                except FileExistsError as e:
-                    print(e)
+            target = HOME / config_folder
+        elif dest == "bin":
+            target = HOME / f"bin/{f.name}"
+        else:
+            target = Path(dest)
 
         print(f"=========={f}==========")
         print(f"Source: {source}")
@@ -36,6 +40,15 @@ def install_files(files, method="symlink", dest="home"):
                 target.symlink_to(source)
             except FileExistsError:
                 print(f"{target} file existed")
+            except FileNotFoundError:
+                path = target.parent
+                if not path.exists():
+                    try:
+                        path.mkdir(parents=True)
+                    except FileNotFoundError as e:
+                        print(e)
+                    except FileExistsError as e:
+                        print(e)
         else:
             shutil.copy(source, target)
 
@@ -43,99 +56,53 @@ def install_files(files, method="symlink", dest="home"):
 def install_vim_plug():
     print("======================================================")
     print("Installing and updating vim-plug.")
-    print("""
-         The installer will now proceed to run PlugInstall to install vim-plug
-         """)
     print("======================================================")
 
-    vim_plug_path = Path(".") / "vim/autoload/plug.vim"
+    vim_plug_path = CWD / "vim/autoload/plug.vim"
     if not vim_plug_path.exists():
-        # os.chdir("$HOME/.yadr")
         subprocess.call([
          "curl", "-fLo", str(vim_plug_path), "--create-dirs",
          "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
           ])
-    subprocess.call([
-            "vim", "--noplugin", "-u",
-            str(Path.home())+"/.vim/vimplug.vim", "-N", "\"+set hidden\"",
-            "\"+syntax on\"", "+PlugClean!", "+PlugInstall", "+qall"
-            ])
+    install_command = """
+                        vim --noplugin -u $HOME/.vim/vimplug.vim -N
+                         \"+set hidden\" \"+syntax on\"
+                         +PlugInstall +qall
+                      """
+    os.system(install_command)
 
 
 def install_prezto():
+    "Appending a line to .zshrc to let it include our extensions"
     print()
-    print("Installing Prezto (ZSH Enhancements)...")
+    print("Appending our own extension to .zshrc")
 
-    zsh_dir = Path.cwd() / "zsh"
-    prezto_dir = zsh_dir / "prezto/"
-    zshrc = Path.home() / ".zshrc"
-    # install prezto dir and files
-    # install_files(prezto_dir)
-    try:
-        prezto_dir.symlink_to("~/.zprezto")
-    except Exception:
-        print(".zprezto exists")
-    install_files(prezto_dir.glob('runcoms/z*'))
-
+    zshrc = HOME / ".zshrc"
     # Append this line to zshrc to load our customize zsh config
     config_code = "for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file"
     with open(zshrc, "a") as f:
         f.write(config_code)
 
-    print()
-    subprocess.call([
-        "ln", "-nfs", "$HOME/.yadr/zsh/prezto-override/zpreztorc",
-        "$HOME/.zpreztorc"
-        ])
-    subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
+    os.system("git submodule update --init --recursive")
 
 
 def install_imgur_screenshot():
-    cwd = Path.cwd()
-    home = Path.home()
-    imgur_desk_src = cwd / "bin/imgur_screenshot/imgur_screenshot.desktop"
-    imgur_desk_dest = home / ".local/share/applications/"
-    imgur_script = cwd / "bin/imgur_screenshot/imgur-screenshot.sh"
-    home_bin = home / "bin/"
-    print("====================")
-    print("Install imgur_screenshot")
-    print("====================")
-    print(imgur_desk_src, imgur_desk_dest, home_bin)
-    if not home_bin.exists():
-        home_bin.mkdir()
-    try:
-        shutil.copy(imgur_desk_src, imgur_desk_dest)
-    except Exception as e:
-        print(e)
-    try:
-        shutil.copy(imgur_script, home_bin)
-    except Exception as e:
-        print(e)
-    subprocess.call(["sudo", "update-desktop-database"])
-
-
-def install_tpm():
-    subprocess.call(["mkdir", "-p", "$HOME/.tmux/plugins"])
-    subprocess.call([
-            "ln", "-s", "$HOME/.yadr/bin/tpm",
-            "$HOME/.tmux/plugins/tpm"
-            ])
+    os.system("sudo update-desktop-database")
 
 
 def install_fonts():
-    subprocess.call(["fc-cache", "-vf", "~/.fonts"])
+    os.system("fc-cache -vf ~/.fonts")
 
 
 def setup_submodules():
     "init submodule and download each of them"
-
     print("======================================================")
     print("Downloading dotfile submodules...please wait")
     print("======================================================")
 
-    subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
-    subprocess.call(["git", "submodule", "update", "--recursive"])
-    subprocess.call(["git", "clean", "-df"])
+    os.system("git submodule update --init --recursive")
+    os.system("git submodule update --recursive")
+    os.system("git clean -df")
 
 
 def success_msg():
@@ -153,26 +120,15 @@ if __name__ == "__main__":
     """
     setup_submodules()
 
-    dot_files = {
-            "git/*": [],
-            "ctags/*": [],
-            "tmux/*": [],
-            "vimfy/*": [],
-            "vim/vimrc": [],
-            "vim": [],
-            "i3": [],
-            "doom.d": [],
-            "idea/ideavimrc": [],
-            "config/nvim/*": ["symlink", "config"],
-            "config/fcitx/rime/*": ["symlink", "config"],
-            "fonts/*": ["symlink", "config"]
+    with open("./dotfiles.json") as file_list:
+        dot_files = json.load(file_list)
+        # install dot files
+        for key, config in dot_files.items():
+            install_files(CWD.glob(key), *config)
+
+    post_jobs = {
+            install_imgur_screenshot, install_fonts, install_prezto,
+            install_vim_plug, success_msg
             }
-    p = Path('.')
-    for key, config in dot_files.items():
-        # unpack config list as argument
-        install_files(p.glob(key), *config)
-    install_imgur_screenshot()
-    install_fonts()
-    install_prezto()
-    install_vim_plug()
-    success_msg()
+    for job in post_jobs:
+        job()
