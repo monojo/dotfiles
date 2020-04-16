@@ -8,3 +8,6 @@
 [submodule "bin/tpm"]
 	path = bin/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "gnome-terminal"]
+	path = gnome-terminal
+	url = https://github.com/dracula/gnome-terminal

@@ -107,6 +107,10 @@ def install_fonts():
     os.system("fc-cache -vf ~/.fonts")
 
 
+def install_term_theme():
+    os.system("./gnome-terminal/install.sh")
+
+
 def setup_submodules():
     "init submodule and download each of them"
     print("======================================================")
@@ -141,8 +145,12 @@ def install():
 
 def post_install():
     post_jobs = {
-            install_imgur_screenshot, install_fonts, install_prezto,
-            install_vim_plug, success_msg
+            install_imgur_screenshot,
+            install_fonts,
+            install_vim_plug,
+            install_prezto,
+            install_term_theme,
+            success_msg
             }
     for job in post_jobs:
         job()
