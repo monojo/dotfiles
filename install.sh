@@ -38,7 +38,7 @@ declare -a UBUNTU_DEPS=("git" "exuberant-ctags" "nodejs" "npm" \
     "python3-dev" "ruby-dev" "lua5.1" "lua5.1-dev" "libperl-dev" "rake" "zsh" \
     "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
     "volumeicon-alsa" "python3-pip" "rofi" "i3" "i3-wm" "i3-status"\
-    "fcitx-rime" "xclip" "scrot")
+    "fcitx-rime" "xclip" "scrot" "vim")
 
 declare -a ARCH_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "tmux" "cmake"\
