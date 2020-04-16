@@ -63,7 +63,26 @@ def install_vim_plug():
 
 
 def install_prezto():
-    pass
+    print()
+    print("Installing Prezto (ZSH Enhancements)...")
+
+    zsh_dir = Path().cwd / "zsh"
+    prezto_dir = zsh_dir / "prezto/"
+    # install prezto dir and files
+    # install_files(prezto_dir)
+    subprocess.call(["ln", "-nfs", "$HOME/.yadr/zsh/prezto", "$HOME/.zprezto"])
+    install_files(prezto_dir.glob('z*'))
+    # Append this line to zshrc to load our customize zsh config
+    config_code = "for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file"
+    with open("~/.zshrc", "a") as f:
+        f.write(config_code)
+
+    print()
+    subprocess.call([
+        "ln", "-nfs", "$HOME/.yadr/zsh/prezto-override/zpreztorc",
+        "$HOME/.zpreztorc"
+        ])
+    subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
 
 
 def install_imgur_screenshot():
@@ -109,7 +128,6 @@ def setup_submodules():
     print("Downloading dotfile submodules...please wait")
     print("======================================================")
 
-    #os.chdir("$HOME/.yadr")
     subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
     subprocess.call(["git", "submodule", "update", "--recursive"])
     subprocess.call(["git", "clean", "-df"])
