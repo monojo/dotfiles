@@ -168,5 +168,6 @@ if __name__ == "__main__":
         install_files(p.glob(key), *config)
     install_imgur_screenshot()
     install_fonts()
+    install_prezto()
     install_vim_plug()
     success_msg()
