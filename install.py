@@ -49,6 +49,8 @@ def install_files(files, method="symlink", dest="home"):
                         print(e)
                     except FileExistsError as e:
                         print(e)
+            finally:
+                target.symlink_to(source)
         else:
             try:
                 shutil.copy(source, target)
@@ -63,6 +65,8 @@ def install_files(files, method="symlink", dest="home"):
                         print(e)
                     except FileExistsError as e:
                         print(e)
+            finally:
+                shutil.copy(source, target)
 
 
 def install_vim_plug():
@@ -76,11 +80,16 @@ def install_vim_plug():
          "curl", "-fLo", str(vim_plug_path), "--create-dirs",
          "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
           ])
-    install_command = """
-                        vim --noplugin -u $HOME/.vim/vimplug.vim -N
+    install_command = f"""
+                        vim --noplugin -u {HOME}/.vim/vimplug.vim -N
                          \"+set hidden\" \"+syntax on\"
                          +PlugInstall +qall
                       """
+    # subprocess.call([
+        # "vim", "--noplugin", "-u", ""$HOME/.vim/vimplug.vim -N
+                         # \"+set hidden\" \"+syntax on\"
+                         # +PlugInstall +qall
+        # ])
     os.system(install_command)
 
 
