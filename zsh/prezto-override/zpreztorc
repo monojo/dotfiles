@@ -42,7 +42,7 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'command-not-found' \
   'node' \
-  'autosuggestion' \
+  'autosuggestions' \
   'tmux'
 
 #
