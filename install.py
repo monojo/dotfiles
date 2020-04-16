@@ -45,12 +45,11 @@ def install_files(files, method="symlink", dest="home"):
                 if not path.exists():
                     try:
                         path.mkdir(parents=True)
+                        target.symlink_to(source)
                     except FileNotFoundError as e:
                         print(e)
                     except FileExistsError as e:
                         print(e)
-            finally:
-                target.symlink_to(source)
         else:
             try:
                 shutil.copy(source, target)
@@ -61,12 +60,11 @@ def install_files(files, method="symlink", dest="home"):
                 if not path.exists():
                     try:
                         path.mkdir(parents=True)
+                        shutil.copy(source, target)
                     except FileNotFoundError as e:
                         print(e)
                     except FileExistsError as e:
                         print(e)
-            finally:
-                shutil.copy(source, target)
 
 
 def install_vim_plug():
