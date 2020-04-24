@@ -1,11 +1,12 @@
 """"""""vim-airline""""""""
 "enable extention support
-let g:airline#extentions#syntastic#enabled = 1
+"let g:airline#extentions#syntastic#enabled = 1
 "let g:airline#extensions#whitespace#enabled = 0
 "let g:airline#extensions#whitespace#symbol = '!'
 "let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
 
 " enable Tabline
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1 "display buffers in a tab
 let g:airline#extensions#tabline#show_tabs =1
@@ -23,4 +24,7 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 ""tagbar support
+"" Warning: this could high affect the performance when open large files
+"" Time to generate tags
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#coc#enabled = 1

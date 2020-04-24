@@ -6,7 +6,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 "====== Navigation ======
 "ctags overview on the go
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+Plug 'majutsushi/tagbar'
 " Browsing directory
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Open file directory: gof, got

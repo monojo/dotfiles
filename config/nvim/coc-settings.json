@@ -29,5 +29,6 @@
     "python.workspaceSymbols.rebuildOnStart": true,
     /*"codeLens.enable": true,
     "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     */
 }
