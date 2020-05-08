@@ -166,7 +166,8 @@ exec --no-startup-id udiskie
 #screen resolution
 #exec --no-startup-id $HOME/.screenlayout/screen_layout.sh
 #multiscreen layout
-exec --no-startup-id $HOME/.screenlayout/layout.sh
+#exec --no-startup-id $HOME/.screenlayout/layout.sh
+exec --no-startup-id autorandr --change
 # control sound
 # pulseaudio
 #bindsym $mod+Shift+m exec alsamixer
