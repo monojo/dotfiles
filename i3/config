@@ -38,7 +38,7 @@ bindsym $mod+w kill
 # start dmenu (a program launcher)
 #bindsym $mod+m exec dmenu_run
 #bindsym $mod+m exec i3-dmenu-desktop
-bindsym $mod+m exec rofi -show drun
+bindsym $mod+m exec "rofi -modi combi -show combi -show-icons -combi-modi drun,run"
 
 # change focus
 bindsym $mod+h focus left
