@@ -50,11 +50,11 @@ Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-multiple-cursors'
 "====== Markdown ======
 " Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
-            \ 'for': 'markdown', 'on': 'MarkdownPreview' }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
+            "\ 'for': 'markdown', 'on': 'MarkdownPreview' }
 "Distraction free
-Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vim-emoji'
+"Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/vim-emoji'
 "====== Language ======
 " modern cpp highlight
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
@@ -71,8 +71,8 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 " May only work with c, cpp lsp???
 "Plug 'liuchengxu/vista.vim'
 "Plug 'vimwiki/vimwiki'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
