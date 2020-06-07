@@ -66,6 +66,7 @@ endif
 "====== Undo ======
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
+Plug 'lyuts/vim-rtags'
 "================================================================================
 " Use lsp for symbol, replace tagbar
 " May only work with c, cpp lsp???
