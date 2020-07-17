@@ -53,6 +53,18 @@ declare -a ARCH_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
     "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" "pamix")
 
+declare -a MANJARO_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
+    "tmux" "cmake"\
+    # gui, display manager, window manager
+    "xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
+    "python3" "rake" "zsh" \
+    "fcitx" \
+    "volumeicon" "rofi"\
+    "xclip" "scrot"\
+    # network manager and applet
+    "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
+    "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio")
+    
 execute () {
     echo "$1"
     eval "$1"
@@ -67,6 +79,14 @@ install_ubuntu_deps () {
 
 install_arch_dep () {
     install_cmd="pacman -S $1"
+    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    execute "$install_cmd"
+    echo "Y\n"
+}
+
+
+install_manjaro_dep () {
+    install_cmd="sudo pacman -S $1 --noconfirm"
     echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
     execute "$install_cmd"
     echo "Y\n"
@@ -128,6 +148,8 @@ if [ "$PLATFORM" == "Linux" ]; then
         install_arch_deps
         # setup arch services
         #setup_arch_service
+    elif ["$DIST" == "Manjaro" ]; then
+        install_manjaro_deps
     fi
 fi
 
