@@ -165,9 +165,10 @@ exec --no-startup-id feh --bg-fill $HOME/.i3/wallpaper.jpg
 exec --no-startup-id udiskie
 #screen resolution
 #exec --no-startup-id $HOME/.screenlayout/screen_layout.sh
-#multiscreen layout
-#exec --no-startup-id $HOME/.screenlayout/layout.sh
+#multiscreen layout, save first
 exec --no-startup-id autorandr --change
+# polkit authentication agent
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 
 # control sound
 # pulseaudio
 #bindsym $mod+Shift+m exec alsamixer
