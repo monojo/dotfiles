@@ -1,6 +1,6 @@
 " Use quick fix window for result
 let g:rtagsUseLocationList = 0
-let g:rtagsRdmCmd = "/home/monojo/bin/rtags/bin/rdm"
+"let g:rtagsRdmCmd = "/home/monojo/bin/rtags/bin/rdm"
 let g:rtagsAutoLaunchRdm = 1
 let g:rtagsUseDefaultMappings = 0
 
