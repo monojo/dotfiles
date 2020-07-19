@@ -35,9 +35,11 @@ bindsym $mod+t exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+w kill
 
-# start dmenu (a program launcher)
+# start program loader 
 #bindsym $mod+m exec dmenu_run
 #bindsym $mod+m exec i3-dmenu-desktop
+#bindsym $mod+m exec ulauncher
+#bindsym $mod+m exec albert
 bindsym $mod+m exec "rofi -modi combi -show combi -show-icons -combi-modi drun,run"
 
 # change focus
