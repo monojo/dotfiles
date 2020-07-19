@@ -1,6 +1,6 @@
 "======Coc LSP======
 nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <leader>r <Plug>(coc-references)
+nmap <silent> <leader>rr <Plug>(coc-references)
 nmap <silent> <leader>i <Plug>(coc-implementation)
 
 ""======LanguageClient-neovim======
