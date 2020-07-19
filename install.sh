@@ -53,18 +53,33 @@ declare -a ARCH_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
     "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" "pamix")
 
-declare -a MANJARO_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
+#declare -a MANJARO_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
+    #"tmux" "cmake"\
+    ## gui, display manager, window manager
+    #"xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
+    #"python3" "rake" "zsh" \
+    #"fcitx" "fcitx-rime"\
+    #"volumeicon" "rofi"\
+    #"xclip" "scrot"\
+    ## network manager and applet
+    #"networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
+        #"base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio")
+    
+declare -a MANJARO_DEPS=( "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "tmux" "cmake"\
     # gui, display manager, window manager
     "xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
     "python3" "rake" "zsh" \
-    "fcitx" \
+    "fcitx" "fcitx-rime"\
     "volumeicon" "rofi"\
     "xclip" "scrot"\
     # network manager and applet
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
-    "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio")
-    
+    "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" \
+    "polkit-kde-agent" "nautilus" "openssh" "gvfs-smb" )
+
+declare -a MANJARO_AURS=( "zotero" "okular" "chromium" "rtags" "ly" "anki" )
+
 execute () {
     echo "$1"
     eval "$1"
@@ -86,7 +101,14 @@ install_arch_dep () {
 
 
 install_manjaro_dep () {
-    install_cmd="sudo pacman -S $1 --noconfirm"
+    install_cmd="sudo pacman -S $1"
+    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    execute "$install_cmd"
+    echo "Y\n"
+}
+
+install_manjaro_dep () {
+    install_cmd="sudo yay -S $1"
     echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
     execute "$install_cmd"
     echo "Y\n"
@@ -96,6 +118,20 @@ install_arch_deps () {
     for dep in ${ARCH_DEPS[@]}
     do
         install_arch_dep $dep
+    done
+}
+
+install_manjaro_deps () {
+    for dep in ${MANJARO_DEPS[@]}
+    do
+        install_manjaro_dep $dep
+    done
+}
+
+install_manjaro_aurs () {
+    for dep in ${MANJARO_AURS[@]}
+    do
+        install_manjaro_aur $dep
     done
 }
 
@@ -143,13 +179,14 @@ check_platform
 if [ "$PLATFORM" == "Linux" ]; then
     if [ "$DIST" == "Ubuntu" ]; then
         install_ubuntu_deps
-    elif ["$DIST" == "Arch" ]; then
+    elif [ "$DIST" == "Arch" ]; then
         #setup_arch
         install_arch_deps
         # setup arch services
         #setup_arch_service
-    elif ["$DIST" == "Manjaro" ]; then
+    elif [ "$DIST" == "Manjaro" ]; then
         install_manjaro_deps
+        install_manjaro_aurs
     fi
 fi
 
