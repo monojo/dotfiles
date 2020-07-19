@@ -16,15 +16,15 @@ function! s:tmux_map(key, dest)
 endfunction
 
 " Send vim's content to tmux pane
-call s:tmux_map('<leader>tt', '')
-call s:tmux_map('<leader>th', '.left')
-call s:tmux_map('<leader>tj', '.bottom')
-call s:tmux_map('<leader>tk', '.top')
-call s:tmux_map('<leader>tl', '.right')
-call s:tmux_map('<leader>ty', '.top-left')
-call s:tmux_map('<leader>to', '.top-right')
-call s:tmux_map('<leader>tn', '.bottom-left')
-call s:tmux_map('<leader>t.', '.bottom-right')
+"call s:tmux_map('<leader>tt', '')
+"call s:tmux_map('<leader>th', '.left')
+"call s:tmux_map('<leader>tj', '.bottom')
+"call s:tmux_map('<leader>tk', '.top')
+"call s:tmux_map('<leader>tl', '.right')
+"call s:tmux_map('<leader>ty', '.top-left')
+"call s:tmux_map('<leader>to', '.top-right')
+"call s:tmux_map('<leader>tn', '.bottom-left')
+"call s:tmux_map('<leader>t.', '.bottom-right')
 
 " ----------------------------------------------------------------------------
 " TX: tmux execute
