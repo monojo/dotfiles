@@ -1,5 +1,6 @@
 export USE_CCACHE=1
-export FZF_DEFAULT_COMMAND='ag -g ""'
+#export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files'
 
 PATH=~/bin:$PATH
 PATH=~/android-studio/bin:$PATH
