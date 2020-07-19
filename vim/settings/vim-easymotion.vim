@@ -1,6 +1,7 @@
 let g:EasyMotion_do_mapping = 0
 " Leader + jump
-nmap <leader>j <Plug>(easymotion-overwin-f)
+"nmap <leader>j <Plug>(easymotion-overwin-f)
+nmap F <Plug>(easymotion-overwin-f)
 "nmap s <Plug>(easymotion-overwin-f2)
 " Move to line
 "map <Leader>L <Plug>(easymotion-bd-jk)
