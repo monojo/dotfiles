@@ -70,13 +70,14 @@ declare -a MANJARO_DEPS=( "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     # gui, display manager, window manager
     "xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
     "python3" "rake" "zsh" \
+    # Input method
     "fcitx" "fcitx-rime"\
     "volumeicon" "rofi"\
     "xclip" "scrot"\
     # network manager and applet
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
     "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" \
-    "polkit-kde-agent" "nautilus" "openssh" "gvfs-smb" )
+    "polkit-kde-agent" "nautilus" "openssh" "gvfs-smb" "feh" "udiskie" "dunst" )
 
 declare -a MANJARO_AURS=( "zotero" "okular" "chromium" "rtags" "ly" "anki" )
 
