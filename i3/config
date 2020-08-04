@@ -162,7 +162,7 @@ exec --no-startup-id fcitx -d
 # trasparency terminal
 #exec --no-startup-id compton
 # set wallpaper
-exec --no-startup-id feh --bg-fill $HOME/.i3/new.jpg
+exec --no-startup-id feh --bg-scale $HOME/.i3/new.jpg
 # auto mount disk
 exec --no-startup-id udiskie
 #screen resolution
