@@ -53,19 +53,7 @@ declare -a ARCH_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
     "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" "pamix")
 
-#declare -a MANJARO_DEPS=("grub" "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
-    #"tmux" "cmake"\
-    ## gui, display manager, window manager
-    #"xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
-    #"python3" "rake" "zsh" \
-    #"fcitx" "fcitx-rime"\
-    #"volumeicon" "rofi"\
-    #"xclip" "scrot"\
-    ## network manager and applet
-    #"networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
-        #"base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio")
-    
-declare -a MANJARO_DEPS=( "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
+declare -a MANJARO_DEPS=("neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "tmux" "cmake"\
     # gui, display manager, window manager
     "xorg-server" "lightdm" "lightdm-gtk-greeter" "i3"\
@@ -77,9 +65,27 @@ declare -a MANJARO_DEPS=( "neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     # network manager and applet
     "networkmanager" "network-manager-applet" "wpa_supplicant" "wireless_tools"\
     "base-devel" "vim" "htop" "xfce4-terminal" "man" "vi" "pulseaudio" \
-    "polkit-kde-agent" "nautilus" "openssh" "gvfs-smb" "feh" "udiskie" "dunst" )
+    "polkit-kde-agent" "nautilus" "openssh" "gvfs-smb" "feh" "udiskie" "dunst"\
+    # Fonts
+    "ttf-fantasque-sans-mono" "ttf-dejavu" "ttf-fira-code" \
+    "ttf-roboto" "wqy-zenhei" "wqy-microhei" "adobe-source-han-serif-cn-fonts"\
+    "adobe-source-han-sans-cn-fonts" "ttf-droid"\
+    # MISC
+    "foliate" "firefox" "picocom" "gparted" "gdb" "virtualbox" "python-pip"\
+    "sudo" "vlc" "man-db" "man-pages" "ncdu" "nfs-utils" "ntp" "okular"\
+    "pamac-gtk" "libreoffice-still" "mhwd-db" "dhcpcd" "exfat-utils" "emacs"\
+    "dmenu-manjaro" "ccls" "unzip" "arandr" "autorandr" "python-pynvim" "gzip"\
+    "hibernator"
+    )
 
-declare -a MANJARO_AURS=( "zotero" "okular" "chromium" "rtags" "ly" "anki" )
+declare -a MANJARO_AURS=("zotero" "chromium" "rtags" "ly" "anki" \
+    "zoom" "obsidian-appimage" "dropbox" "xkill-shortcut" "mattermost-desktop"\
+    "pulse-secure" "pamix-git")
+
+# Sytemd services to be enabled
+# Display Manager, permission, time sync, ssh
+declare -a SYSTEMD_SERVICES=("ly.service" "polkit" "systemd-timesyncd.service"\
+    "sshd.service")
 
 execute () {
     echo "$1"
@@ -108,7 +114,7 @@ install_manjaro_dep () {
     echo "Y\n"
 }
 
-install_manjaro_dep () {
+install_manjaro_aur () {
     install_cmd="sudo yay -S $1"
     echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
     execute "$install_cmd"
@@ -133,6 +139,19 @@ install_manjaro_aurs () {
     for dep in ${MANJARO_AURS[@]}
     do
         install_manjaro_aur $dep
+    done
+}
+
+enable_systemd_service () {
+    cmd="sudo systemctl enable $1"
+    echo "${YELLOW}We are going to enable $1 on your computer ...${NORMAL}"
+    execute "$cmd"
+}
+
+enable_systemd_services () {
+    for service in ${SYSTEMD_SERVICES[@]}
+    do
+        enable_systemd_service $service
     done
 }
 
@@ -188,6 +207,7 @@ if [ "$PLATFORM" == "Linux" ]; then
     elif [ "$DIST" == "Manjaro" ]; then
         install_manjaro_deps
         install_manjaro_aurs
+        enable_systemd_service
     fi
 fi
 

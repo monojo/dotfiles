@@ -10,6 +10,7 @@
     "idea/ideavimrc": [],
     "config/nvim/*": ["symlink", "config"],
     "config/fcitx/rime/*": ["symlink", "config"],
+    "config/fontconfig/*": ["symlink", "config"],
     "fonts/*": ["symlink", "config"],
     "zsh/prezto": ["symlink", "~/.zprezto"],
     "zsh/prezto-override/zpreztorc": [],
