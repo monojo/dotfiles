@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/home/monojo/bin/Dida/dida
+Type=Application
+Terminal=false
+Comment=Dida the reminder
+Name=Dida
+StartupNotify=false
+Categories=Productivity

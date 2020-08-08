@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/home/monojo/bin/YouTubeMusic-linux-x64/YouTubeMusic
+Type=Application
+Terminal=false
+Comment=Youtube Music Service
+Name=Youtube Music
+StartupNotify=false
+Categories=Music
