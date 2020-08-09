@@ -156,6 +156,7 @@
          ;;+jupyter        ; ipython/jupyter support for babel
          +pandoc                        ; export-with-pandoc support
          +pretty
+         +journal
          ;;+pomodoro        ; be fruitful with the tomato technique
          +present          ; using org-mode for presentations
          +roam)

@@ -26,7 +26,7 @@
 (load! "+lsp")
 (load! "+looking")
 
-(setq doom-scratch-buffer-major-mode 'org-mode)
+(setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
 ;; Using binding 'K'
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
