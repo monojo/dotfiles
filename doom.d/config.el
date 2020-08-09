@@ -25,10 +25,6 @@
 (load! "+bindings")
 (load! "+lsp")
 (load! "+looking")
-;; (load! "+func")
-;; (load! "+org")
-;; (load! "+ui")
-;; (load! "+cc")
 
 (setq doom-scratch-buffer-major-mode 'org-mode)
 
