@@ -11,9 +11,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 17)
+(setq doom-font (font-spec :family "Monospace" :size 25)
       doom-variable-pitch-font (font-spec :family "Monospace")
-       doom-unicode-font (font-spec :family "Monospace")
+      doom-unicode-font (font-spec :family "Monospace")
 )
 (setq doom-big-font (font-spec :family "Monospace" :size 27))
 
@@ -28,4 +28,5 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+;; (setq display-line-numbers 'relative)
+(setq global-display-line-numbers-mode 'relative)

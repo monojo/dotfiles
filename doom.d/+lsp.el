@@ -25,7 +25,6 @@
   )
 
 (use-package! lsp-ui
-  ;;load-path "~/Dev/Emacs/lsp-ui"
   :commands lsp-ui-mode
   :config
   (setq

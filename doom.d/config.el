@@ -22,15 +22,25 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(load! "+func")
 (load! "+bindings")
-(load! "+looking")
 (load! "+lsp")
-(load! "+cc")
+(load! "+looking")
+;; (load! "+func")
+;; (load! "+org")
+;; (load! "+ui")
+;; (load! "+cc")
 
-(setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
+(setq doom-scratch-buffer-major-mode 'org-mode)
 
+;; Using binding 'K'
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
+
+(use-package! avy
+  :commands (avy-goto-char-timer)
+  :init
+  (setq avy-timeout-seconds 0.2)
+  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p))
+  )
 
 ;; shell
 (after! eshell
@@ -46,56 +56,28 @@
     (interactive)
     (require 'em-hist)
     (let* ((start-pos (save-excursion (eshell-bol) (point)))
-           (end-pos (point))
-           (input (buffer-substring-no-properties start-pos end-pos))
-           (command (ivy-read "Command: "
-                              (delete-dups
-                               (when (> (ring-size eshell-history-ring) 0)
-                                 (ring-elements eshell-history-ring)))
-                              :initial-input input)))
+            (end-pos (point))
+            (input (buffer-substring-no-properties start-pos end-pos))
+            (command (ivy-read "Command: "
+                       (delete-dups
+                         (when (> (ring-size eshell-history-ring) 0)
+                           (ring-elements eshell-history-ring)))
+                       :initial-input input)))
       (setf (buffer-substring start-pos end-pos) command)
       (end-of-line)))
 
   (defun +my/eshell-init-keymap ()
     (evil-define-key 'insert eshell-mode-map
       (kbd "C-r") #'+my/ivy-eshell-history))
-  (add-hook 'eshell-first-time-mode-hook #'+my/eshell-init-keymap))
+  (add-hook 'eshell-first-time-mode-hook #'+my/eshell-init-keymap)
+  )
 
 ;; comment
 (use-package! evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines)
   )
 
-(after! git-link
-  (defun git-link-llvm (hostname dirname filename branch commit start end)
-      (format "https://github.com/llvm-mirror/%s/tree/%s/%s"
-              (file-name-base dirname)
-              (or branch commit)
-              (concat filename
-                      (when start
-                        (concat "#"
-                                (if end
-                                    (format "L%s-%s" start end)
-                                  (format "L%s" start)))))))
-  (defun git-link-musl (hostname dirname filename branch commit start end)
-      (format "http://git.musl-libc.org/cgit/%s/tree/%s%s%s"
-              (file-name-base dirname)
-              filename
-              (if branch "" (format "?id=%s" commit))
-              (if start (concat "#" (format "n%s" start)) "")))
-  (defun git-link-sourceware (hostname dirname filename branch commit start end)
-    (format "https://sourceware.org/git/?p=%s.git;a=blob;hb=%s;f=%s"
-            (file-name-base dirname)
-            commit
-            (concat filename
-                    (when start
-                      (concat "#" (format "l%s" start))))))
-  (add-to-list 'git-link-remote-alist '("git.llvm.org" git-link-llvm))
-  (add-to-list 'git-link-remote-alist '("git.musl-libc.org" git-link-musl))
-  (add-to-list 'git-link-remote-alist '("sourceware.org" git-link-sourceware))
-  )
-
-;; isearch
+;; inc-search
 (setq isearch-lax-whitespace t)
 (setq search-whitespace-regexp ".*")
 (define-key isearch-mode-map (kbd "DEL") #'isearch-del-char)
@@ -124,23 +106,13 @@
   ("^\\*Man.*" :size 80 :side right)
   ))
 
-;; use rg
-(use-package! rg)
-
-(use-package! awesome-tab
-  :config
-  (awesome-tab-mode t)
-  ;; show index
-  (setq
-     awesome-tab-show-tab-index t
-        )
-  )
-
 ;; search engine
 (use-package! ivy
   :config
   (setq
-   ;; use fuzzy finding
+   ;; use regex-plus finding
+   ;; space as wild card
+   ;; everything should be match before '!'
    ivy-re-builders-alist '((swiper . ivy--regex-plus)
                            (swiper-isearch . ivy--regex-plus)
                            (counsel-rg . ivy--regex-plus)
@@ -153,6 +125,7 @@
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   (global-flycheck-mode -1)
   )
+
 (after! flymake-proc
   ;; disable flymake-proc
   (setq-default flymake-diagnostic-functions nil)
@@ -161,3 +134,45 @@
 (defvar flymake-posframe-buffer "*flymake-posframe*")
 (defvar flymake-posframe--last-diag nil)
 (defvar flymake-posframe--timer nil)
+
+(setq whitespace-style (quote (trailing space)))
+
+(use-package! company-box
+  :hook (company-mode . company-box-mode))
+;; (use-package! awesome-tab
+;;   :config
+;;   (awesome-tab-mode t)
+;;   ;; show index
+;;   (setq
+;;      awesome-tab-show-tab-index t
+;;         )
+;;   )
+
+;; (after! git-link
+;;   (defun git-link-llvm (hostname dirname filename branch commit start end)
+;;       (format "https://github.com/llvm-mirror/%s/tree/%s/%s"
+;;               (file-name-base dirname)
+;;               (or branch commit)
+;;               (concat filename
+;;                       (when start
+;;                         (concat "#"
+;;                                 (if end
+;;                                     (format "L%s-%s" start end)
+;;                                   (format "L%s" start)))))))
+;;   (defun git-link-musl (hostname dirname filename branch commit start end)
+;;       (format "http://git.musl-libc.org/cgit/%s/tree/%s%s%s"
+;;               (file-name-base dirname)
+;;               filename
+;;               (if branch "" (format "?id=%s" commit))
+;;               (if start (concat "#" (format "n%s" start)) "")))
+;;   (defun git-link-sourceware (hostname dirname filename branch commit start end)
+;;     (format "https://sourceware.org/git/?p=%s.git;a=blob;hb=%s;f=%s"
+;;             (file-name-base dirname)
+;;             commit
+;;             (concat filename
+;;                     (when start
+;;                       (concat "#" (format "l%s" start))))))
+;;   (add-to-list 'git-link-remote-alist '("git.llvm.org" git-link-llvm))
+;;   (add-to-list 'git-link-remote-alist '("git.musl-libc.org" git-link-musl))
+;;   (add-to-list 'git-link-remote-alist '("sourceware.org" git-link-sourceware))
+;;   )
