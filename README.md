@@ -6,7 +6,7 @@ Forked from [yadr](https://github.com/skwp/dotfiles)
   bash -c "`curl -fsSL https://raw.githubusercontent.com/monojo/dotfiles/master/install.sh `"
 ```
 
-* `install.sh` script install necessary Ubuntu pacakges and dotfiles.
+* `install.sh` script install necessary pacakges and dotfiles.
 * Vundle changed to Vim-Plug
 
 ## Config List
