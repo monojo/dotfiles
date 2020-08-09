@@ -75,8 +75,8 @@ declare -a MANJARO_DEPS=("neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "sudo" "vlc" "man-db" "man-pages" "ncdu" "nfs-utils" "ntp" "okular"\
     "pamac-gtk" "libreoffice-still" "mhwd-db" "dhcpcd" "exfat-utils" "emacs"\
     "dmenu-manjaro" "ccls" "unzip" "arandr" "autorandr" "python-pynvim" "gzip"\
-    "hibernator"
-    )
+    "hibernator" "ripgrep" "bluez" "bluz-utils" "blueman" "cgdb" "fzf"\
+    "radare2" "fd")
 
 declare -a MANJARO_AURS=("zotero" "chromium" "rtags" "ly" "anki" \
     "zoom" "obsidian-appimage" "dropbox" "xkill-shortcut" "mattermost-desktop"\
@@ -86,6 +86,9 @@ declare -a MANJARO_AURS=("zotero" "chromium" "rtags" "ly" "anki" \
 # Display Manager, permission, time sync, ssh
 declare -a SYSTEMD_SERVICES=("ly.service" "polkit" "systemd-timesyncd.service"\
     "sshd.service")
+
+# nodejs apps
+declare -a NPM_APPS=("nativefier" "tldr")
 
 execute () {
     echo "$1"
@@ -153,6 +156,19 @@ enable_systemd_services () {
     do
         enable_systemd_service $service
     done
+}
+
+install_npm_app () {
+    cmd="sudo npm install -g $1"
+    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    execute "$cmd"
+}
+
+install_npm_apps () {
+  for app in ${NPM_APPS[@]}
+  do
+      install_npm_app $app
+  done
 }
 
 #setup_network_service () {
