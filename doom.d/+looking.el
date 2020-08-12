@@ -28,5 +28,5 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-;; (setq display-line-numbers 'relative)
-(setq global-display-line-numbers-mode 'relative)
+(setq display-line-numbers-type 'relative)
+(setq global-display-line-numbers-mode t)

@@ -22,9 +22,9 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(load! "+looking")
 (load! "+bindings")
 (load! "+lsp")
-(load! "+looking")
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
@@ -135,6 +135,7 @@
 
 (use-package! company-box
   :hook (company-mode . company-box-mode))
+(which-func-mode t)
 ;; (use-package! awesome-tab
 ;;   :config
 ;;   (awesome-tab-mode t)

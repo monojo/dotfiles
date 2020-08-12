@@ -105,8 +105,8 @@
   ;; rainbow highlight, will override your theme
   (setq ccls-sem-parameter-faces [my-ccls-sem-parameter-face])
   ;; (setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
-  (setq ccls-sem-macro-faces [font-lock-keyword-face])
-  (setq ccls-sem-type-faces [my-ccls-sem-type-face])
+  ;; (setq ccls-sem-macro-faces [font-lock-keyword-face])
+  ;; (setq ccls-sem-type-faces [my-ccls-sem-type-face])
   ;; (setq font-lock-type-face [my-ccls-sem-type-face])
     ;; (ccls-use-default-rainbow-sem-highlight)
     ;; https://github.com/maskray/ccls/blob/master/src/config.h

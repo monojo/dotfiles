@@ -171,6 +171,7 @@
     :desc "Symbols"                "i" #'imenu
     :desc "Symbols across buffers" "I" #'imenu-anywhere
     :desc "Online providers"       "o" #'+lookup/online-select
+    :desc "Search Marks/Ivy"       "R" #'counsel-evil-marks
     )
   (:prefix ("t" . "toggle")
     "d" #'toggle-debug-on-error
