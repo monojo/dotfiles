@@ -1,0 +1,21 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1438,
+       "width": 1718,
+       "x": 1,
+       "y": 1081
+    },
+    "name": "Arch Linux - perl-anyevent-i3 0.17-6 (any) - Chromium",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^Chromium$"
+       }
+    ],
+    "type": "con"
+}
+

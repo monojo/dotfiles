@@ -1,0 +1,41 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1080,
+       "width": 1718,
+       "x": 763,
+       "y": 0
+    },
+    "name": "Writing Inbox | All",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^notiontheall\\-in\\-oneworkspaceforyournotes\\-tasks\\-wikis\\-anddatabases\\-nativefier\\-5f9ce2$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1078,
+       "width": 1918,
+       "x": 663,
+       "y": 1
+    },
+    "name": "所有 - 滴答清单",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^\\-nativefier\\-5a7b0c$"
+       }
+    ],
+    "type": "con"
+}
+

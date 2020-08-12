@@ -175,12 +175,18 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 # pulseaudio
 #bindsym $mod+Shift+m exec alsamixer
 # pamix
-
 # Floating win for some keyboard
 #for_window [title="monojo: pamix"] floating enable
 #for_window [class="Blueman-manager"] floating enable
 #bindsym $mod+Shift+p exec htop
 #for_window [title="monojo: htop"] floating enable
+
+# Auto start applications at certain workspace
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
+exec --no-startup-id chromium
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
+exec --no-startup-id ~/bin/Dida/dida
+exec --no-startup-id ~/bin/Notion/Notion
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
