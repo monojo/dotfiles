@@ -145,6 +145,11 @@ install_manjaro_aurs () {
     done
 }
 
+install_deps () {
+    for dep in $1
+        $2 $dep
+}
+
 enable_systemd_service () {
     cmd="sudo systemctl enable $1"
     echo "${YELLOW}We are going to enable $1 on your computer ...${NORMAL}"
@@ -171,16 +176,6 @@ install_npm_apps () {
   done
 }
 
-#setup_network_service () {
-    #systemctl enable NetworkManager.service
-#}
-
-#setup_arch_service () {
-    #setup_network_service()
-    ##setup_service()
-    ##setup_network_service()
-#}
-
 check_platform () {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         #Linux OS 
@@ -192,23 +187,6 @@ check_platform () {
         PLATFORM="OSX"
     fi
 }
-
-## if support efi, then use efi with gpt
-## else use bios with mbr
-#EFIVARS_DIR="/sys/firmware/efi/efivars"
-#auto_partition () {
-    #if [ -d "$EFIVARS_DIR" ]; then
-        #boot_mode="efi";
-    #else
-        #boot_mode="bios";
-    #fi
-    #echo "Boot mode $boot_mode"
-#}
-
-#setup_arch () {
-    #auto_partition()
-
-#}
 
 check_platform
 
@@ -234,7 +212,7 @@ if [ ! -d "$HOME/.yadr" ]; then
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     #rake install
-    python3 install.py
+    python install.py
 else
     echo "YADR is already installed"
 fi
