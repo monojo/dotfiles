@@ -118,7 +118,7 @@ def setup_submodules():
     print("======================================================")
 
     os.system("git submodule update --init --recursive")
-    os.system("git submodule update --recursive")
+    # os.system("git submodule update --recursive")
     os.system("git clean -df")
 
 
@@ -145,6 +145,7 @@ def install():
 
 def post_install():
     post_jobs = {
+            # TODO put post action into json string
             install_imgur_screenshot,
             install_fonts,
             install_vim_plug,

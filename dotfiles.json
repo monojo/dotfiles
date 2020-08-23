@@ -8,12 +8,14 @@
     "i3": [],
     "doom.d": [],
     "idea/ideavimrc": [],
-    "config/nvim/*": ["symlink", "config"],
-    "config/fcitx/rime/*": ["symlink", "config"],
-    "config/fontconfig/*": ["symlink", "config"],
-    "fonts/*": ["symlink", "config"],
+    "config/nvim/*": ["symlink", "~/.config/nvim/"],
+    "config/fcitx/rime/*": ["symlink", "~/.config/fcitx/rime/"],
+    "config/fontconfig/*": ["symlink", "~/.config/fontconfig/"],
+    "fonts": [],
     "zsh/prezto": ["symlink", "~/.zprezto"],
     "zsh/prezto-override/zpreztorc": [],
     "zsh/prezto/runcoms/z*": [],
-    "bin/tpm": ["symlink", "~/.tmux/plugins/tpm"]
+    "bin/tpm": ["symlink", "~/.tmux/plugins/tpm"],
+    "local/share/applications/*": ["symlink", "~/.local/share/applications/"],
+    "cgdb": []
 }
