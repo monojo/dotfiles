@@ -145,11 +145,6 @@ install_manjaro_aurs () {
     done
 }
 
-install_deps () {
-    for dep in $1
-        $2 $dep
-}
-
 enable_systemd_service () {
     cmd="sudo systemctl enable $1"
     echo "${YELLOW}We are going to enable $1 on your computer ...${NORMAL}"
@@ -201,7 +196,7 @@ if [ "$PLATFORM" == "Linux" ]; then
     elif [ "$DIST" == "Manjaro" ]; then
         install_manjaro_deps
         install_manjaro_aurs
-        enable_systemd_service
+        enable_systemd_services
     fi
 fi
 
