@@ -199,6 +199,7 @@
 
        :private
        my-cc
+       ;my-lsp
        ;; my-python
        ;; my-org
 

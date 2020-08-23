@@ -136,6 +136,11 @@
 (use-package! company-box
   :hook (company-mode . company-box-mode))
 (which-func-mode t)
+(lsp-treemacs-sync-mode 1)
+
+;; ((use-package! dap-mode
+;;    add-hook 'dap-stopped-hook (lambda (arg) (call-interactively #'dap-hydra)))
+;;   )
 ;; (use-package! awesome-tab
 ;;   :config
 ;;   (awesome-tab-mode t)

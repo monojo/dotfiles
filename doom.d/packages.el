@@ -17,10 +17,15 @@
 ;; e-ctags using counsel, symbol search
 (package! rg)
 ;; (package! counsel-etags)
-;; company lsp backend
-(package! company-lsp)
+;; company lsp backend, not supported anymore
+;; (package! company-lsp)
 
 ;; ==== MISC ====
+(package! lsp-ui :ignore t)
+;; treemacs with lsp
+(package! lsp-treemacs)
+;; debugger
+(package! dap-mode)
 ;; comment
 (package! evil-nerd-commenter)
 ;; symbol highlighting and more

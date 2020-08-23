@@ -184,3 +184,14 @@
 	    (set-process-filter process 'realgud:eval-process-output))
     (realgud:cmd-eval expr)
     ))
+
+
+;; ;;;###autoload
+;; (defun get-faces (pos)
+;;   "Get the font faces at POS."
+;;   (interactive)
+;;   (remq nil
+;;         (list
+;;          (get-char-property pos 'read-face-name)
+;;          (get-char-property pos 'face)
+;;          (plist-get (text-properties-at pos) 'face))))
