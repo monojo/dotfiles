@@ -2,12 +2,12 @@
 	path = zsh/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
   ignore = dirty
-[submodule "bin/imgur_screenshot"]
-	path = bin/imgur_screenshot
-	url = https://github.com/monojo/imgur_screenshot.git
 [submodule "bin/tpm"]
 	path = bin/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "gnome-terminal"]
 	path = gnome-terminal
 	url = https://github.com/dracula/gnome-terminal
+[submodule "bin/imgur-screenshot"]
+	path = bin/imgur-screenshot
+	url = https://github.com/jomo/imgur-screenshot
