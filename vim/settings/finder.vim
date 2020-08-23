@@ -82,7 +82,8 @@ let g:fzf_colors =
 
 " This part could be replaced by coc-list
 nmap <leader><tab> <Plug>(fzf-maps-n)
-nmap <leader>f :Files<CR>
+"nmap <leader>f :Files<CR>
+nmap <space><space> :Files<CR>
 nmap <leader>F :GFiles<CR>
 nmap <leader>s :Snippets<CR>
 imap <leader>s  <c-o>:call fzf#vim#snippets(0)<cr>

@@ -15,7 +15,5 @@
     "zsh/prezto": ["symlink", "~/.zprezto"],
     "zsh/prezto-override/zpreztorc": [],
     "zsh/prezto/runcoms/z*": [],
-    "bin/tpm": ["symlink", "~/.tmux/plugins/tpm"],
-    "bin/imgur_screenshot/imgur_screenshot.desktop": ["copy", "~/.local/share/applications/imgur_screenshot.desktop"],
-    "bin/imgur_screenshot/imgur-screenshot.sh": ["copy", "bin"]
+    "bin/tpm": ["symlink", "~/.tmux/plugins/tpm"]
 }
