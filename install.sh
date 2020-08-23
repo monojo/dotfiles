@@ -74,7 +74,7 @@ declare -a MANJARO_DEPS=("neovim" "git" "ctags" "nodejs" "npm" "yarn"\
     "foliate" "firefox" "picocom" "gparted" "gdb" "virtualbox" "python-pip"\
     "sudo" "vlc" "man-db" "man-pages" "ncdu" "nfs-utils" "ntp" "okular"\
     "pamac-gtk" "libreoffice-still" "mhwd-db" "dhcpcd" "exfat-utils" "emacs"\
-    "dmenu-manjaro" "ccls" "unzip" "arandr" "autorandr" "python-pynvim" "gzip"\
+    "dmenu-manjaro" "unzip" "arandr" "autorandr" "python-pynvim" "gzip"\
     "hibernator" "ripgrep" "bluez" "bluz-utils" "blueman" "cgdb" "fzf"\
     "radare2" "fd")
 
@@ -85,7 +85,7 @@ declare -a MANJARO_AURS=("zotero" "chromium" "rtags" "ly" "anki" \
 # Sytemd services to be enabled
 # Display Manager, permission, time sync, ssh
 declare -a SYSTEMD_SERVICES=("ly.service" "polkit" "systemd-timesyncd.service"\
-    "sshd.service")
+    "sshd.service" "ccls-git")
 
 # nodejs apps
 declare -a NPM_APPS=("nativefier" "tldr")
@@ -111,14 +111,13 @@ install_arch_dep () {
 
 
 install_manjaro_dep () {
-    install_cmd="sudo pacman -S $1"
+    install_cmd="sudo pacman -S --noconfirm $1"
     echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
     execute "$install_cmd"
-    echo "Y\n"
 }
 
 install_manjaro_aur () {
-    install_cmd="sudo yay -S $1"
+    install_cmd="yay -S $1"
     echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
     execute "$install_cmd"
     echo "Y\n"
