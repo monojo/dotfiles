@@ -4,20 +4,17 @@
     "current_border_width": 1,
     "floating": "auto_off",
     "geometry": {
-       "height": 1078,
-       "width": 1918,
-       "x": 663,
-       "y": 1
+       "height": 1438,
+       "width": 1718,
+       "x": 1,
+       "y": 1081
     },
-    "name": "所有 - 滴答清单",
-    "percent": 1,
+    "name": "Zotero",
+    "percent": 0.5,
     "swallows": [
        {
-       "class": "^\\-nativefier\\-5a7b0c$"
+       "class": "^Zotero$"
        }
     ],
     "type": "con"
 }
-
-
-
