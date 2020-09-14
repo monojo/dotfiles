@@ -30,7 +30,8 @@ new_window pixel 1
 
 # start a terminal
 #bindsym $mod+t exec uxterm
-bindsym $mod+t exec i3-sensible-terminal
+#bindsym $mod+t exec i3-sensible-terminal
+bindsym $mod+t exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+w kill
@@ -102,6 +103,23 @@ bindsym $mod+p focus parent
 # focus the child container
 bindsym $mod+c focus child
 
+# move window to scratch
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# starting a specially named term automatically 
+exec --no-startup-id gnome-terminal
+# move this to scratchpad, if active
+for_window [class="Gnome-terminal"] move scratchpad sticky enable
+bindsym $mod+o [class="Gnome-terminal"] scratchpad show
+# Use Notion as the handy notepad and bind mod+n to it
+exec --no-startup-id ~/bin/Notion/Notion
+for_window [class="notiontheall-in-oneworkspaceforyournotes-tasks-wikis-anddatabases-nativefier-5f9ce2"] move scratchpad sticky enable
+bindsym $mod+n [class="notiontheall-in-oneworkspaceforyournotes-tasks-wikis-anddatabases-nativefier-5f9ce2"] scratchpad show
+# Quick Launch Dynalist
+exec --no-startup-id dynalist
+for_window [class="Dynalist"] move scratchpad sticky enable
+bindsym $mod+d [class="Dynalist"] scratchpad show
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -161,6 +179,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id fcitx -d
 # trasparency terminal
 #exec --no-startup-id compton
+exec --no-startup-id picom
 # set wallpaper
 exec --no-startup-id feh --bg-scale $HOME/.i3/new.jpg
 # auto mount disk
@@ -181,12 +200,17 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 #bindsym $mod+Shift+p exec htop
 #for_window [title="monojo: htop"] floating enable
 
+# Sequence matters
 # Auto start applications at certain workspace
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-5.json'"
+exec --no-startup-id zotero
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.i3/workspace-3.json'"
+#exec i3-sensible-terminal
+exec xfce4-terminal
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
 exec --no-startup-id chromium
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
 exec --no-startup-id ~/bin/Dida/dida
-exec --no-startup-id ~/bin/Notion/Notion
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
