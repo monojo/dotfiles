@@ -119,6 +119,10 @@ bindsym $mod+n [class="notiontheall-in-oneworkspaceforyournotes-tasks-wikis-andd
 exec --no-startup-id dynalist
 for_window [class="Dynalist"] move scratchpad sticky enable
 bindsym $mod+d [class="Dynalist"] scratchpad show
+# A quick search broswer window using firefox
+exec --no-startup-id firefox
+for_window [class="firefox"] move scratchpad 
+bindsym $mod+f [class="firefox"] scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace 1
