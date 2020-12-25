@@ -1,51 +1,49 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
-;; To install a package with Doom you must declare them here, run 'doom sync' on
-;; the command line, then restart Emacs for the changes to take effect.
-;; Alternatively, use M-x doom/reload.
 
-;; ==== Motion ====
-;; char jump motion
-(package! avy)
+;; Install: doom sync
 
-;; ==== LSP ====
-;; set :tools lsp will install lsp-ui, lsp-mode, company-lsp, lsp-ivy
-;; set :lang (cc +lsp) install ccls, irony*(disabled), modern-cpp-font-lock
-(package! spinner)                      ; required by lsp-mode
+;(package! some-package)
+;  :recipe (:host github :repo "username/repo"))
 
-;; ==== Finder ====
-;; e-ctags using counsel, symbol search
+;(package! this-package
+;  :recipe (:host github :repo "username/repo"
+;           :files ("some-file.el" "src/lisp/*.el")))
+
+;; `:disable' means purge
+;(package! builtin-package :disable t)
+
+;(package! builtin-package :recipe (:nonrecursive t))
+;(package! builtin-package-2 :recipe (:repo "myfork/package"))
+
+;(package! builtin-package :recipe (:branch "develop"))
+
+;; Use `:pin' to specify a particular commit to install.
+;(package! builtin-package :pin "1a2b3c4d5e")
+
+;(unpin! pinned-package)
+;(unpin! pinned-package another-pinned-package)
+
+;; ==== Packages ====
 (package! rg)
-;; (package! counsel-etags)
-;; company lsp backend, not supported anymore
-;; (package! company-lsp)
-
-;; ==== MISC ====
-(package! lsp-ui :ignore t)
 ;; treemacs with lsp
 (package! lsp-treemacs)
-;; debugger
-(package! dap-mode)
-;; comment
-(package! evil-nerd-commenter)
 ;; symbol highlighting and more
 (package! symbol-overlay)
+;; generate git linkage
+(package! git-link)
+
+;;;; ==== Temp Disabled ====
+;; disable since ui bug
+;; (package! lsp-ui :disable t)
 ;; z jump in eshell
-(package! eshell-autojump)
-;; more complete evil binding
-(package! evil-collection)
-;; edit chrome text in emacs
-(package! atomic-chrome)
-;; lisp evil plug
-(package! lispyville)
-;; another man
-(package! tldr)
-;; open link avy
-(package! link-hint)
+(package! eshell-autojump :disable t)
 ;; convert buffer content to html
-(package! htmlize)
-;; try a package
-(package! try)
+(package! htmlize :disable t)
+;; open link avy
+(package! link-hint :disable t)
+;; another man
+(package! tldr :disable t)
 ;; a lsp client
 (package! eglot :disable t)
 ;; buffer selection tool
@@ -56,10 +54,11 @@
 (package! highlight-symbol :disable t)
 ;; d lang
 (package! d-mode :disable t)
-;; generate git linkage
-(package! git-link :disable t)
 ;; Buffer tab, and num selection
 (package! awesome-tab :recipe (:host github :repo "manateelazycat/awesome-tab") :disable t)
-
+;; edit chrome text in emacs
+(package! atomic-chrome :disable t)
+;; try a package
+(package! try :disable t)
 ;;;; ==== Disabled packages ====
 (disable-packages! company-prescient)
