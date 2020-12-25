@@ -1,16 +1,5 @@
 ;;; ~/.doom.d/+looking.el -*- lexical-binding: t; -*-
 
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Monospace" :size 25)
       doom-variable-pitch-font (font-spec :family "Monospace")
       doom-unicode-font (font-spec :family "Monospace")
@@ -26,7 +15,5 @@
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 (setq global-display-line-numbers-mode t)
