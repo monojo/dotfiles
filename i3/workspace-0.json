@@ -1,0 +1,49 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1078,
+       "width": 848,
+       "x": 1198,
+       "y": 1
+    },
+    "marks": [],
+    "name": "收集箱 - TickTick",
+    "percent": 0.377083333333333,
+    "swallows": [
+       {
+       // "class": "^tick\\-nativefier\\-7be916$",
+        "instance": "^tick\\-nativefier\\-7be916$",
+       // "title": "^收集箱\\ \\-\\ TickTick$",
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1438,
+       "width": 1718,
+       "x": 1,
+       "y": 1081
+    },
+    "marks": [],
+    "name": "Zotero",
+    "percent": 0.622916666666667,
+    "swallows": [
+       {
+       // "class": "^Zotero$",
+       // "instance": "^Navigator$",
+       // "title": "^Zotero$",
+       // "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+

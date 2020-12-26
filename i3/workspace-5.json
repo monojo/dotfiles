@@ -1,20 +1,20 @@
 // vim:ts=4:sw=4:et
 {
-    "border": "pixel",
+    "border": "none",
     "current_border_width": 1,
     "floating": "auto_off",
     "geometry": {
-       "height": 1438,
-       "width": 1718,
-       "x": 1,
-       "y": 1081
+       "height": 1440,
+       "width": 3440,
+       "x": 0,
+       "y": 0
     },
-    "name": "Zotero",
-    "percent": 0.5,
+    "percent": 1,
     "swallows": [
        {
-       "class": "^Zotero$"
+        "class": "^Com\\.github\\.johnfactotum\\.Foliate$"
        }
     ],
     "type": "con"
 }
+

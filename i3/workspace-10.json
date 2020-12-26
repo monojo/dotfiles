@@ -1,0 +1,41 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1078,
+       "width": 1918,
+       "x": 663,
+       "y": 1
+    },
+    "name": "收集箱 - TickTick",
+    "percent": 0.37,
+    "swallows": [
+       {
+       "class": "^tick\\-nativefier\\-7be916$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1438,
+       "width": 1718,
+       "x": 1,
+       "y": 1081
+    },
+    "name": "Zotero",
+    "percent": 0.63,
+    "swallows": [
+       {
+        "class": "^Zotero$"
+       }
+    ],
+    "type": "con"
+}
+

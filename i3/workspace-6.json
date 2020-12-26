@@ -4,16 +4,16 @@
     "current_border_width": 1,
     "floating": "auto_off",
     "geometry": {
-       "height": 720,
-       "width": 736,
-       "x": 0,
-       "y": 0
+       "height": 1438,
+       "width": 3438,
+       "x": 1,
+       "y": 1081
     },
-    "name": " *Minibuf-1* – Doom Emacs",
+    "name": "The Linux System Administrator's Guide  — Okular",
     "percent": 1,
     "swallows": [
        {
-        "class": "^Emacs$"
+        "class": "^okular$"
        }
     ],
     "type": "con"

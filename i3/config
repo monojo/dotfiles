@@ -120,9 +120,18 @@ exec --no-startup-id dynalist
 for_window [class="Dynalist"] move scratchpad sticky enable
 bindsym $mod+d [class="Dynalist"] scratchpad show
 # A quick search broswer window using firefox
+#exec --no-startup-id firefox -P firefox_sp --class="firefox_sp" &
+#for_window [class="firefox_sp"] move scratchpad
+#bindsym $mod+f [class="firefox_sp"] scratchpad show
+
 exec --no-startup-id firefox
 for_window [class="firefox"] move scratchpad 
 bindsym $mod+f [class="firefox"] scratchpad show
+
+
+exec --no-startup-id quick-lookup
+for_window [class="Gjs"] move scratchpad 
+bindsym $mod+i [class="Gjs"] scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -148,9 +157,6 @@ bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
 
-#default window
-#workspace 1 output DP2 
-#workspace 2 output DP1 
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -204,17 +210,30 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 #bindsym $mod+Shift+p exec htop
 #for_window [title="monojo: htop"] floating enable
 
-# Sequence matters
+# workspace default window
+workspace 10 output DP-0
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0 
+workspace 3 output HDMI-0
+workspace 5 output HDMI-0 
+workspace 6 output HDMI-0 
+
 # Auto start applications at certain workspace
-exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-5.json'"
+#exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-5.json'"
 exec --no-startup-id zotero
 exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.i3/workspace-3.json'"
-#exec i3-sensible-terminal
-exec xfce4-terminal
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
-exec --no-startup-id chromium
+exec xfce4-terminal -e "tmux a -t 0"
+#exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
+#exec --no-startup-id chromium
+exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.i3/workspace-10.json'"
+#exec --no-startup-id ~/bin/Dida/dida
+exec --no-startup-id ~/bin/Tick-linux-x64/Tick
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
-exec --no-startup-id ~/bin/Dida/dida
+exec --no-startup-id emacs
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-5.json'"
+exec --no-startup-id ~/bin/com.github.johnfactotum.Foliate
+#exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-6.json'"
+#exec --no-startup-id okular
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
