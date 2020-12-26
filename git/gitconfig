@@ -126,9 +126,7 @@
 [include]
   path = .gitconfig.user
 [user]
-	email = monojoker@gmail.com
+	email = xzhang99@binghamton.edu
 	name = Xin
 [http]
 	cookiefile = /home/moslab/.gitcookies
-[credential]
-	helper = cache
