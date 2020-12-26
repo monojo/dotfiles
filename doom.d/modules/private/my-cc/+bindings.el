@@ -2,6 +2,11 @@
 
 (map! :after ccls
       :map (c-mode-map c++-mode-map)
+      :m "C-h" #'evil-window-left
+      :m "C-l" #'evil-window-right
+      :m "C-j" #'evil-window-down
+      :m "C-k" #'evil-window-up
+      :m "<f8>" #'lsp-treemacs-symbols
       (:localleader
        :desc "Preprocess file"        "lp" #'ccls-preprocess-file
        :desc "Reload cache & CCLS"    "lf" #'ccls-reload)
