@@ -193,25 +193,28 @@
    "RET"        nil
    [return]     nil
    "SPC"        nil))
+ (:after realgud
+  (:map realgud-track-mode-map
+    :in ";" #'realgud-window-src-undisturb-cmd
+    :in "C-j" (λ! (realgud:cmd-repeat-last) (realgud-window-src-undisturb-cmd)))
+  (:map realgud:shortkey-mode-map
+   ;; :n "e" (λ! (realgud:cmd-run-command (thing-at-point 'symbol) "eval"))
+   :n "i" #'realgud-window-cmd-undisturb-src
+   :n "t" #'realgud:cmd-tbreak
+   :n "U" #'realgud:cmd-until
+   :n "1" (λ! (+my/realgud-eval-nth-name-forward 1))
+   :n "2" (λ! (+my/realgud-eval-nth-name-forward 2))
+   :n "3" (λ! (+my/realgud-eval-nth-name-forward 3))
+   :n "4" (λ! (+my/realgud-eval-nth-name-forward 4))
+   :n "5" (λ! (+my/realgud-eval-nth-name-forward 5))
+   :n "6" (λ! (+my/realgud-eval-nth-name-forward 6))
+   :n "7" (λ! (+my/realgud-eval-nth-name-forward 7))
+   :n "8" (λ! (+my/realgud-eval-nth-name-forward 8))
+   :n "9" (λ! (+my/realgud-eval-nth-name-forward 9))
+   )
+  )
  )
 ;; (:after magit
 ;;   (:map magit-revision-mode-map
 ;;   "gq"        #'+my/open-issue-in-browser))
-;; (:after realgud
-;;   (:map realgud-track-mode-map
-;;     :in ";" #'realgud-window-src-undisturb-cmd
-;;     :in "C-j" (λ! (realgud:cmd-repeat-last) (realgud-window-src-undisturb-cmd)))
-;;   (:map realgud:shortkey-mode-map
-;;     ;; :n "e" (λ! (realgud:cmd-run-command (thing-at-point 'symbol) "eval"))
-;;     :n "i" #'realgud-window-cmd-undisturb-src
-;;     :n "t" #'realgud:cmd-tbreak
-;;     :n "U" #'realgud:cmd-until
-;;     :n "1" (λ! (+my/realgud-eval-nth-name-forward 1))
-;;     :n "2" (λ! (+my/realgud-eval-nth-name-forward 2))
-;;     :n "3" (λ! (+my/realgud-eval-nth-name-forward 3))
-;;     :n "4" (λ! (+my/realgud-eval-nth-name-forward 4))
-;;     :n "5" (λ! (+my/realgud-eval-nth-name-forward 5))
-;;     :n "6" (λ! (+my/realgud-eval-nth-name-forward 6))
-;;     :n "7" (λ! (+my/realgud-eval-nth-name-forward 7))
-;;     :n "8" (λ! (+my/realgud-eval-nth-name-forward 8))
-;;     :n "9" (λ! (+my/realgud-eval-nth-name-forward 9))
+

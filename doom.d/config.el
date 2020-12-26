@@ -108,12 +108,27 @@
 (setq gc-cons-threshold 200000000)
 (setq read-process-output-max (* 2048 1024)) ;; 2mb
 ;; (setq lsp-prefer-capf t)
-(setq lsp-idle-delay 0.500)
+;; This may affect scrolling
+(setq lsp-idle-delay 0.200)
 
+(use-package! dap-mode
+  :config
+  (setq dap-gdb-lldb-path "~/Downloads/debug"))
 (use-package! lsp-mode
   :commands lsp
-  )
+  :config
+  (setq lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-enable-symbol-numbers t
+        lsp-lens-enable nil))
 
+(after! realgud
+  (setq realgud-safe-mode nil)
+  (evil-collection-define-key 'normal 'realgud:shortkey-mode-map
+    "d" #'realgud:cmd-newer-frame
+    "D" #'realgud:cmd-delete
+    "u" #'realgud:cmd-older-frame
+    )
+  )
 ;; Use clangd as the cc lsp backend
 ;; (after! lsp-clients
 ;;   (remhash 'clangd lsp-clients)

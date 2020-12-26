@@ -2,11 +2,13 @@
 
 (map! :after ccls
       :map (c-mode-map c++-mode-map)
-      :m "C-h" #'evil-window-left
-      :m "C-l" #'evil-window-right
-      :m "C-j" #'evil-window-down
-      :m "C-k" #'evil-window-up
-      :m "<f8>" #'lsp-treemacs-symbols
+      :n "C-h" nil
+      :n "C-l" nil
+      :n "C-h" #'evil-window-left
+      :n "C-l" #'evil-window-right
+      :n "C-j" #'evil-window-down
+      :n "C-k" #'evil-window-up
+      :n "<f8>" #'lsp-treemacs-symbols
       (:localleader
        :desc "Preprocess file"        "lp" #'ccls-preprocess-file
        :desc "Reload cache & CCLS"    "lf" #'ccls-reload)
@@ -18,7 +20,6 @@
         :desc "find-def" "d" #'+my/find-definitions
         :desc "find-ref" "r" #'+my/find-references
         :m "w" #'+default/search-project-for-symbol-at-point
-        :desc "List Ctags Symbol" :m "T" #'counsel-etags-list-tag
         :m "c" nil
         (:prefix ("c" . "Comment")
          "c" #'evilnc-comment-or-uncomment-lines
