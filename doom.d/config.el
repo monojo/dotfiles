@@ -140,6 +140,8 @@
     "l" #'lsp-ui-peek--select-next-file
     )
   )
+;; need this to make ccls semantic highlighting work
+(setq lsp-enable-semantic-highlighting t)
 
 ;; Using binding 'K'
 ;; (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)

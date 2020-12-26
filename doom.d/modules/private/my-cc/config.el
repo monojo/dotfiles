@@ -93,7 +93,6 @@
   (setq ccls-sem-parameter-faces [my-ccls-sem-parameter-face])
   (setq ccls-sem-function-faces [my-ccls-sem-function-face])
   (setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
-  (setq lsp-enable-semantic-highlighting t)
   ;(setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
   ;; (setq ccls-sem-member-faces [my-ccls-sem-macro-face])
   ;; (setq ccls-sem-type-faces [my-ccls-sem-type-face])
