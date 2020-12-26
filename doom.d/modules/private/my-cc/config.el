@@ -1,4 +1,5 @@
 ;;; private/my-cc/config.el -*- lexical-binding: t; -*-
+(load! "+bindings")
 
 (after! realgud
   (setq realgud-safe-mode nil)
@@ -44,33 +45,9 @@
               (modify-syntax-entry ?_ "w")
               ))
 
-  (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
+  (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
 
-  (map!
-   :map (c-mode-map c++-mode-map)
-   ;; :n "C-h" (λ! (ccls-navigate "U"))
-   ;; :n "C-j" (λ! (ccls-navigate "R"))
-   ;; :n "C-k" (λ! (ccls-navigate "L"))
-   ;; :n "C-l" (λ! (ccls-navigate "D"))
-   (:localleader
-     :n "=" #'clang-format-region
-     :n "a" #'ccls/references-address
-     :n "lp" #'ccls-preprocess-file
-     :n "lf" #'ccls-reload
-     :n "m" #'ccls/references-macro
-     :n "f" #'ccls/references-not-call
-     ;; :n "r" #'ccls/references-read
-     ;; :n "w" #'ccls/references-write
-     ;; :desc "breakpoint"
-     ;; :n "db" (lambda ()
-     ;;           (interactive)
-     ;;           (evil-open-above 1)
-     ;;           (insert "volatile static int z=0;while(!z)asm(\"pause\");")
-     ;;           (evil-normal-state))
-     ;; :n "dd" #'realgud:gdb
-     ))
-  )
-
+;; Define Faces for ccls-sem- for semantic highlighting
 ;; list of ccls-sem: method, constructor, function, staticmethod
 ;; namespace, struct==class, enum, typeparameter, typealias,
 ;; variable, parameter, macro, field, enummember
@@ -110,23 +87,18 @@
 ;;   :group 'ccls-sem)
 
 (use-package! ccls
-  :hook ((c-mode-local-vars c++-mode-local-vars objc-mode-local-vars) . +ccls|enable)
+  :hook ((c-mode c++-mode) . +ccls|enable)
   :config
-  ;; overlay is slow
-  ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
-  ;; (setq ccls-sem-highlight-method 'overlay)
-  (setq ccls-sem-highlight-method 'font-lock)
-  (add-hook 'lsp-after-open-hook #'ccls-code-lens-mode)
-
   ;; rainbow highlight, will override your theme
   (setq ccls-sem-parameter-faces [my-ccls-sem-parameter-face])
   (setq ccls-sem-function-faces [my-ccls-sem-function-face])
   (setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
-  (setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
+  (setq lsp-enable-semantic-highlighting t)
+  ;(setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
   ;; (setq ccls-sem-member-faces [my-ccls-sem-macro-face])
   ;; (setq ccls-sem-type-faces [my-ccls-sem-type-face])
   ;; (setq font-lock-type-face [my-ccls-sem-type-face])
-    ;; (ccls-use-default-rainbow-sem-highlight)
+  ;; (ccls-use-default-rainbow-sem-highlight)
     ;; https://github.com/maskray/ccls/blob/master/src/config.h
     (setq
       ccls-initialization-options

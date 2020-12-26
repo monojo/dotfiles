@@ -9,7 +9,6 @@
 
 (load! "+looking")
 (load! "+bindings")
-(load! "+lsp")
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 

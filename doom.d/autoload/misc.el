@@ -28,6 +28,18 @@
                ))))
 
 ;;;###autoload
+(defun +my/center-emacs ()
+  (let ((width  500)
+      (height 250)
+      (display-height (display-pixel-height))
+      (display-width  (display-pixel-width)))
+  (pushnew! initial-frame-alist
+            `(left . ,(- (/ display-width 2) (/ width 2)))
+            `(top . ,(- (/ display-height 2) (/ height 2)))
+            `(width text-pixels ,width)
+            `(height text-pixels ,height))))
+
+;;;###autoload
 (defun +my/xref-jump-backward-file ()
   (interactive)
   (+my//xref-jump-file (lsp-ui-peek-jump-backward)))
