@@ -13,7 +13,7 @@
 #set $mod Mod4
 
 #set alt key as mod
-set $mod Mod1
+set $mod Mod4
 
 #set control key as mod
 #set $mod Control
@@ -133,6 +133,10 @@ exec --no-startup-id quick-lookup
 for_window [class="Gjs"] move scratchpad 
 bindsym $mod+i [class="Gjs"] scratchpad show
 
+exec --no-startup-id anki
+for_window [class="Anki"] move scratchpad 
+bindsym $mod+a [class="Anki"] scratchpad show
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -237,6 +241,7 @@ exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-5.json'
 exec --no-startup-id ~/bin/com.github.johnfactotum.Foliate
 #exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-6.json'"
 #exec --no-startup-id okular
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
