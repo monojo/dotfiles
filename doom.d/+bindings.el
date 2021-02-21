@@ -172,7 +172,8 @@
       :m "cu" #'evilnc-comment-or-uncomment-lines
       :desc "find-def" "d" #'+my/find-definitions
       :desc "find-ref" "r" #'+my/find-references
-      :m "s" #'yas-insert-snippet)
+      :m "s" #'yas-insert-snippet
+      :m "m" #'counsel-evil-marks)
 
 
 ;; Mappings when tools invoked

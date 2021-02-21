@@ -13,3 +13,4 @@ PATH=~/Android/Sdk/tools/bin/:$PATH
 PATH=~/bin/imgur-screenshot:$PATH
 PATH=~/.local/bin/:$PATH
 PATH=~/.emacs.d/bin/:$PATH
+PATH=~/go/bin/:$PATH
