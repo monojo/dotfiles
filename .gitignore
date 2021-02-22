@@ -17,3 +17,4 @@ bin/subl
 tags
 vim/vimplugs/mysetting.plug.bak
 vim/autoload
+__pycache__

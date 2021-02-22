@@ -3,6 +3,7 @@ import shutil
 import subprocess
 import os
 import json
+import sys
 
 
 HOME = Path.home()
@@ -10,21 +11,24 @@ CWD = Path.cwd()
 BIN = HOME / "bin/"
 
 
-def install_files(files, method="symlink", dest="home"):
+# TODO: to non-glob version?
+def install_file(files, method="symlink", dest="home"):
     """Install dot files to a destination, by default install at $HOME dir
+        files:  the list returned by glob provided pattern
         dest: home, config, jbin and other places with full absolute path
     """
     global HOME, CWD
+
     for f in files:
         dot_file = f".{f.name}"
         config_folder = f".{str(f)}"
-        source = CWD / f
+        source = CWD / f"{f.name}"
         if dest == "home":
             target = HOME / dot_file
         elif dest == "config":
             target = HOME / config_folder
         elif dest == "bin":
-            target = HOME / f"bin/{f.name}"
+            target = HOME / f"bin/{f}"
         else:
             target = Path(dest).expanduser()
 
@@ -140,7 +144,7 @@ def install():
         dot_files = json.load(file_list)
         # install dot files
         for key, config in dot_files.items():
-            install_files(Path(".").glob(key), *config)
+            install_file(Path(".").glob(key), *config)
 
 
 def post_install():
@@ -157,10 +161,36 @@ def post_install():
         job()
 
 
+def install_package(package):
+    with open("./dotfiles.json") as file_list:
+        dot_files = json.load(file_list)
+        # TODO: better search
+        for key, config in dot_files.items():
+            #install_files(Path(".").glob(key), *config)
+            if key == package:
+                install_file(Path(".").glob(key), *config)
+
+
+def install_test():
+    with open("./test.json") as file_list:
+        dot_files = json.load(file_list)
+        for key, config in dot_files.items():
+            #install_files(Path(".").glob(key), *config)
+            print(key, config)
+            if key == "test" or key == "test/test_rc":
+                install_file(Path(".").glob(key), *config)
+
 if __name__ == "__main__":
     """Dot files is the set contains dot file pattern as the key,
         and config list as value
     """
-    pre_install()
-    install()
-    post_install()
+    argc = len(sys.argv)
+    if argc == 1 or sys.argv[1] == "all":
+        pre_install()
+        install()
+        post_install()
+    elif sys.argv[1] == "test":
+        install_test()
+    else:
+        for pack in sys.argv:
+            install_package(pack)
