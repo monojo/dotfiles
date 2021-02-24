@@ -8,14 +8,14 @@ import sys
 
 HOME = Path.home()
 CWD = Path.cwd()
+PLATFORM = sys.platform
 BIN = HOME / "bin/"
 
 
-# TODO: to non-glob version?
 def install_file(files, method="symlink", dest="home"):
     """Install dot files to a destination, by default install at $HOME dir
-        files:  the list returned by glob provided pattern
-        dest: home, config, jbin and other places with full absolute path
+        files:  The file list returned by glob pattern
+        dest: Home, config, bin or target directories with full absolute path
     """
     global HOME, CWD
 
@@ -39,6 +39,7 @@ def install_file(files, method="symlink", dest="home"):
         if target.exists() and (not target.is_symlink()):
             print(f"Overwriting {target}")
 
+        # TODO: rewrite this
         if method == "symlink":
             try:
                 target.symlink_to(source)
@@ -104,15 +105,18 @@ def install_prezto():
 
 
 def install_imgur_screenshot():
-    os.system("sudo update-desktop-database")
+    if PLATFORM == "linux":
+        os.system("sudo update-desktop-database")
 
 
 def install_fonts():
-    os.system("fc-cache -vf ~/.fonts")
+    if PLATFORM == "linux":
+        os.system("fc-cache -vf ~/.fonts")
 
 
 def install_term_theme():
-    os.system("./gnome-terminal/install.sh")
+    if PLATFORM == "linux":
+        os.system("./gnome-terminal/install.sh")
 
 
 def setup_submodules():
@@ -139,7 +143,7 @@ def pre_install():
     setup_submodules()
 
 
-def install():
+def install_all():
     with open("./dotfiles.json") as file_list:
         dot_files = json.load(file_list)
         # install dot files
@@ -166,7 +170,6 @@ def install_package(package):
         dot_files = json.load(file_list)
         # TODO: better search
         for key, config in dot_files.items():
-            #install_files(Path(".").glob(key), *config)
             if key == package:
                 install_file(Path(".").glob(key), *config)
 
@@ -187,7 +190,7 @@ if __name__ == "__main__":
     argc = len(sys.argv)
     if argc == 1 or sys.argv[1] == "all":
         pre_install()
-        install()
+        install_all()
         post_install()
     elif sys.argv[1] == "test":
         install_test()
