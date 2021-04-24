@@ -60,9 +60,9 @@ Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 " python support
 " Python syntax highlight, only support nvim
-if has("nvim")
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-endif
+"if has("nvim")
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"endif
 "====== Undo ======
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 

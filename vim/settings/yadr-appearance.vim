@@ -133,9 +133,10 @@ if has('nvim')
     \ endif
 endif
 
-if has('gui_running')
-  set guifont=Menlo:h14 columns=80 lines=40
-endif
+"if has('gui_running')
+  ""set guifont=Menlo:h14 columns=80 lines=40
+  "set columns=80 lines=40
+"endif
 
 "======seoul256======
 "set t_Co=256
