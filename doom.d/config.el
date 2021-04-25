@@ -6,6 +6,7 @@
 ;;  `add-load-path!'
 ;;  `require' or `use-package'.
 ;;  `map!' for binding new keys
+;;  Avoid using Customize, use setq, setq! in doom emacs
 
 (load! "+looking")
 (load! "+bindings")
@@ -114,6 +115,7 @@
 (use-package! dap-mode
   :config
   (setq dap-gdb-lldb-path "~/Downloads/debug"))
+
 (use-package! lsp-mode
   :commands lsp
   :config
@@ -158,6 +160,12 @@
 ;; need this to make ccls semantic highlighting work
 (setq lsp-enable-semantic-highlighting t)
 
+;; Setup org-mode
+(after! org-mode
+  :config
+  ;; open org link in a new window
+  (setq! org-link-frame-setup ((file . find-file-other-window)))
+  )
 ;; Using binding 'K'
 ;; (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
