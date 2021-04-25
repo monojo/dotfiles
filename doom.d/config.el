@@ -2,7 +2,7 @@
 
 ;;  `load!' loading external *.el files
 ;;  `use-package!' for configuring packages
-;;  `after!' for running code after a package has loaded
+;;  `after!' for configuring after a package/feature has loaded
 ;;  `add-load-path!'
 ;;  `require' or `use-package'.
 ;;  `map!' for binding new keys
@@ -13,15 +13,13 @@
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
-;; use-package!
-;; :commands - load package after commands
-;; :hook - load till hook triggered
-;; :after - load after feature
-;; :init - run immediately
-;; :conifg
-;;
-;; after! - work on feature or lib inovke
-;; add-hook! - work on mode hook trigger
+;; `use-package!'
+  ;; :commands - load package after commands
+  ;; :hook - load till hook triggered
+  ;; :after - load after feature
+  ;; :init - run immediately
+  ;; :conifg
+;; add-hook! - work when a mode hook triggered
 
 (use-package! avy
   :commands (avy-goto-char-timer)
@@ -161,10 +159,12 @@
 (setq lsp-enable-semantic-highlighting t)
 
 ;; Setup org-mode
-(after! org-mode
+(after! org
   :config
   ;; open org link in a new window
-  (setq! org-link-frame-setup ((file . find-file-other-window)))
+  (setq org-link-frame-setup
+        '((file . find-file-other-window)
+          ))
   )
 ;; Using binding 'K'
 ;; (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
