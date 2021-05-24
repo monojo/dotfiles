@@ -46,7 +46,7 @@
 (package! tldr :disable t)
 ;; a lsp client
 (package! eglot :disable t)
-;; buffer selection tool
+;; buffer selection tool, ivy good enough for me
 (package! frog-jump-buffer :disable t)
 ;; motion based on syntax
 (package! smart-forward :disable t)

@@ -163,8 +163,19 @@
        "l" #'ivy-resume
        ))
 
+(map!
+ (:map go-mode-map
+  :localleader
+  "r" nil ;;unmap r
+  "d" nil
+  :n "d" #'+my/find-definitions
+  :n "r" #'+my/find-references)
+ )
+
 ;; Localleader ,
 (map! :localleader
+      "r" nil
+      "d" nil
       :m "w" #'+default/search-project-for-symbol-at-point
       :m "b" #'+ivy/switch-workspace-buffer
       :m "h" #'symbol-overlay-put
@@ -173,7 +184,8 @@
       :desc "find-def" "d" #'+my/find-definitions
       :desc "find-ref" "r" #'+my/find-references
       :m "s" #'yas-insert-snippet
-      :m "m" #'counsel-evil-marks)
+      :m "m" #'counsel-evil-marks
+      )
 
 
 ;; Mappings when tools invoked

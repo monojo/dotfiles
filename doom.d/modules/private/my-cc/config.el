@@ -1,15 +1,6 @@
 ;;; private/my-cc/config.el -*- lexical-binding: t; -*-
 (load! "+bindings")
 
-(after! realgud
-  (setq realgud-safe-mode nil)
-  (evil-collection-define-key 'normal 'realgud:shortkey-mode-map
-    "d" #'realgud:cmd-newer-frame
-    "D" #'realgud:cmd-delete
-    "u" #'realgud:cmd-older-frame
-    )
-  )
-
 (after! cc-mode
   ;; https://github.com/radare/radare2
   (c-add-style
@@ -85,44 +76,45 @@
 ;;   '((t :slant italic))
 ;;   "Class/struct filed"
 ;;   :group 'ccls-sem)
+;;(setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
+;;; (setq ccls-sem-member-faces [my-ccls-sem-macro-face])
+;;; (setq ccls-sem-type-faces [my-ccls-sem-type-face])
+;;; (setq font-lock-type-face [my-ccls-sem-type-face])
 
 (use-package! ccls
-  :hook ((c-mode c++-mode) . +ccls|enable)
+  :hook ((c-mode-local-vars c++-mode-local-vars) . +ccls|enable)
+  ;; :hook ((c-mode c++-mode) . (lambda () (require 'ccls)(require 'lsp-ui) (lsp)))
+  :init
+  (after! projectile
+    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
+    (add-to-list 'projectile-project-root-files-bottom-up ".ccls-root"))
+  (after! lsp-mode (require 'ccls))
   :config
-  ;; rainbow highlight, will override your theme
+  (evil-set-initial-state 'ccls-tree-mode 'emacs)
   (setq ccls-sem-parameter-faces [my-ccls-sem-parameter-face])
   (setq ccls-sem-function-faces [my-ccls-sem-function-face])
   (setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
-  ;(setq ccls-sem-macro-faces [my-ccls-sem-macro-face])
-  ;; (setq ccls-sem-member-faces [my-ccls-sem-macro-face])
-  ;; (setq ccls-sem-type-faces [my-ccls-sem-type-face])
-  ;; (setq font-lock-type-face [my-ccls-sem-type-face])
-  ;; (ccls-use-default-rainbow-sem-highlight)
-    ;; https://github.com/maskray/ccls/blob/master/src/config.h
-    (setq
-      ccls-initialization-options
-      `(:clang
-         (:excludeArgs
-           ;; Linux's gcc options. See ccls/wiki
-           ["-falign-jumps=1" "-falign-loops=1" "-fconserve-stack" "-fmerge-constants" "-fno-code-hoisting" "-fno-schedule-insns" "-fno-var-tracking-assignments" "-fsched-pressure"
-             "-mhard-float" "-mindirect-branch-register" "-mindirect-branch=thunk-inline" "-mpreferred-stack-boundary=2" "-mpreferred-stack-boundary=3" "-mpreferred-stack-boundary=4" "-mrecord-mcount" "-mindirect-branch=thunk-extern" "-mno-fp-ret-in-387" "-mskip-rax-setup"
-             "--param=allow-store-data-races=0" "-Wa arch/x86/kernel/macros.s" "-Wa -"]
-           :extraArgs []
-           :pathMappings ,+ccls-path-mappings)
-         :completion
-         (:include
-           (:blacklist
-             ["^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
-               "^/usr/(local/)?include/c\\+\\+/v1/"
-               ]))
-         :index (:initialBlacklist ,+ccls-initial-blacklist :parametersInDeclarations :json-false :trackDependency 1)
-         :cache (:directory "/tmp/ccls-cache")
-         ))
-
-    (after! projectile
-      (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
-
-  (evil-set-initial-state 'ccls-tree-mode 'emacs))
+  (setq ccls-sem-highlight-method 'font-lock)
+  (setq
+   ccls-initialization-options
+   `(:clang
+     (:excludeArgs
+      ;;Linux's gcc options. See ccls/wiki
+      ["-falign-jumps=1" "-falign-loops=1" "-fconserve-stack" "-fmerge-constants" "-fno-code-hoisting" "-fno-schedule-insns" "-fno-var-tracking-assignments" "-fsched-pressure"
+       "-mhard-float" "-mindirect-branch-register" "-mindirect-branch=thunk-inline" "-mpreferred-stack-boundary=2" "-mpreferred-stack-boundary=3" "-mpreferred-stack-boundary=4" "-mrecord-mcount" "-mindirect-branch=thunk-extern" "-mno-fp-ret-in-387" "-mskip-rax-setup"
+       "--param=allow-store-data-races=0" "-Wa arch/x86/kernel/macros.s" "-Wa -"]
+      :extraArgs []
+      :pathMappings ,+ccls-path-mappings)
+     :completion
+     (:include
+      (:blacklist
+       ["^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
+        "^/usr/(local/)?include/c\\+\\+/v1/"
+        ]))
+     :index (:initialBlacklist ,+ccls-initial-blacklist :parametersInDeclarations :json-false :trackDependency 1)
+     :cache (:directory "/tmp/ccls-cache")
+     ))
+  )
 
 ;; modern c++ highlight
 (use-package! modern-cpp-font-lock
@@ -134,11 +126,3 @@
 ;;   :commands (clang-format-region)
 ;;   )
 
-;;;###autoload
-(defvar +ccls-path-mappings [])
-
-;;;###autoload
-(defvar +ccls-initial-blacklist [])
-
-;;;###autoload
-(defvar +lsp-blacklist nil)

@@ -1,10 +1,21 @@
 ;;; private/my-cc/autoload.el -*- lexical-binding: t; -*-
 
+;;;###autoload
+(defvar +ccls-path-mappings [])
+
+;;;###autoload
+(defvar +ccls-initial-blacklist [])
+
+;;;###autoload
+(defvar +lsp-blacklist nil)
 
 ;;;###autoload
 (defun +ccls|enable ()
   (when (and buffer-file-name (--all? (not (string-match-p it buffer-file-name)) +lsp-blacklist))
     (require 'ccls)
+    (require 'lsp-completion)
+    (require 'lsp-headerline)
+    (require 'lsp-modeline)
     (setq-local lsp-ui-sideline-show-symbol nil)
     (when (string-match-p "/llvm" buffer-file-name)
       (setq-local lsp-enable-file-watchers nil))
