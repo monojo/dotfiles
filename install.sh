@@ -205,16 +205,16 @@ check_platform () {
 }
 
 link () {
-    cmd="ln -sf $1 $2"
+    cmd="ln -snf $1 $2"
     execute "$cmd"
 }
 
 link_home () {
-    files="$HOME/.yadr/home/*"
+    files="$HOME/.dotfiles/home/*"
     for f in $files; do
         fname=$(basename $f)
         target="$HOME/.$fname"
-        if [ -d $target ] || [ -f $target ]; then
+        if [ -d "$target" ] || [ -f "$target" ]; then
             echo "${RED}$f existed${NORMAL}"
             continue
         else
@@ -244,7 +244,7 @@ install_prezto () {
         cmd="chsh -s /bin/zsh"
         execute "$cmd"
     fi
-    #echo "for config_file ($HOME/.yadr/zsh/*.zsh) source \$config_file" > "$HOME/.zshrc"
+    #echo "for config_file ($HOME/.dotfiles/zsh/*.zsh) source \$config_file" > "$HOME/.zshrc"
     #update prezto
     #cd .zprezto
     #git pull
@@ -290,10 +290,12 @@ install_doom () {
 }
 
 install_docker () {
-    cmd="curl -fsSL https://get.docker.com -o $HOME/get-docker.sh"
-    execute "$cmd"
-    cmd="suod sh $HOME/get-docker.sh"
-    execute "$cmd"
+    if [ ! -x "$(command -v docker)" ]; then
+        cmd="curl -fsSL https://get.docker.com -o $HOME/get-docker.sh"
+        execute "$cmd"
+        cmd="sudo sh $HOME/get-docker.sh"
+        execute "$cmd"
+    fi
 }
 
 do_post_jobs () {
