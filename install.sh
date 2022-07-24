@@ -274,6 +274,8 @@ install_tpm () {
     if [ ! -d $dest ]; then
         cmd="git clone https://github.com/tmux-plugins/tpm.git $dest"
         execute "$cmd"
+        cmd="$dest/bin/install_plugins"
+        execute "$cmd"
         cmd="tmux source $HOME/.tmux/plugins/tpm"
         execute "$cmd"
     fi
