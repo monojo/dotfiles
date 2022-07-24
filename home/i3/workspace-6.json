@@ -1,0 +1,20 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1438,
+       "width": 3438,
+       "x": 1,
+       "y": 1081
+    },
+    "name": "The Linux System Administrator's Guide  — Okular",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^okular$"
+       }
+    ],
+    "type": "con"
+}

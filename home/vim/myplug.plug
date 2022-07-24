@@ -1,0 +1,225 @@
+"====== Appearance =====
+"Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'dracula/vim'
+"====== Finder ======
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+"====== Navigation ======
+"ctags overview on the go
+Plug 'majutsushi/tagbar'
+" Browsing directory
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Open file directory: gof, got
+"Plug 'justinmk/vim-gtfo'
+"====== Version Control ======
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
+"======Snippets======
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"====== Extra Info ======
+"Show register content, press "
+"Plug 'junegunn/vim-peekaboo'
+"Highlight multiple words
+Plug 't9md/vim-quickhl'
+"====== Motion ======
+Plug 'easymotion/vim-easymotion'
+"====== Language Server Protocol Client ======
+" A new extension framework including LSP client support
+"Plug 'neoclide/coc.nvim', {'branch': 'release',
+"            \ 'do': ':CocInstall coc-git coc-lists coc-marketplace coc-word 
+"            \ coc-pairs coc-yank coc-python coc-json coc-highlight'}
+" lsp based c/cxx syntax hightlight
+"Plug 'jackguo380/vim-lsp-cxx-highlight', 
+            "\ {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
+" Enhanced ccls experience with call hierachy, class hierachy...
+"Plug 'm-pilia/vim-ccls', {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
+"====== Text Object ======
+" Dependent, Commnet, Underscore, parameter by, 
+"Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
+            "\ | Plug 'lucapette/vim-textobj-underscore' 
+            "\ | Plug 'sgur/vim-textobj-parameter'
+"====== MISC ======
+"Better comment
+Plug 'scrooloose/nerdcommenter'
+"Move between tmux pane and vim window
+Plug 'christoomey/vim-tmux-navigator'
+"Use . to repeat plugin map
+Plug 'tpope/vim-repeat'
+"Display marks on column
+Plug 'kshenoy/vim-signature'
+"Multiple cursors, c-n
+"Plug 'terryma/vim-multiple-cursors'
+"====== Markdown ======
+" Markdown preview
+"Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
+            "\ 'for': 'markdown', 'on': 'MarkdownPreview' }
+"Distraction free
+"Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/vim-emoji'
+"====== Language ======
+" modern cpp highlight
+"Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
+" python support
+" Python syntax highlight, only support nvim
+"if has("nvim")
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"endif
+if has("nvim")
+    Plug 'projekt0n/github-nvim-theme'
+endif
+"====== Undo ======
+"Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+
+"Plug 'lyuts/vim-rtags'
+"================================================================================
+" Use lsp for symbol, replace tagbar
+" May only work with c, cpp lsp???
+"Plug 'liuchengxu/vista.vim'
+"Plug 'vimwiki/vimwiki'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"======Completion======
+"if has('nvim')
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"****************Plugin Tomb*******************
+"
+"======Session Management======
+"Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc'
+"
+"=======Markdown========
+"preview markdown in a browser
+"Plug 'kannokanno/previm'
+"Plug 'tyru/open-browser.vim'
+
+"Plug 'nvie/vim-flake8', {'for': 'python'}
+"Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+"Plug 'hdima/python-syntax'
+"Plug 'hari-rangarajan/CCTree'
+"Plug 'monojo/vim-basic'
+"Plug 'monojo/vim-ctf'
+"Plug 'monojo/vim-call-graph'
+" Preview on quick-fix window
+"Plug 'monojo/quickr-preview.vim'
+"Code search & view
+"Plug 'dyng/ctrlsf.vim'
+"Tmux navigation
+"
+"Async Lint
+"Plug 'w0rp/ale', {'on': 'ALEToggle'}
+"Plug 'w0rp/ale'
+
+""=======Javascript========
+"Plug  'mxw/vim-jsx', {'for': 'javascript'}
+"Plug 'elzr/vim-json', {'for': 'javascript'}
+"Plug 'ternjs/tern_for_vim', { 'do': 'npm install --global tern' }
+"Plug 'othree/jspc.vim', {'for': 'javascript'}
+"Plug 'klen/python-mode', {'for': 'python'}
+"Plug 'jiangmiao/auto-pairs'
+"plantuml plugin
+"Plug 'scrooloose/vim-slumlord'
+"Plug 'aklt/plantuml-syntax'
+" Another finder tool like FZF
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+"Plug 'ctrlpvim/ctrlp.vim'
+"better than grep
+"Plug 'mileszs/ack.vim'
+"Plug 'rking/ag.vim'
+"Plug 'Chun-Yang/vim-action-ag'
+"Plug 'monojo/vim-action-ag'
+"git wrapper
+"======python ide======
+"syntax check
+"vim indent guide
+"Plug 'nathanaelkane/vim-indent-guides'
+"======MISC======
+"Syntax
+"Plug 'sheerun/vim-polyglot'
+""Never used
+"Plug 'chrisbra/vim-diff-enhanced'
+"Cscope mapping & setting
+"Plug 'monojo/cscope-map'
+"Ultimate auto complete tool
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}"
+"Generate YCM config file
+"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+"Plug 'edkolev/promptline.vim'
+
+"
+"Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch-fuzzy.vim'
+"Plug 'haya14busa/incsearch-easymotion.vim'
+"Plug 'Shougo/echodoc.vim'
+"Used for code completion and navigation
+"Communicate with LSP server
+"endwise will let <cr> mapping in completion error
+"Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-surround'
+"better looking for parentheses
+"Plug 'junegunn/rainbow_parentheses.vim'
+"Fancy startscreen, also help manage sessions
+"Plug 'mhinz/vim-startify'
+"======Alignment======
+"easy align code
+"Plug 'junegunn/vim-easy-align'
+"motion
+"2 char jump, press s
+"Plug 'justinmk/vim-sneak'
+"Plug 'Raimondi/delimitMate'
+"Nerd Tree
+"Plug 'scrooloose/nerdtree'
+"Plug 'autozimu/LanguageClient-neovim', {
+            "\ 'branch': 'next',
+            "\ 'do': 'bash install.sh',
+            "\ }
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'dense-analysis/ale'
+" Show current file git diff in sign column
+"coc seems has such support coc-extension
+"Plug 'airblade/vim-gitgutter'
+"Auto closing pair
+"Plug 'jiangmiao/auto-pairs'
+"
+"Plug 'AndrewRadev/splitjoin.vim'
+"let g:splitjoin_split_mapping = ''
+"let g:splitjoin_join_mapping = ''
+"nnoremap gss :SplitjoinSplit<cr>
+"nnoremap gsj :SplitjoinJoin<cr>
+"Plug 'AndrewRadev/switch.vim'
+"let g:switch_mapping = '-'
+"let g:switch_custom_definitions = [
+            "\   ['MON', 'TUE', 'WED', 'THU', 'FRI']
+            "\ ]
+"if exists('##TextYankPost')
+    "Plug 'machakann/vim-highlightedyank'
+    "let g:highlightedyank_highlight_duration = 100
+"endif
+"Plug 'sgur/vim-editorconfig'
+"" git sign
+"Plug 'mhinz/vim-signify'
+"let g:signify_vcs_list = ['git']
+"let g:signify_skip_filetype = { 'journal': 1 }
+"let g:signify_sign_add          = '│'
+"let g:signify_sign_change       = '│'
+"let g:signify_sign_changedelete = '│'
+
+""replace with register's value, [count]["x]gr{motion}
+"Plug 'vim-scripts/ReplaceWithRegister' 
+"" Visible line indent
+"Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
+"autocmd! User indentLine doautocmd indentLine Syntax
+"let g:indentLine_color_term = 239
+"let g:indentLine_color_gui = '#616161'
+
+"Plug 'flazz/vim-colorschemes'
+"Plug 'junegunn/vim-journal'
+"Plug 'chrisbra/unicode.vim', { 'for': 'journal' }

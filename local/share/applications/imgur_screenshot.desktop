@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.7.4
+Type=Application
+Name=Imgur Screenshot
+Exec=bash -c "\$HOME/.yadr/bin/imgur-screenshot/imgur-screenshot -l true"
+#Icon=$HOME/bin/imgur-screenshot/imgur-haber.jpg
+Terminal=false

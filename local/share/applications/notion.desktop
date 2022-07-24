@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/home/monojo/bin/Notion/Notion
+Type=Application
+Terminal=false
+Comment=Notion the note taking app
+Name=Notion
+StartupNotify=false
+Categories=Productivity

@@ -1,0 +1,26 @@
+{
+    "languageserver": {
+  "clangd": {
+    "command": "clangd",
+    "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+  }
+},
+    "diagnostic.virtualText": true,
+    "coc.preferences.jumpCommand": "edit",
+    "python.jediEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [],
+    "python.linting.pylintEnabled": true,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "yapf",
+    "python.autoUpdateLanguageServer": true,
+    "python.workspaceSymbols.enabled": true,
+    "python.workspaceSymbols.rebuildOnStart": true,
+    "codeLens.enable": true
+    /*
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    */
+}

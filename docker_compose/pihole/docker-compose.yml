@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    restart: always
+
+    environment:
+      TZ: 'America/New_York' # Put your own timezone here.
+      WEBPASSWORD: 'Mono0125' # Put a strong password here.
+    
+    # We'll use host networking simply because it is way easier to setup.
+    network_mode: host
+    
+    # Volumes store your data between container upgrades
+    volumes:
+      - './etc-pihole/:/etc/pihole/'
+      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    
+    # Required for the DHCP server
+    cap_add:
+      - NET_ADMIN
+
