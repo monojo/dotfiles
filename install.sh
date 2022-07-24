@@ -91,14 +91,27 @@ execute () {
     eval "$1"
 }
 
+info () {
+    echo "${YELLOW}$1${NORMAL}"
+}
+
+warn () {
+    echo "${RED}$1${NORMAL}"
+}
+
+fin () {
+    echo "${GREEN}$1${NORMAL}"
+}
+
 install_debian_dep () {
     #TODO this won't work for pkg that user compiled by themself
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1| \
         grep "install ok installed")
     if [ "" == "$PKG_OK" ]; then
-        echo "${RED}$1 hasn't been installed!${NORMAL}"
-        echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
-        sudo apt --yes install $1
+        warn "$1 hasn't been installed!"
+        info "We are going to install $1 on your computer ..."
+        cmd="sudo apt --yes install $1"
+        execute "$cmd"
     else
         echo "${GREEN}$1 is installed!${NORMAL}"
     fi
@@ -106,6 +119,7 @@ install_debian_dep () {
 
 update_debian_deps () {
     cmd="sudo apt update"
+    execute "$cmd"
 }
 
 install_ubuntu_dep () {
@@ -113,30 +127,31 @@ install_ubuntu_dep () {
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1| \
         grep "install ok installed")
     if [ "" == "$PKG_OK" ]; then
-        echo "${RED}$1 hasn't been installed!${NORMAL}"
-        echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
-        sudo apt --yes install $1
+        warn "$1 hasn't been installed!"
+        info "We are going to install $1 on your computer ..."
+        cmd="sudo apt --yes install $1"
+        execute "$cmd"
     else
-        echo "${GREEN}$1 is installed!${NORMAL}"
+        fin "$1 is installed!"
     fi
 }
 
 install_arch_dep () {
     install_cmd="pacman -S --noconfirm $1"
-    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    info "We are going to install $1 on your computer ..."
     execute "$install_cmd"
 }
 
 
 install_manjaro_dep () {
     install_cmd="sudo pacman -S --noconfirm $1"
-    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    info "We are going to install $1 on your computer ..."
     execute "$install_cmd"
 }
 
 install_manjaro_aur () {
     install_cmd="yay -S $1"
-    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    info "We are going to install $1 on your computer ..."
     execute "$install_cmd"
     echo "Y\n"
 }
@@ -155,7 +170,7 @@ install_deps () {
 
 enable_systemd_service () {
     cmd="sudo systemctl enable $1"
-    echo "${YELLOW}We are going to enable $1 on your computer ...${NORMAL}"
+    info "We are going to install $1 on your computer ..."
     execute "$cmd"
 }
 
@@ -167,7 +182,7 @@ enable_systemd_services () {
 
 install_npm_app () {
     cmd="sudo npm install -g $1"
-    echo "${YELLOW}We are going to install $1 on your computer ...${NORMAL}"
+    info "We are going to install $1 on your computer ..."
     execute "$cmd"
 }
 
@@ -309,18 +324,15 @@ elif [ "$PLATFORM" == "OSX" ]; then
 fi
 
 
-if [ ! -d "$HOME/.yadr" ]; then
-    #echo "Installing YADR for the first time"
-    echo "Cloning dotfiles"
-    cmd="git clone --depth=1 https://github.com/monojo/dotfiles.git $HOME/.yadr"
+if [ ! -d "$HOME/.dotfiles" ]; then
+    info "Cloning dotfiles"
+    cmd="git clone --depth=1 https://github.com/monojo/dotfiles.git $HOME/.dotfiles"
     execute "$cmd"
-    [ "$1" = "ask" ] && export ASK="true"
-    #python3 install.py
 else
-    echo "YADR is already cloned"
+    info "dotfiles is already cloned"
 fi
 
 link_home
 do_post_jobs
 
-echo "${GREEN}Success${NORMAL}"
+fin "Success"
