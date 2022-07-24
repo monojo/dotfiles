@@ -282,12 +282,14 @@ install_tpm () {
 }
 
 install_doom () {
-    dest="$HOME/.emacs.d"
-    if [ ! -d $dest ]; then
-        cmd="git clone --depth 1 https://github.com/doomemacs/doomemacs $dest"
-        execute "$cmd"
-        cmd="$HOME/.emacs.d/bin/doom install"
-        execute "$cmd"
+    if [ -x "$(command -v emacs)" ]; then
+        dest="$HOME/.emacs.d"
+        if [ ! -d $dest ]; then
+            cmd="git clone --depth 1 https://github.com/doomemacs/doomemacs $dest"
+            execute "$cmd"
+            cmd="$HOME/.emacs.d/bin/doom install"
+            execute "$cmd"
+        fi
     fi
 }
 
@@ -296,6 +298,8 @@ install_docker () {
         cmd="curl -fsSL https://get.docker.com -o $HOME/get-docker.sh"
         execute "$cmd"
         cmd="sudo sh $HOME/get-docker.sh"
+        execute "$cmd"
+        cmd="rm $HOME/get-docker.sh"
         execute "$cmd"
     fi
 }
