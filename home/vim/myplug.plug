@@ -1,12 +1,13 @@
 "====== Appearance =====
 "Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
+Plug 'cormacrelf/vim-colors-github'
 "====== Finder ======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 "====== Navigation ======
 "ctags overview on the go
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 " Browsing directory
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Open file directory: gof, got
@@ -24,6 +25,7 @@ Plug 't9md/vim-quickhl'
 Plug 'easymotion/vim-easymotion'
 "====== Language Server Protocol Client ======
 " A new extension framework including LSP client support
+" Drop coc
 "Plug 'neoclide/coc.nvim', {'branch': 'release',
 "            \ 'do': ':CocInstall coc-git coc-lists coc-marketplace coc-word 
 "            \ coc-pairs coc-yank coc-python coc-json coc-highlight'}
@@ -43,9 +45,11 @@ Plug 'scrooloose/nerdcommenter'
 "Move between tmux pane and vim window
 Plug 'christoomey/vim-tmux-navigator'
 "Use . to repeat plugin map
-Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-repeat'
 "Display marks on column
 Plug 'kshenoy/vim-signature'
+" git status on column
+Plug 'airblade/vim-gitgutter'
 "Multiple cursors, c-n
 "Plug 'terryma/vim-multiple-cursors'
 "====== Markdown ======
@@ -53,7 +57,7 @@ Plug 'kshenoy/vim-signature'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
             "\ 'for': 'markdown', 'on': 'MarkdownPreview' }
 "Distraction free
-"Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 "Plug 'junegunn/vim-emoji'
 "====== Language ======
 " modern cpp highlight
@@ -185,7 +189,6 @@ endif
 "Plug 'dense-analysis/ale'
 " Show current file git diff in sign column
 "coc seems has such support coc-extension
-"Plug 'airblade/vim-gitgutter'
 "Auto closing pair
 "Plug 'jiangmiao/auto-pairs'
 "

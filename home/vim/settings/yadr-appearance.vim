@@ -182,7 +182,8 @@ endif
 "let ayucolor="dark"
 "colorscheme ayu
 
-
+set background=light
+colorscheme github
 "if has("gui_running")
   ""tell the term has 256 colors
   "set t_Co=256
