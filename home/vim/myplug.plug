@@ -2,6 +2,7 @@
 "Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'phanviet/vim-monokai-pro'
 "====== Finder ======
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
