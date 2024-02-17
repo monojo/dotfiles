@@ -16,3 +16,4 @@ home/vim/vimplugs/mysetting.plug.bak
 home/vim/autoload
 __pycache__
 home/doom.d/custom.el
+*.DS_Store

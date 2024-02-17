@@ -22,27 +22,27 @@ function! s:statusline_expr()
 endfunction
 let &statusline = s:statusline_expr()
 
-colorscheme dracula
-let g:dracula_bold = 1
-let g:dracula_italic = 1
-let g:dracula_underline = 1
-let g:dracula_undercurl = 1
-let g:dracula_inverse = 1
-let g:dracula_colorterm = 1
-let g:airline_theme='dracula'
+"colorscheme dracula
+"let g:dracula_bold = 1
+"let g:dracula_italic = 1
+"let g:dracula_underline = 1
+"let g:dracula_undercurl = 1
+"let g:dracula_inverse = 1
+"let g:dracula_colorterm = 1
+"let g:airline_theme='dracula'
 
 "hi CocHighlightText ctermbg=239
-hi CocHighlightText guibg=#444444 ctermbg=239
+"hi CocHighlightText guibg=#444444 ctermbg=239
 "====== LspCxxHl ======
 " LspCxxHlSym... highlight groups
 "preprocessor
-hi LspCxxHlSkippedRegion ctermfg=239 guifg=#4e4e4e
+"hi LspCxxHlSkippedRegion ctermfg=239 guifg=#4e4e4e
 hi LspCxxHlSymStructField  gui=italic
-hi LspCxxHlSymClass guifg=#A4FFFF
+"hi LspCxxHlSymClass guifg=#A4FFFF
 "hi LspCxxHlSymClassMethod guifg=#d7afaf
 hi LspCxxHlSymClassFiled  gui=italic
 " ccls and cquery's extension
-hi LspCxxHlSymParameter guifg=#ffd787
+"hi LspCxxHlSymParameter guifg=#ffd787
 
 "====== semshi python ======
 if has("nvim")
@@ -67,45 +67,45 @@ hi semshiAttribute       ctermfg=49  guifg=#00ffaf gui=italic
 endif
 
 " Dracula color palette
-let g:dracula#palette.fg        = ['#F8F8F2', 253]
+"let g:dracula#palette.fg        = ['#F8F8F2', 253]
 
-let g:dracula#palette.bglighter = ['#424450', 238]
-let g:dracula#palette.bglight   = ['#343746', 237]
-let g:dracula#palette.bg        = ['#282A36', 236]
-let g:dracula#palette.bgdark    = ['#21222C', 235]
-let g:dracula#palette.bgdarker  = ['#191A21', 234]
+"let g:dracula#palette.bglighter = ['#424450', 238]
+"let g:dracula#palette.bglight   = ['#343746', 237]
+"let g:dracula#palette.bg        = ['#282A36', 236]
+"let g:dracula#palette.bgdark    = ['#21222C', 235]
+"let g:dracula#palette.bgdarker  = ['#191A21', 234]
 
-let g:dracula#palette.comment   = ['#6272A4',  61]
-let g:dracula#palette.selection = ['#44475A', 239]
-let g:dracula#palette.subtle    = ['#424450', 238]
+"let g:dracula#palette.comment   = ['#6272A4',  61]
+"let g:dracula#palette.selection = ['#44475A', 239]
+"let g:dracula#palette.subtle    = ['#424450', 238]
 
-let g:dracula#palette.cyan      = ['#8BE9FD', 117]
-let g:dracula#palette.green     = ['#50FA7B',  84]
-let g:dracula#palette.orange    = ['#FFB86C', 215]
-let g:dracula#palette.pink      = ['#FF79C6', 212]
-let g:dracula#palette.purple    = ['#BD93F9', 141]
-let g:dracula#palette.red       = ['#FF5555', 203]
-let g:dracula#palette.yellow    = ['#F1FA8C', 228]
+"let g:dracula#palette.cyan      = ['#8BE9FD', 117]
+"let g:dracula#palette.green     = ['#50FA7B',  84]
+"let g:dracula#palette.orange    = ['#FFB86C', 215]
+"let g:dracula#palette.pink      = ['#FF79C6', 212]
+"let g:dracula#palette.purple    = ['#BD93F9', 141]
+"let g:dracula#palette.red       = ['#FF5555', 203]
+"let g:dracula#palette.yellow    = ['#F1FA8C', 228]
 
 "
 " ANSI
 "
-let g:dracula#palette.color_0  = '#21222C'
-let g:dracula#palette.color_1  = '#FF5555'
-let g:dracula#palette.color_2  = '#50FA7B'
-let g:dracula#palette.color_3  = '#F1FA8C'
-let g:dracula#palette.color_4  = '#BD93F9'
-let g:dracula#palette.color_5  = '#FF79C6'
-let g:dracula#palette.color_6  = '#8BE9FD'
-let g:dracula#palette.color_7  = '#F8F8F2'
-let g:dracula#palette.color_8  = '#6272A4'
-let g:dracula#palette.color_9  = '#FF6E6E'
-let g:dracula#palette.color_10 = '#69FF94'
-let g:dracula#palette.color_11 = '#FFFFA5'
-let g:dracula#palette.color_12 = '#D6ACFF'
-let g:dracula#palette.color_13 = '#FF92DF'
-let g:dracula#palette.color_14 = '#A4FFFF'
-let g:dracula#palette.color_15 = '#FFFFFF'
+"let g:dracula#palette.color_0  = '#21222C'
+"let g:dracula#palette.color_1  = '#FF5555'
+"let g:dracula#palette.color_2  = '#50FA7B'
+"let g:dracula#palette.color_3  = '#F1FA8C'
+"let g:dracula#palette.color_4  = '#BD93F9'
+"let g:dracula#palette.color_5  = '#FF79C6'
+"let g:dracula#palette.color_6  = '#8BE9FD'
+"let g:dracula#palette.color_7  = '#F8F8F2'
+"let g:dracula#palette.color_8  = '#6272A4'
+"let g:dracula#palette.color_9  = '#FF6E6E'
+"let g:dracula#palette.color_10 = '#69FF94'
+"let g:dracula#palette.color_11 = '#FFFFA5'
+"let g:dracula#palette.color_12 = '#D6ACFF'
+"let g:dracula#palette.color_13 = '#FF92DF'
+"let g:dracula#palette.color_14 = '#A4FFFF'
+"let g:dracula#palette.color_15 = '#FFFFFF'
 
 if has('nvim')
   " https://github.com/neovim/neovim/issues/2897#issuecomment-115464516
@@ -182,6 +182,8 @@ endif
 "let ayucolor="dark"
 "colorscheme ayu
 
+" TODO Somehow Fix the buggy float bg color
+autocmd colorscheme github hi CocErrorFloat guibg=#166666
 set background=light
 colorscheme github
 "if has("gui_running")

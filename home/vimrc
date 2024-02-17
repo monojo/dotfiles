@@ -170,7 +170,11 @@ set signcolumn=yes
 set lazyredraw
 set virtualedit=block
 set diffopt=filler,vertical " Diff mode filler line and vertical splits
-set clipboard+=unnamedplus
+if system('uname -s') == "Darwin\n"
+    set clipboard+=unnamed "OSX
+else
+    set clipboard+=unnamedplus "Linux
+endif
 set foldlevelstart=99 " Edit new buffer without closed fold
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 set completeopt=menuone,preview
