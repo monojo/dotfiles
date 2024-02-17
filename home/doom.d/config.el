@@ -15,6 +15,8 @@
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
+(set-default-coding-systems 'utf-8)
+
 ;; `use-package!' Usage
 ;; All the flowings indicate the timing of loading the package
 ;; :commands - load package after commands executed
@@ -42,24 +44,24 @@
   (defun eshell/up (&optional pattern)
     (eshell-up pattern))
 
-  (defun +my/ivy-eshell-history ()
-    (interactive)
-    (require 'em-hist)
-    (let* ((start-pos (save-excursion (eshell-bol) (point)))
-           (end-pos (point))
-           (input (buffer-substring-no-properties start-pos end-pos))
-           (command (ivy-read "Command: "
-                              (delete-dups
-                               (when (> (ring-size eshell-history-ring) 0)
-                                 (ring-elements eshell-history-ring)))
-                              :initial-input input)))
-      (setf (buffer-substring start-pos end-pos) command)
-      (end-of-line)))
+  ;; (defun +my/ivy-eshell-history ()
+  ;;   (interactive)
+  ;;   (require 'em-hist)
+  ;;   (let* ((start-pos (save-excursion (eshell-bol) (point)))
+  ;;          (end-pos (point))
+  ;;          (input (buffer-substring-no-properties start-pos end-pos))
+  ;;          (command (ivy-read "Command: "
+  ;;                             (delete-dups
+  ;;                              (when (> (ring-size eshell-history-ring) 0)
+  ;;                                (ring-elements eshell-history-ring)))
+  ;;                             :initial-input input)))
+  ;;     (setf (buffer-substring start-pos end-pos) command)
+  ;;     (end-of-line)))
 
-  (defun +my/eshell-init-keymap ()
-    (evil-define-key 'insert eshell-mode-map
-      (kbd "C-r") #'+my/ivy-eshell-history))
-  (add-hook 'eshell-first-time-mode-hook #'+my/eshell-init-keymap)
+  ;; (defun +my/eshell-init-keymap ()
+  ;;   (evil-define-key 'insert eshell-mode-map
+  ;;     (kbd "C-r") #'+my/ivy-eshell-history))
+  ;; (add-hook 'eshell-first-time-mode-hook #'+my/eshell-init-keymap)
   )
 
 ;; Comment code
@@ -107,11 +109,13 @@
 
 ;; Completion popup
 (after! company
-  (setq company-minimum-prefix-length 2
+  (setq company-minimum-prefix-length 3
         company-quickhelp-delay nil
-        company-show-numbers t
+        company-show-numbers nil
         company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
-        company-idle-delay 0.0
+        company-idle-delay 0.8
+        ;;company-idle-delay nil
+        ;;company-dabbrev-downcase 0
         ))
 
 ;; Garbage collection setting
@@ -182,6 +186,8 @@
 ;; (setq lsp-enable-semantic-highlighting t)
 
 ;; Setup org-mode
+;; Use icloud
+(setq org-directory "/Users/xzhang/Library/Mobile Documents/com~apple~CloudDocs/org")
 (after! org
   :config
   ;; open org link in a new window
