@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
@@ -6,12 +6,31 @@ YELLOW="$(tput setaf 3)"
 BLUE="$(tput setaf 4)"
 BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
+
+execute () {
+    echo "${GREEN}$1${NORMAL}"
+    eval "$1"
+}
+
+info () {
+    echo "${YELLOW}$1${NORMAL}"
+}
+
+warn () {
+    echo "${RED}$1${NORMAL}"
+}
+
+fin () {
+    echo "${GREEN}$1${NORMAL}"
+}
+
 PLATFORM="unknown"
 DIST="unknown"
 USER="unknown"
 
 # Dependencies for Linux distros
 # TODO add MacOS support
+# TODO take options, implement sub-work
 
 # Ubuntu
 declare -a ubuntu=("git" "nodejs" "npm" "vim" \
@@ -26,7 +45,6 @@ declare -a ubuntu=("git" "nodejs" "npm" "vim" \
     #deprecated "exuberant-ctags"
     #"i3" "i3-wm" "i3status" "rofi"
     )
-
 
 # debian/pi os lite
 declare -a debian=("curl" "git" "tmux" "vim" "xserver-xorg" "ripgrep" "zsh"\
@@ -86,22 +104,6 @@ declare -a systemd_services=("ly.service" "polkit" "systemd-timesyncd.service"\
 # nodejs apps
 declare -a npm_apps=("nativefier" "tldr")
 
-execute () {
-    echo "${GREEN}$1${NORMAL}"
-    eval "$1"
-}
-
-info () {
-    echo "${YELLOW}$1${NORMAL}"
-}
-
-warn () {
-    echo "${RED}$1${NORMAL}"
-}
-
-fin () {
-    echo "${GREEN}$1${NORMAL}"
-}
 
 install_debian_dep () {
     #TODO this won't work for pkg that user compiled by themself
@@ -142,7 +144,6 @@ install_arch_dep () {
     execute "$install_cmd"
 }
 
-
 install_manjaro_dep () {
     install_cmd="sudo pacman -S --noconfirm $1"
     info "We are going to install $1 on your computer ..."
@@ -166,7 +167,6 @@ install_deps () {
        echo $dep
     done
 }
-
 
 enable_systemd_service () {
     cmd="sudo systemctl enable $1"
@@ -204,6 +204,30 @@ check_platform () {
     fi
 }
 
+install_packages () {
+if [[ $PLATFORM == "Linux" ]]; then
+    case $DIST in
+        Ubuntu) install_deps ubuntu;;
+        Arch) install_deps arch;;
+        Manjaro) install_deps manjaro; install_deps manjaro_aur; enable_systemd_services;;
+        Debian) install_deps debian;;
+        *) echo "does not support distro $DIST";;
+    esac
+elif [[ $PLATFORM == "OSX" ]]; then
+        echo "TODO OSX"
+fi
+}
+
+clone_dotfiles () {
+    if [[ ! -d "$HOME/.dotfiles" ]]; then
+        info "Cloning dotfiles"
+        cmd="git clone --depth=1 https://github.com/monojo/dotfiles.git $HOME/.dotfiles"
+        execute "$cmd"
+    else
+        info "dotfiles is already cloned"
+    fi
+}
+
 link () {
     cmd="ln -snf $1 $2"
     execute "$cmd"
@@ -214,7 +238,7 @@ link_home () {
     for f in $files; do
         fname=$(basename $f)
         target="$HOME/.$fname"
-        if [ -d "$target" ] || [ -f "$target" ]; then
+        if [[ -d "$target"  ||  -f "$target" ]]; then
             echo "${RED}$f existed${NORMAL}"
             continue
         else
@@ -225,7 +249,7 @@ link_home () {
 
 install_prezto () {
     dest="$HOME/.zprezto"
-    if [ ! -d $dest ]; then
+    if [[ ! -d $dest ]]; then
         cmd="git clone --recursive https://github.com/sorin-ionescu/prezto.git $dest"
         execute "$cmd"
     fi
@@ -235,12 +259,12 @@ install_prezto () {
     for rcfile in $rcfiles; do
         echo $rcfile
         fname=$(basename $rcfile)
-        if [ "$fname" != "README.md" ] && [ ! -f "$HOME/.$fname" ]; then
+        if [[ "$fname" != "README.md"  &&  ! -f "$HOME/.$fname" ]]; then
             link "$rcfile" "$HOME/.$fname"
         fi
     done
     cur_shell=$(basename $SHELL)
-    if [ "$cur_shell" != "zsh" ]; then
+    if [[ "$cur_shell" != "zsh" ]]; then
         cmd="chsh -s /bin/zsh"
         execute "$cmd"
     fi
@@ -271,7 +295,7 @@ install_fonts () {
 
 install_tpm () {
     dest="$HOME/.tmux/plugins/tpm"
-    if [ ! -d $dest ]; then
+    if [[ ! -d $dest ]]; then
         cmd="git clone https://github.com/tmux-plugins/tpm.git $dest"
         execute "$cmd"
         cmd="$dest/bin/install_plugins"
@@ -282,19 +306,19 @@ install_tpm () {
 }
 
 install_doom () {
-    if [ -x "$(command -v emacs)" ]; then
-        dest="$HOME/.emacs.d"
-        if [ ! -d $dest ]; then
+    if [[ -x "$(command -v emacs)" ]]; then
+        dest="$HOME/.config/emacs"
+        if [[ ! -d $dest ]]; then
             cmd="git clone --depth 1 https://github.com/doomemacs/doomemacs $dest"
             execute "$cmd"
-            cmd="$HOME/.emacs.d/bin/doom install"
+            cmd="$HOME/.config/emacs/bin/doom install"
             execute "$cmd"
         fi
     fi
 }
 
 install_docker () {
-    if [ ! -x "$(command -v docker)" ]; then
+    if [[ ! -x "$(command -v docker)" ]]; then
         cmd="curl -fsSL https://get.docker.com -o $HOME/get-docker.sh"
         execute "$cmd"
         cmd="sudo sh $HOME/get-docker.sh"
@@ -310,37 +334,59 @@ do_post_jobs () {
     install_vimplug
     install_tpm
     install_doom
-    install_docker
+    #install_docker
 }
 
+run_job () {
+    case $1 in
+        doom) install_doom
+            ;;
+        prezto) install_prezto
+            ;;
+        fonts) install_fonts
+            ;;
+        vimplug) install_vimplug
+            ;;
+        tpm) install_tpm
+            ;;
+        docker) install_docker
+            ;;
+        *) warn "Unknown package $1"
+    esac
+    exit 0
+}
+
+# get opts
+while getopts "j:h" opt; do
+    case ${opt} in
+        j) job_name=$OPTARG ;;
+        h)
+            info "Usage: ./install.sh [-j job_name]"
+            exit 0
+            ;;
+        *)
+            info "Usage: ./install.sh [-j job_name]"
+            exit 1
+            ;;
+    esac
+done
+
+# run a job
+if [[ -n $job_name ]]; then
+    run_job $job_name
+fi
+
+# Default: install all, link all
+# Begin execution
+info "Executing install script"
 check_platform
 
-if [ "$PLATFORM" == "Linux" ]; then
-    if [ "$DIST" == "Ubuntu" ]; then
-        install_deps ubuntu
-    elif [ "$DIST" == "Arch" ]; then
-        install_deps arch
-    elif [ "$DIST" == "Manjaro" ]; then
-        install_deps manjaro
-        install_deps manjaro_aur
-        enable_systemd_services
-    elif [ "$DIST" == "Debian" ]; then
-        install_deps debian
-    fi
-elif [ "$PLATFORM" == "OSX" ]; then
-    echo "TODO: OSX"
-fi
+install_packages
 
-
-if [ ! -d "$HOME/.dotfiles" ]; then
-    info "Cloning dotfiles"
-    cmd="git clone --depth=1 https://github.com/monojo/dotfiles.git $HOME/.dotfiles"
-    execute "$cmd"
-else
-    info "dotfiles is already cloned"
-fi
+clone_dotfiles
 
 link_home
+
 do_post_jobs
 
 fin "Success"
