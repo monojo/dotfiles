@@ -17,6 +17,9 @@
 
 (set-default-coding-systems 'utf-8)
 
+;;use command as meta
+(setq mac-command-modifier 'meta)
+
 ;; `use-package!' Usage
 ;; All the flowings indicate the timing of loading the package
 ;; :commands - load package after commands executed

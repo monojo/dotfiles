@@ -214,7 +214,9 @@ if [[ $PLATFORM == "Linux" ]]; then
         *) echo "does not support distro $DIST";;
     esac
 elif [[ $PLATFORM == "OSX" ]]; then
-        echo "TODO OSX"
+    # install homebrew
+    cmd="/bin/bash -c " "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    execute "$cmd"
 fi
 }
 
