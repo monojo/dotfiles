@@ -21,12 +21,11 @@ Plug 'christoomey/vim-tmux-navigator'
             "\ {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
 ""====== MISC ======
 "Highlight multiple words
-"Plug 't9md/vim-quickhl'
+Plug 't9md/vim-quickhl'
 "Better comment
-"Plug 'scrooloose/nerdcommenter'
-"Move between tmux pane and vim window
+Plug 'scrooloose/nerdcommenter'
 "Display marks on column
-"Plug 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 
 ""****************Plugin Tomb*******************
