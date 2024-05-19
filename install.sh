@@ -340,21 +340,9 @@ do_post_jobs () {
 }
 
 run_job () {
-    case $1 in
-        doom) install_doom
-            ;;
-        prezto) install_prezto
-            ;;
-        fonts) install_fonts
-            ;;
-        vimplug) install_vimplug
-            ;;
-        tpm) install_tpm
-            ;;
-        docker) install_docker
-            ;;
-        *) warn "Unknown package $1"
-    esac
+    cmd="install_$1"
+    execute $cmd
+
     exit 0
 }
 
