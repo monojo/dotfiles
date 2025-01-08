@@ -15,4 +15,4 @@ PATH=~/.local/bin/:$PATH
 PATH=~/.emacs.d/bin/:$PATH
 PATH=~/go/bin/:$PATH
 # for doom
-PATH=~/.emacs.d/bin:$PATH
+PATH=~/.config/emacs/bin:$PATH

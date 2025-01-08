@@ -163,14 +163,17 @@
        "l" #'ivy-resume
        ))
 
-(map!
- (:map go-mode-map
-  :localleader
-  "r" nil ;;unmap r
-  "d" nil
-  :n "d" #'+my/find-definitions
-  :n "r" #'+my/find-references)
- )
+(after! go-mode
+  (map!
+   (:map go-mode-map
+    :localleader
+    "r" nil ;;unmap r
+    "d" nil
+    :n "d" #'+my/find-definitions
+    :n "r" #'+my/find-references
+    :n "h" #'symbol-overlay-put)
+   )
+  )
 
 ;; Localleader ,
 (map! :localleader

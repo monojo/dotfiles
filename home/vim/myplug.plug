@@ -11,13 +11,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 ""====== Language Server Protocol Client ======
 " A new extension framework including LSP client support
-"Plug 'neoclide/coc.nvim', {
-            "\ 'branch': 'release',
-            "\ 'do': ':CocInstall coc-git coc-word coc-pairs coc-yank coc-json 
-            "\                    coc-highlight coc-clangd coc-pright 
-            "\ \| :CocCommand clangd.install'}
+Plug 'neoclide/coc.nvim', {
+            \ 'branch': 'release',
+            \ 'do': ':CocInstall coc-git coc-word coc-pairs coc-yank coc-json
+            \                    coc-highlight coc-clangd coc-pright
+            \ \| :CocCommand clangd.install'}
 " lsp based c/cxx syntax hightlight
-"Plug 'jackguo380/vim-lsp-cxx-highlight', 
+"Plug 'jackguo380/vim-lsp-cxx-highlight',
             "\ {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
 ""====== MISC ======
 "Highlight multiple words
@@ -40,7 +40,7 @@ Plug 'kshenoy/vim-signature'
 "====== Markdown ======
 " Markdown preview
 "Plug 'phanviet/vim-monokai-pro'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 
+"Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()',
             "\ 'for': 'markdown', 'on': 'MarkdownPreview' }
 "Distraction free
 "Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
@@ -60,9 +60,9 @@ Plug 'kshenoy/vim-signature'
 " Enhanced ccls experience with call hierachy, class hierachy...
 "Plug 'm-pilia/vim-ccls', {'for': ['c', 'cpp', 'cuda', 'objc', 'objcpp']}
 "====== Text Object ======
-" Dependent, Commnet, Underscore, parameter by, 
+" Dependent, Commnet, Underscore, parameter by,
 "Plug 'kana/vim-textobj-user' | Plug 'glts/vim-textobj-comment'
-            "\ | Plug 'lucapette/vim-textobj-underscore' 
+            "\ | Plug 'lucapette/vim-textobj-underscore'
             "\ | Plug 'sgur/vim-textobj-parameter'
 ""======Snippets======
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -169,7 +169,7 @@ Plug 'kshenoy/vim-signature'
 "Plug 'AndrewRadev/switch.vim'
 "Plug 'sgur/vim-editorconfig'
 "Plug 'mhinz/vim-signify'
-"Plug 'vim-scripts/ReplaceWithRegister' 
+"Plug 'vim-scripts/ReplaceWithRegister'
 "Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
 "autocmd! User indentLine doautocmd indentLine Syntax
 "Plug 'flazz/vim-colorschemes'

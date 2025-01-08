@@ -199,6 +199,11 @@
           ))
   )
 
+(use-package! git-link
+  :config
+  ;;use hash instead of branch name
+  (setq git-link-use-commit t)
+  )
 ;; Custom faces per theme
 (custom-theme-set-faces! 'doom-dracula
   ;;type to light ocean blue
