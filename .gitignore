@@ -17,3 +17,4 @@ home/vim/autoload
 __pycache__
 home/doom.d/custom.el
 *.DS_Store
+home/fonts/.uuid
