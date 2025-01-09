@@ -33,7 +33,7 @@ USER="unknown"
 # TODO take options, implement sub-work
 
 # Ubuntu
-declare -a ubuntu=("git" "nodejs" "npm" "vim" \
+declare -a ubuntu=("git"\
     "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" \
     "libgnomeui-dev" "libgtk2.0-dev" "libatk1.0-dev" "libbonoboui2-dev" \
     "libcairo2-dev" "libx11-dev" "libxpm-dev" "libxt-dev" "python-dev" \
@@ -41,8 +41,11 @@ declare -a ubuntu=("git" "nodejs" "npm" "vim" \
     "rake" "zsh" \
     "pkg-config" "automake" "libpcre3-dev" "zlib1g-dev" "liblzma-dev" "fcitx" \
     "volumeicon-alsa" "python3-pip" \
-    "fcitx-rime" "xclip" "scrot" "dconf-cli"
+    "fcitx-rime" "xclip" "scrot" "dconf-cli"\
+    #rely on snapd to install the latest repo
+    "snapd"
     #deprecated "exuberant-ctags"
+    #"nodejs" "npm" "vim"
     #"i3" "i3-wm" "i3status" "rofi"
     )
 
@@ -124,6 +127,11 @@ update_debian_deps () {
     execute "$cmd"
 }
 
+update_ubuntu_deps () {
+    cmd="sudo apt update"
+    execute "$cmd"
+}
+
 install_ubuntu_dep () {
     #TODO this won't work for pkg that user compiled by themself
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1| \
@@ -136,6 +144,17 @@ install_ubuntu_dep () {
     else
         fin "$1 is installed!"
     fi
+}
+
+install_snap_deps () {
+  cmd="sudo snap install node --classic"
+  execute "$cmd"
+
+  cmd="sudo snap install nvim --classic"
+  execute "$cmd"
+
+  cmd="sudo snap install emacs --classic"
+  execute "$cmd"
 }
 
 install_arch_dep () {
@@ -194,7 +213,7 @@ install_npm_apps () {
 
 check_platform () {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        #Linux OS 
+        #Linux OS
         PLATFORM="Linux"
         DIST=$(tr -s ' \011' '\012' < /etc/issue | head -n 1)
         echo $DIST
@@ -207,7 +226,7 @@ check_platform () {
 install_packages () {
 if [[ $PLATFORM == "Linux" ]]; then
     case $DIST in
-        Ubuntu) install_deps ubuntu;;
+        Ubuntu) install_deps ubuntu; install_snap_deps;;
         Arch) install_deps arch;;
         Manjaro) install_deps manjaro; install_deps manjaro_aur; enable_systemd_services;;
         Debian) install_deps debian;;
