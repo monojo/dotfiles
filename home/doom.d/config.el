@@ -70,11 +70,27 @@
 ;; Comment code
 (use-package! evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines))
-
 (setq isearch-lax-whitespace t)
 (setq search-whitespace-regexp ".*")
 
+(setq evil-esc-delay 0.01)
+
+(setq tramp-default-method "ssh")       ; Use SSH by default
+(setq tramp-verbose 1)                  ; Reduce verbosity
+(setq tramp-use-ssh-controlmaster-options nil) ; Disable ControlMaster for performance
+(setq tramp-persistency-file-name "~/.config/emacs/tramp") ; Cache connections
+(setq password-cache-expiry 360000)                    ; Cache passwords for 100 hour
+
 (define-key isearch-mode-map (kbd "DEL") #'isearch-del-char)
+
+(setq lsp-auto-configure t)
+(setq lsp-enable-snippet nil)
+(setq lsp-enable-completion-at-point nil)
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-enable-links nil)
+(setq lsp-enable-semantic-highlighting nil)
+(setq debug-on-error t)
+(setq warning-minimum-level :emergency)
 
 ;; Search symbol, file, & everything
 (use-package! ivy
@@ -129,6 +145,18 @@
 ;; (setq lsp-prefer-capf t)
 ;; This may affect scrolling
 (setq lsp-idle-delay 0.200)
+
+;; Disable these features to maximize the x-forwarding performance
+;;(setq lsp-progress-via-spinner nil)        ; Disable spinner
+;;(setq lsp-headerline-breadcrumb-enable nil) ; Disable headerline
+;;(setq lsp-modeline-code-actions-enable nil) ; Disable modeline indicators
+;;(setq lsp-modeline-diagnostics-enable nil)
+;;(setq lsp-lens-enable nil)
+;;(setq lsp-ui-doc-enable nil)
+;;(setq lsp-ui-sideline-enable nil)
+
+;;; Reduce redisplay frequency
+;;(setq lsp-idle-delay 2)
 
 ;; Debug support
 ;; (use-package! dap-mode
