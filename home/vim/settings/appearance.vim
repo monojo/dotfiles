@@ -184,8 +184,60 @@ endif
 
 " TODO Somehow Fix the buggy float bg color
 autocmd colorscheme github hi CocErrorFloat guibg=#166666
-set background=light
+autocmd colorscheme github hi Function ctermfg=26 guifg=#005cc5
+autocmd colorscheme github hi Identifier ctermfg=91 guifg=#6f42c1
+hi link CocSemTypeModFunctionDefaultLibrary Indentifier
 colorscheme github
+set background=light
+""Blue FileType c syntax match ghBlueFunc /\w\+\s*(/me=e-1,he=e-1
+""au FileType go syntax match ghBlueFunc /\w\+\s*(/me=e-1,he=e-1
+""hi link Function ghBlueFunc
+""hi link Identifier ghPurpleFunc
+"let s:colors = {} " the 'stable API' you can access through s:Col
+"let s:colors.blue           = { 'gui': '#005cc5', 'cterm': 26  }
+"let s:colors.purple         = { 'gui': '#6f42c1', 'cterm': 91  } " github syntax
+"function! s:Highlight(args)
+  "exec 'highlight ' . join(a:args, ' ')
+"endfunction
+
+"function! s:Clear(group)
+  "exec 'highlight clear ' . a:group
+"endfunction
+
+"function! s:AddGroundValues(accumulator, ground, color)
+  "let new_list = a:accumulator
+  "for [where, value] in items(a:color)
+    "call add(new_list, where . a:ground . '=' . value)
+  "endfor
+
+  "return new_list
+"endfunction
+
+"function! s:Col(group, fg_name, ...)
+  "" ... = optional bg_name
+
+  "let pieces = [a:group]
+
+  "if a:fg_name !=# ''
+    "let pieces = s:AddGroundValues(pieces, 'fg', s:colors[a:fg_name])
+  "endif
+
+  "if a:0 > 0 && a:1 !=# ''
+    "let pieces = s:AddGroundValues(pieces, 'bg', s:colors[a:1])
+  "endif
+
+  "call s:Clear(a:group)
+  "call s:Highlight(pieces)
+"endfunction
+"call s:Col('Function', 'blue')
+"call s:Col('Indentifier', 'purple')
+"highlight def link ghBlueFunc Identifier
+"au FileType typescript syntax match ghPurpleFunc /\w\+\s*(/me=e-1,he=e-1
+"au FileType javascript syntax match ghPurpleFunc /\w\+\s*(/me=e-1,he=e-1
+"highlight def link ghPurpleFunc Function
+"
+"hi CocSemFunction gui=bold ctermfg=Blue
+"hi CocSemMethod gui=italic ctermfg=Blue
 "if has("gui_running")
   ""tell the term has 256 colors
   "set t_Co=256

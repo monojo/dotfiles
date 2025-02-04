@@ -16,3 +16,7 @@ PATH=~/.emacs.d/bin/:$PATH
 PATH=~/go/bin/:$PATH
 # for doom
 PATH=~/.config/emacs/bin:$PATH
+export TERM=xterm-256color
+export LIBGL_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+export XDG_DATA_DIRS=/usr/share:/usr/share/glib-2.0/schemas

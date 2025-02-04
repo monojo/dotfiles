@@ -27,6 +27,9 @@ Plug 'scrooloose/nerdcommenter'
 "Display marks on column
 Plug 'kshenoy/vim-signature'
 
+""====== Version Control ======
+Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
+Plug 'ruanyl/vim-gh-line'
 
 ""****************Plugin Tomb*******************
 ""Show register content, press "
@@ -66,8 +69,6 @@ Plug 'kshenoy/vim-signature'
             "\ | Plug 'sgur/vim-textobj-parameter'
 ""======Snippets======
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-""====== Version Control ======
-"Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
 ""====== Navigation ======
 "ctags overview on the go
 "Plug 'majutsushi/tagbar'
