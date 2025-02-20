@@ -38,11 +38,9 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'history-substring-search' \
   'prompt'\
   'tmux' \
   'archive' \
-  'fasd' \
   'git' \
   'osx' \
   'syntax-highlighting' \
@@ -50,6 +48,9 @@ zstyle ':prezto:load' pmodule \
   'command-not-found' \
   'node'
 
+#======Disabled======
+#'history-substring-search' \
+#  'fasd' \
 
 #
 # Autosuggestions
