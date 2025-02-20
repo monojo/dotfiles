@@ -43,7 +43,7 @@ declare -a ubuntu=("git"\
     "volumeicon-alsa" "python3-pip" \
     "fcitx-rime" "xclip" "scrot" "dconf-cli"\
     #rely on snapd to install the latest repo
-    "snapd"
+    "snapd" "zoxide" "neovim"
     #deprecated "exuberant-ctags"
     #"nodejs" "npm" "vim"
     #"i3" "i3-wm" "i3status" "rofi"
@@ -150,8 +150,8 @@ install_snap_deps () {
   cmd="sudo snap install node --classic"
   execute "$cmd"
 
-  cmd="sudo snap install nvim --classic"
-  execute "$cmd"
+  #cmd="sudo snap install nvim --classic"
+  #execute "$cmd"
 
   cmd="sudo snap install emacs --classic"
   execute "$cmd"
@@ -268,6 +268,7 @@ link_home () {
     done
 }
 
+#zsh config framework
 install_prezto () {
     dest="$HOME/.zprezto"
     if [[ ! -d $dest ]]; then
@@ -289,14 +290,9 @@ install_prezto () {
         cmd="chsh -s /bin/zsh"
         execute "$cmd"
     fi
-    #echo "for config_file ($HOME/.dotfiles/zsh/*.zsh) source \$config_file" > "$HOME/.zshrc"
-    #update prezto
-    #cd .zprezto
-    #git pull
-    #git submodule sync --recursive
-    #git submodule update --init --recursive
 }
 
+#vim plug manager
 install_vimplug () {
     dest="$HOME/.vim/autoload/plug.vim"
     # Install vimplug
@@ -309,11 +305,13 @@ install_vimplug () {
     fi
 }
 
+#pretty fonts
 install_fonts () {
     cmd="fc-cache -vf ~/.fonts"
     execute "$cmd"
 }
 
+#tmux plugin
 install_tpm () {
     dest="$HOME/.tmux/plugins/tpm"
     if [[ ! -d $dest ]]; then
@@ -326,6 +324,7 @@ install_tpm () {
     fi
 }
 
+#doom emacs
 install_doom () {
     if [[ -x "$(command -v emacs)" ]]; then
         dest="$HOME/.config/emacs"
@@ -354,7 +353,8 @@ do_post_jobs () {
     install_fonts
     install_vimplug
     install_tpm
-    install_doom
+    #time consuming to compile doom
+    #install_doom
     #install_docker
 }
 
@@ -364,11 +364,24 @@ run_job () {
 
     exit 0
 }
+# Define available jobs
+available_jobs=("doom" "docker")
+
+# Function to list available jobs
+list_jobs() {
+    echo "Available jobs:"
+    for job in "${available_jobs[@]}"; do
+        echo "  - $job"
+    done
+}
 
 # get opts
-while getopts "j:h" opt; do
+while getopts "j:hl" opt; do
     case ${opt} in
         j) job_name=$OPTARG ;;
+        l) list_jobs
+          exit 0
+          ;;
         h)
             info "Usage: ./install.sh [-j job_name]"
             exit 0
@@ -383,19 +396,18 @@ done
 # run a job
 if [[ -n $job_name ]]; then
     run_job $job_name
+else
+    # Default install
+    info "Executing install script"
+    check_platform
+
+    install_packages
+
+    clone_dotfiles
+
+    link_home
+
+    do_post_jobs
+
+    fin "Success"
 fi
-
-# Default: install all, link all
-# Begin execution
-info "Executing install script"
-check_platform
-
-install_packages
-
-clone_dotfiles
-
-link_home
-
-do_post_jobs
-
-fin "Success"
