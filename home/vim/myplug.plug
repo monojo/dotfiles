@@ -29,7 +29,6 @@ Plug 'kshenoy/vim-signature'
 
 ""====== Version Control ======
 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-rhubarb'
-Plug 'ruanyl/vim-gh-line'
 
 ""****************Plugin Tomb*******************
 ""Show register content, press "
@@ -176,3 +175,4 @@ Plug 'ruanyl/vim-gh-line'
 "Plug 'flazz/vim-colorschemes'
 "Plug 'junegunn/vim-journal'
 "Plug 'chrisbra/unicode.vim', { 'for': 'journal' }
+"Plug 'ruanyl/vim-gh-line'
