@@ -127,5 +127,3 @@
 [user]
 	email = xzhang99@binghamton.edu
 	name = Xin
-[http]
-	cookiefile = /home/moslab/.gitcookies
