@@ -29,9 +29,7 @@ DIST="unknown"
 USER="unknown"
 
 # Dependencies for Linux distros
-# TODO add MacOS support
-# TODO take options, implement sub-work
-
+#
 # Ubuntu
 declare -a ubuntu=("git"\
     "tmux" "cmake" "build-essential" "libncurses5-dev" "libgnome2-dev" \
@@ -254,18 +252,43 @@ link () {
     execute "$cmd"
 }
 
-link_home () {
-    files="$HOME/.dotfiles/home/*"
+link_files () {
+    source_folder=$1
+    dest_folder=$2
+    invisible=$3
+    files="$1/*"
+
+    if [[ ! -d "$dest_folder" ]]; then
+        echo "Creating $dest_folder..."
+        mkdir -p "$dest_folder"
+    fi
+
     for f in $files; do
         fname=$(basename $f)
-        target="$HOME/.$fname"
+        if [[ "$invisible" == "true" ]]; then
+          target="$dest_folder/.$fname"
+        else
+          target="$dest_folder/$fname"
+        fi
         if [[ -d "$target"  ||  -f "$target" ]]; then
-            echo "${RED}$f existed${NORMAL}"
+            echo "${RED}$target existed${NORMAL}"
             continue
         else
-            link "$f" "$HOME/.$fname"
+            link "$f" "$target"
         fi
     done
+}
+
+link_home () {
+    src="$HOME/.dotfiles/home"
+    dest="$HOME"
+    link_files "$src" "$dest" true
+}
+
+link_nvim () {
+    src="$HOME/.dotfiles/config/nvim"
+    dest="$HOME/.config/nvim"
+    link_files "$src" "$dest" false
 }
 
 #zsh config framework
@@ -302,6 +325,10 @@ install_vimplug () {
         # Install plugins
         cmd="vim --noplugin -u ~/.vim/vimplug.vim -N +PlugInstall +qall"
         execute "$cmd"
+        if [[ -x "$(command -v nvim)" ]]; then
+            cmd="nvim --noplugin -u ~/.vim/vimplug.vim -N +PlugInstall +qall"
+            execute "$cmd"
+        fi
     fi
 }
 
@@ -336,6 +363,7 @@ install_doom () {
         fi
     fi
 }
+
 
 install_docker () {
     if [[ ! -x "$(command -v docker)" ]]; then
@@ -406,6 +434,8 @@ else
     clone_dotfiles
 
     link_home
+
+    link_nvim
 
     do_post_jobs
 
