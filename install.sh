@@ -291,6 +291,12 @@ link_nvim () {
     link_files "$src" "$dest" false
 }
 
+link_git () {
+    src="$HOME/.dotfiles/config/git"
+    dest="$HOME/.config/git"
+    link_files "$src" "$dest" false
+}
+
 #zsh config framework
 install_prezto () {
     dest="$HOME/.zprezto"
@@ -434,8 +440,8 @@ else
     clone_dotfiles
 
     link_home
-
     link_nvim
+    link_git
 
     do_post_jobs
 
