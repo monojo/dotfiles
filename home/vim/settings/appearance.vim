@@ -183,10 +183,10 @@ endif
 "colorscheme ayu
 
 " TODO Somehow Fix the buggy float bg color
-autocmd colorscheme github hi CocErrorFloat guibg=#166666
-autocmd colorscheme github hi Function ctermfg=26 guifg=#005cc5
-autocmd colorscheme github hi Identifier ctermfg=91 guifg=#6f42c1
-hi link CocSemTypeModFunctionDefaultLibrary Indentifier
+"autocmd colorscheme github hi CocErrorFloat guibg=#166666
+"autocmd colorscheme github hi Function ctermfg=26 guifg=#005cc5
+"autocmd colorscheme github hi Identifier ctermfg=91 guifg=#6f42c1
+"hi link CocSemTypeModFunctionDefaultLibrary Indentifier
 colorscheme github
 set background=light
 ""Blue FileType c syntax match ghBlueFunc /\w\+\s*(/me=e-1,he=e-1

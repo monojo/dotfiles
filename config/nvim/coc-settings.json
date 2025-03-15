@@ -1,6 +1,7 @@
 {
     "languageserver": {
         "ccls": {
+
             "command": "ccls",
             "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
             "rootPatterns": [".ccls-root", "compile_commands.json"],
@@ -22,5 +23,7 @@
             }
         }
     },
-    "semanticTokens.enable": true
+    "semanticTokens.enable": true,
+    "diagnostic.autoRefresh": false,
+    "diagnostic.refreshOnInsertMode": true
 }
