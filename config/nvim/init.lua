@@ -133,6 +133,7 @@ require("lazy").setup({
         -- Mark signs
         {"chentoast/marks.nvim",
             config =  true,
+            -- m; to toggle next available mark
         },
         -- Git support
         {"lewis6991/gitsigns.nvim",
@@ -160,10 +161,25 @@ require("lazy").setup({
             "nvim-telescope/telescope.nvim",
             dependencies = { "nvim-lua/plenary.nvim" }
         },
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            event = "VeryLazy",
+            config = function()
+                require("treesitter-context").setup({
+                    enable = true,
+                    max_lines = 1,
+                    patterns = {
+                        default = {
+                            "function",
+                            "method",
+                        }
+                    }
+                }) end, -- uses default config; or you can pass a function
+        },
         {'ranjithshegde/ccls.nvim'},
         'L3MON4D3/luasnip',
         'ThePrimeagen/harpoon',
-        'MattesGroeger/vim-bookmarks',
+        -- 'MattesGroeger/vim-bookmarks',
         {
             "windwp/nvim-autopairs",
             event = "InsertEnter",
@@ -198,7 +214,21 @@ require("lazy").setup({
                 },
             },
         },
-        { "max397574/better-escape.nvim", config = true, }
+        { "max397574/better-escape.nvim", config = true, },
+        -- { 'echasnovski/mini.ai',          config = true },
+        -- {
+        {'rmagatti/auto-session',
+            lazy = false,
+
+            ---enables autocomplete for opts
+            ---@module "auto-session"
+            ---@type AutoSession.Config
+            opts = {
+                suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+                -- log_level = 'debug',
+            }
+    }
+
     } --end of spec
 })
 
@@ -234,88 +264,49 @@ require('fzf-lua').setup({
 local lspconfig = require("lspconfig")
 -- Function to attach LSP keybindings
 local on_attach = function(client, bufnr)
-    -- local opts = { noremap = true, silent = true, buffer = bufnr }
-    local function map(mode, lhs, rhs, opts)
-        local options = {noremap = true, silent = true}
-        if opts then
-            if type(opts) == 'string' then
-                opts = {desc = opts}
-            end
-            options = vim.tbl_extend('force', options, opts)
-        end
-        if type(opts) == 'string' then
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
-        else
-            vim.keymap.set(mode, lhs, rhs, {buffer=true})
-        end
-    end
-    local function nmap(lhs, rhs, opts)
-        map('n', lhs, rhs, opts)
-    end
-
-    -- local function buf_set_option(name, value) vim.api.nvim_set_option_value(name, value, {scope='local'}) end
-
-    -- Enable completion triggered by <c-x><c-o>
-    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
     local telescope = require("telescope.builtin")
+    local fzf = require("fzf-lua")
 
-    --   vim.lsp.buf.references(nil, {
-    --   includeDeclaration = false,
-    --   includeDefinition = false
-    -- })
+    vim.keymap.set("n", "<Space>s", function() fzf.lsp_document_symbols() end, { noremap = true, silent = true, desc = "Symbols" })
+    vim.keymap.set("n", "gr", function() fzf.lsp_references() end, { noremap = true, silent = true, desc = "References" })
+    vim.keymap.set("n", "gd", function() fzf.lsp_definitions() end, { noremap = true, silent = true, desc = "Definitions"})
+    vim.keymap.set("n", "gi", function() fzf.lsp_implementations() end, { noremap = true, silent = true, desc = "Impl"})
+    vim.keymap.set('v', '=', '<cmd>lua vim.lsp.buf.format()<CR>', {desc = "Format code"})
+    vim.keymap.set("n", "<leader>lr", '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true, silent = true, desc = "Rename"})
 
-    -- nmap('<leader>s', '<cmd>Telescope lsp_document_symbols<cr>')
+    vim.keymap.set("n", "<leader>r", '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=8})<cr>', {noremap = true, silent = true, buffer = bufnr, desc = "Read Ref"}) -- read
+    vim.keymap.set("n", "<leader>w", '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=16})<cr>', {noremap = true, silent = true, buffer = bufnr, desc = "Write Ref"}) -- read
+    -- vim.keymap.set("n", "<leader>f", '<cmd>lua require("ccls.protocol").request("textDocument/references",{excludeRole=32})<cr>', opts) -- not call
+    -- vim.keymap.set("n", "<leader>m", '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=64})<cr>', opts) -- macro
 
-
-    -- vim.keymap.set("n", "<leader>d", telescope.lsp_definitions, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>r", telescope.lsp_references, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition)
-    -- vim.keymap.set("n", "<leader>r", vim.lsp.buf.references)
-
-    -- nmap(',f', '<cmd>lua require("ccls.protocol").request("textDocument/references",{excludeRole=32})<cr>') -- not call
-    -- nmap(',m', '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=64})<cr>') -- macro
-    --   vim.keymap.set("n", ",f", function()
-    --   require("ccls.protocol").request("textDocument/references", { excludeRole = 32 })
-    -- end, { noremap = true, silent = true })
-    -- nmap(',r', '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=4})<cr>') -- read
-    -- nmap(',m', '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=8})<cr>') -- read
-    -- nmap(',w', '<cmd>lua require("ccls.protocol").request("textDocument/references",{role=16})<cr>') -- write
-
-    -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-    -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-    --   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    --
-  --[[ vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-
-  --  Hover & Signature Help
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, opts)
-
-  --  Workspace Management
-  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set("n", "<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts)
-
-  --  Code Actions & Rename
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-  --  Diagnostics
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
-
-  --  Format Document
-  if client.server_capabilities.documentFormattingProvider then
-    vim.keymap.set("n", "<leader>f", function()
-      vim.lsp.buf.format({ async = true })
-    end, opts) ]]
+    -- vim.keymap.set("n", "<space>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>li", "<cmd>Inspect<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>ls", "<cmd>CclsSwitchSourceHeader<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "[e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "]e", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "ga", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "x", "<Nop>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xB", "<cmd>CclsBaseHierarchy<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xC", "<cmd>CclsOutgoingCalls<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xD", "<cmd>CclsDerivedHierarchy<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xM", "<cmd>CclsMemberHierarchy<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xb", "<cmd>CclsBase<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xc", "<cmd>CclsIncomingCalls<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xd", "<cmd>CclsDerived<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xm", "<cmd>CclsMember<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xn", function() M.lsp.words.jump(vim.v.count1) end, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xp", function() M.lsp.words.jump(-vim.v.count1) end, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "xv", "<cmd>CclsVars<CR>", { noremap = true, silent = true })
 
     -- Turn off treesitter when lsp server support semantic token
     if client.server_capabilities.semanticTokensProvider then
@@ -361,6 +352,7 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.lua_ls.setup {
+    on_attach = on_attach,
     on_init = function(client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -394,6 +386,43 @@ lspconfig.lua_ls.setup {
     }
 }
 
+require'marks'.setup {
+  -- whether to map keybinds or not. default true
+  default_mappings = true,
+  -- which builtin marks to show. default {}
+  builtin_marks = { ".", "<", ">", "^" },
+  -- whether movements cycle back to the beginning/end of buffer. default true
+  cyclic = true,
+  -- whether the shada file is updated after modifying uppercase marks. default false
+  force_write_shada = false,
+  -- how often (in ms) to redraw signs/recompute mark positions. 
+  -- higher values will have better performance but may cause visual lag, 
+  -- while lower values may cause performance penalties. default 150.
+  refresh_interval = 250,
+  -- sign priorities for each type of mark - builtin marks, uppercase marks, lowercase
+  -- marks, and bookmarks.
+  -- can be either a table with all/none of the keys, or a single number, in which case
+  -- the priority applies to all marks.
+  -- default 10.
+  sign_priority = { lower=10, upper=15, builtin=8, bookmark=20 },
+  -- disables mark tracking for specific filetypes. default {}
+  excluded_filetypes = {},
+  -- disables mark tracking for specific buftypes. default {}
+  excluded_buftypes = {},
+  -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
+  -- sign/virttext. Bookmarks can be used to group together positions and quickly move
+  -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
+  -- default virt_text is "".
+  bookmark_0 = {
+    sign = "⚑",
+    virt_text = "hello world",
+    -- explicitly prompt for a virtual line annotation when setting a bookmark from this group.
+    -- defaults to false.
+    annotate = true,
+  },
+  mappings = {}
+}
+
 
 -- nvim completion
 local luasnip = require('luasnip')
@@ -412,6 +441,10 @@ cmp.setup({
         -- ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<Tab>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true
+        }),
+        ['<C-y>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true
         }),
@@ -464,6 +497,7 @@ require("nvim-treesitter.configs").setup({
                 [']c'] = '@class.outer',
                 [']]'] = '@function.outer',
                 [']o'] = '@loop.*',
+                [']a'] = '@parameter.inner',
             },
             goto_next_end = {
                 [']C'] = '@class.outer',
@@ -472,6 +506,7 @@ require("nvim-treesitter.configs").setup({
                 ['[c'] = '@class.outer',
                 ['[['] = '@function.outer',
                 ['[o'] = '@loop.*',
+                ['[a'] = '@parameter.inner',
             },
             goto_previous_end = {
                 ['[C'] = '@class.outer',
@@ -480,34 +515,79 @@ require("nvim-treesitter.configs").setup({
     },
 })
 
+local gitsigns = require('gitsigns')
+gitsigns.setup {
+  on_attach = function(bufnr)
+    local function map(mode, l, r, opts)
+      if type(opts) == 'string' then
+        opts = { desc = opts }
+      else
+        opts = {}
+      end
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ ']c', bang = true })
+      else
+        gitsigns.nav_hunk('next')
+      end
+    end)
+
+    map('n', '[c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ '[c', bang = true })
+      else
+        gitsigns.nav_hunk('prev')
+      end
+    end)
+
+    -- Actions
+    map('n', 'ghs', gitsigns.stage_hunk, 'stage_hunk')
+    map('n', 'ghr', gitsigns.reset_hunk, 'reset_hunk')
+    map('v', 'ghs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('v', 'ghr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('n', 'ghS', gitsigns.stage_buffer, 'stage_buffer')
+    map('n', 'ghu', gitsigns.undo_stage_hunk, 'undo_stage_hunk')
+    map('n', 'ghR', gitsigns.reset_buffer, 'reset_buffer')
+    map('n', 'ghp', gitsigns.preview_hunk, 'preview_hunk')
+    map('n', 'ghb', function() gitsigns.blame_line { full = true } end)
+    map('n', 'ghd', gitsigns.diffthis, 'diffthis')
+    map('n', 'ghD', function() gitsigns.diffthis('~') end, 'diffthis ~')
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+
+
 -- Mappings
 local fzf = require("fzf-lua")
-vim.keymap.set("n", "<Space><Space>", function() fzf.files() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>b", function() fzf.buffers() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>f", function() fzf.live_grep() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>w", function() fzf.grep_cword() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>g", function() fzf.git_files() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>t", function() fzf.treesitter() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>c", function() fzf.commands() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<Space>s", function() fzf.lsp_document_symbols() end, { noremap = true, silent = true })
-vim.keymap.set("n", "gr", function() fzf.lsp_references() end, { noremap = true, silent = true })
-vim.keymap.set("n", "gd", function() fzf.lsp_definitions() end, { noremap = true, silent = true })
-vim.keymap.set('v', '=', '<cmd>lua vim.lsp.buf.format()<CR>')
+vim.keymap.set("n", "<Space><Space>", function() fzf.files() end, { noremap = true, silent = true, desc = "Files" })
+vim.keymap.set("n", "<Space>b", function() fzf.buffers() end, { noremap = true, silent = true , desc = "Buffer"})
+vim.keymap.set("n", "<Space>f", function() fzf.live_grep() end, { noremap = true, silent = true, desc = "Search"})
+vim.keymap.set("n", "<Space>w", function() fzf.grep_cword() end, { noremap = true, silent = true, desc = "Search CWD" })
+vim.keymap.set("n", "<Space>g", function() fzf.git_files() end, { noremap = true, silent = true, desc = "Git Files" })
+vim.keymap.set("n", "<Space>t", function() fzf.treesitter() end, { noremap = true, silent = true, desc = "Treesitter" })
+vim.keymap.set("n", "<Space>c", function() fzf.commands() end, { noremap = true, silent = true, desc = "Commands" })
+vim.keymap.set("n", "<Space>m", function() fzf.marks() end, { noremap = true, silent = true, desc = "Commands" })
 vim.api.nvim_create_user_command("F", "FzfLua", {})
 
 -- Motion jumps
 local hop = require("hop")
 vim.keymap.set('', 's', function() hop.hint_char1({ current_line_only = false }) end, {remap=true})
---hl words
+--
+-- hl words
 vim.keymap.set("n", "<Leader>h", "<Plug>(quickhl-manual-this)", { noremap = false, silent = true, desc = "Highlight cwd"})
---github link 
-vim.keymap.set("n", "<leader>gl", ":.GBrowse!<CR>", { noremap = true, silent = true })
+-- get github link of current line
+vim.keymap.set("n", "<leader>gl", ":.GBrowse!<CR>", { noremap = true, silent = true, desc = "Git link" })
 
-local mark = require("harpoon.mark")
+local hmark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>ba", function() mark.add_file() end, { desc = "Add file to Harpoon" })
+vim.keymap.set("n", "<leader>ba", function() hmark.add_file() end, { desc = "Add file to Harpoon" })
 vim.keymap.set("n", "<leader>bb", function() ui.toggle_quick_menu() end, { desc = "Open Harpoon UI" })
-vim.keymap.set("n", "<leader>bc", function() mark.clear_all() print("Harpoon marks cleared!") end, { desc = "Clear all Harpoon marks" })
+vim.keymap.set("n", "<leader>bc", function() hmark.clear_all() print("Harpoon marks cleared!") end, { desc = "Clear all Harpoon marks" })
 vim.keymap.set("n", "<leader>bh", "<cmd>Telescope harpoon marks<CR>", { desc = "Find Harpoon files with Telescope" })
 -- Quickly jump between files (1-4)
 vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end, { desc = "Go to file 1" })
@@ -517,3 +597,66 @@ vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, { desc = "Go to 
 
 vim.keymap.set("n", "J", vim.lsp.buf.hover, { desc = "Show LSP hover docs" })
 vim.keymap.set("n", "K", "<cmd>Man<CR>", { desc = "Show manual" , remap = false})
+vim.keymap.set("n", "<space>p", '"_diwP', { noremap = true, silent = true, desc = "Replace word by what just yanked" })
+vim.keymap.set("v", "<space>p", '"_dP', { noremap = true, silent = true, desc = "Replace selection by what just yanked" })
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz", {noremap = true})
+vim.keymap.set("n", "<C-u>", "<C-u>zz", {noremap = true})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local config_path = vim.fn.stdpath("config")
+
+    -- Check if current file is in the nvim config's lua folder
+    if bufname:sub(1, #config_path) == config_path then
+      vim.keymap.set("n", "K", function()
+        local word = vim.fn.expand("<cword>")
+          vim.cmd("help " .. word)
+      end, { buffer = true, desc = "Show vim help for vim.* or man page", remap = false })
+    end
+  end,
+})
+
+-- vim.keymap.set("n", "<leader>mm", "<Plug>BookmarkToggle", {noremap = true})
+-- vim.keymap.set("n", "<leader>ma", "<Plug>BookmarkShowAll", {noremap = true})
+-- vim.keymap.set("n", "<leader>mi", "<Plug>BookmarkAnnotate", {noremap = true})
+-- vim.keymap.set("n", "<leader>mc", "<Plug>BookmarClear", {noremap = true})
+-- vim.api.nvim_del_keymap('n', 'mm')
+-- vim.api.nvim_del_keymap('n', 'mi')
+-- vim.api.nvim_del_keymap('n', 'mc')
+-- vim.api.nvim_del_keymap('n', 'mn')
+-- vim.api.nvim_del_keymap('n', 'mp')
+-- vim.api.nvim_del_keymap('n', 'mx')
+-- vim.api.nvim_del_keymap('n', 'ma')
+
+local function SetMarkWithPrompt(mark)
+  local pos = vim.fn.getpos("'" .. mark)
+  local line = pos[2]
+  local col = pos[3]
+
+  if line ~= 0 or col ~= 0 then
+    local msg = "Mark '" .. mark .. "' exists at line " .. line .. ". Overwrite? (y/n): "
+    vim.ui.input({ prompt = msg }, function(input)
+      if input and input:lower() == "y" then
+        vim.cmd("normal! m" .. mark)
+        print("Mark '" .. mark .. "' overwritten.")
+      else
+        print("Mark '" .. mark .. "' not changed.")
+      end
+    end)
+  else
+    vim.cmd("normal! m" .. mark)
+    print("Mark '" .. mark .. "' set.")
+  end
+end
+
+-- Remap `ma`, `mb`, ..., `mz` to use the safe prompt
+for c = string.byte('a'), string.byte('z') do
+  local mark = string.char(c)
+  vim.keymap.set('n', 'm' .. mark, function()
+    SetMarkWithPrompt(mark)
+  end, { noremap = true, silent = true })
+end
+
